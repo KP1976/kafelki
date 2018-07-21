@@ -4,8 +4,9 @@
 	"description": "Gra, w której znajdujesz dwa kafelki o tym samym kolorze. Gdy odkryjesz wszystkie, podany jest czas w jakim to zrobiłeś.",
 	"main": "index.js",
 	"scripts": {
-		"run": "webpack --mode=development",
-		"build": "webpack --mode=production"
+		"clean": "rimraf dist && mkdirp dist",
+		"start": "webpack-dev-server --mode=development",
+		"build": "npm run clean && webpack --mode=production"
 	},
 	"repository": {
 		"type": "git",
