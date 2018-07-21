@@ -1,0 +1,20 @@
+{
+	"name": "kafelki",
+	"version": "1.0.0",
+	"description": "Gra, w której znajdujesz dwa kafelki o tym samym kolorze. Gdy odkryjesz wszystkie, podany jest czas w jakim to zrobiłeś.",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/KP1976/kafelki.git"
+	},
+	"keywords": [],
+	"author": "Krzysztof Pawłowski",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/KP1976/kafelki/issues"
+	},
+	"homepage": "https://github.com/KP1976/kafelki#readme"
+}
