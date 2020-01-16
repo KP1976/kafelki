@@ -1,5 +1,6 @@
 :root {
   --grey: #717171;
+  --black: #000;
   --red-light: #f50707;
   --red-dark: #aa0000;
   --blue-light: #0000ff;
@@ -16,8 +17,7 @@
 }
 
 html {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   font-size: 10px;
 }
 
@@ -31,26 +31,19 @@ body {
   list-style-type: none;
   margin: 0;
   padding: 0;
-  display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (1fr)[3];
-      grid-template-columns: repeat(3, 1fr);
-  -ms-grid-rows: (1fr)[4];
-      grid-template-rows: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(4, 1fr);
   gap: 0.5rem;
   height: calc(100vh - 3.4rem);
 }
-
 .tiles-container__tile {
-  background: -webkit-gradient(linear, left top, right bottom, from(var(--grey)), to(rgba(50, 50, 50, 0.1)));
   background: linear-gradient(left top, var(--grey), rgba(50, 50, 50, 0.1));
   border-radius: var(--radius);
-  -webkit-box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.3), -2px -2px 5px 0 rgba(255, 255, 255, 0.2);
-          box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.3), -2px -2px 5px 0 rgba(255, 255, 255, 0.2);
+  box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.3), -2px -2px 5px 0 rgba(255, 255, 255, 0.2);
   width: 100%;
   height: 100%;
   cursor: pointer;
 }
 
-
-/*# sourceMappingURL=/main.c52e0fe2.css.map */
+/*# sourceMappingURL=/main.77bb5cfd.css.map */

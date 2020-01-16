@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "parcel src/index.html",
-    "build": "parcel build src/index.html --out-dir build"
+    "build": "parcel build src/index.html --out-dir build --public-url ./"
   },
   "repository": {
     "type": "git",
@@ -18,5 +18,9 @@
   "bugs": {
     "url": "https://github.com/KP1976/kafelki/issues"
   },
-  "homepage": "https://github.com/KP1976/kafelki#readme"
+  "homepage": "https://github.com/KP1976/kafelki#readme",
+  "devDependencies": {
+    "cssnano": "^4.1.10",
+    "sass": "^1.24.4"
+  }
 }

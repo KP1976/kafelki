@@ -1,21 +1,24 @@
-$grey: #717171;
+:root {
+	--grey: #717171;
+	--black: #000;
 
-$red-light: #f50707;
-$red-dark: #aa0000;
+	--red-light: #f50707;
+	--red-dark: #aa0000;
 
-$blue-light: #0000ff;
-$blue-dark: #0000aa;
+	--blue-light: #0000ff;
+	--blue-dark: #0000aa;
 
-$green-light: #00ff00;
-$green-dark: #00aa00;
+	--green-light: #00ff00;
+	--green-dark: #00aa00;
 
-$yellow-light: #e8ff00;
-$yellow-dark: #a8b500;
+	--yellow-light: #e8ff00;
+	--yellow-dark: #a8b500;
 
-$pink-light: #ff00e6;
-$pink-dark: #b500a3;
+	--pink-light: #ff00e6;
+	--pink-dark: #b500a3;
 
-$brown-light: #a43c00;
-$brown-dark: #572000;
+	--brown-light: #a43c00;
+	--brown-dark: #572000;
 
-$radius: 1rem;
+	--radius: 1rem;
+}

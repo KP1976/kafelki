@@ -4,7 +4,7 @@ html {
 }
 
 body {
-	background-color: $grey;
+	background-color: var(--grey);
 	margin: 0;
 	padding: 1.7rem;
 }
@@ -20,8 +20,8 @@ body {
 	height: calc(100vh - 3.4rem);
 
 	&__tile {
-		background: linear-gradient(left top, $grey, rgba(50, 50, 50, 0.1));
-		border-radius: $radius;
+		background: linear-gradient(left top, var(--grey), rgba(50, 50, 50, 0.1));
+		border-radius: var(--radius);
 		box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.3),
 			-2px -2px 5px 0 rgba(255, 255, 255, 0.2);
 		width: 100%;
