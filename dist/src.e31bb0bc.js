@@ -119,11 +119,19 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   return newRequire;
 })({"index.js":[function(require,module,exports) {
 var cssVariables = document.styleSheets[0].cssRules[0].style.cssText.split(';');
-cssVariables.pop();
-cssVariables.pop();
-cssVariables.shift();
-cssVariables.shift();
-console.log(cssVariables);
+var tilesColors = {};
+cssVariables.splice(0, 2);
+cssVariables.splice(-2, 2);
+
+for (var i = 0; i < cssVariables.length; i++) {
+  var keyValuePairs = cssVariables[i].split(':');
+
+  if (keyValuePairs[0] !== '') {
+    tilesColors[keyValuePairs[0].trim()] = keyValuePairs[1].trim();
+  }
+}
+
+console.log(tilesColors);
 },{}],"C:/Users/Krzysiek/AppData/Roaming/nvm/v10.16.0/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
