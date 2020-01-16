@@ -118,20 +118,40 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
   return newRequire;
 })({"index.js":[function(require,module,exports) {
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
 var cssVariables = document.styleSheets[0].cssRules[0].style.cssText.split(';');
-var tilesColors = {};
+var cssVariablesColors = {};
+var tilesColors = [];
+var allTiles = [];
 cssVariables.splice(0, 2);
 cssVariables.splice(-2, 2);
 
 for (var i = 0; i < cssVariables.length; i++) {
   var keyValuePairs = cssVariables[i].split(':');
+  tilesColors[i] = cssVariables[i].slice(-7);
 
   if (keyValuePairs[0] !== '') {
-    tilesColors[keyValuePairs[0].trim()] = keyValuePairs[1].trim();
+    cssVariablesColors[keyValuePairs[0].trim()] = keyValuePairs[1].trim();
   }
 }
 
-console.log(tilesColors);
+var Tile = function Tile(lightColor, shadowColor, isClicked) {
+  _classCallCheck(this, Tile);
+
+  this.lightColor = lightColor;
+  this.shadowColor = shadowColor;
+  this.isClicked = isClicked;
+};
+
+var hexColorsValues = Object.values(cssVariablesColors);
+var hexColorsNames = Object.keys(cssVariablesColors);
+
+for (var _i = 0; _i < cssVariables.length / 2; _i += 2) {
+  allTiles[hexColorsNames[_i]] = new Tile(hexColorsValues[_i], hexColorsValues[_i + 1], false);
+}
+
+console.dir(allTiles);
 },{}],"C:/Users/Krzysiek/AppData/Roaming/nvm/v10.16.0/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -160,7 +180,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50536" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50995" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
