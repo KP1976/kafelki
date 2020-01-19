@@ -130,27 +130,27 @@ var Tile = function Tile(lightColor, shadowColor, isClicked) {
 
 var cssVariables = document.styleSheets[0].cssRules[0].style.cssText.split(';');
 var cssVariablesColors = {};
-var tilesColors = [];
+var tilesColorsValues = [];
 var allTiles = [];
 cssVariables.splice(0, 2);
 cssVariables.splice(-2, 2);
 
 for (var i = 0; i < cssVariables.length; i++) {
   var keyValuePairs = cssVariables[i].split(':');
-  tilesColors[i] = cssVariables[i].slice(-7);
+  tilesColorsValues[i] = cssVariables[i].slice(-7);
 
   if (keyValuePairs[0] !== '') {
     cssVariablesColors[keyValuePairs[0].trim()] = keyValuePairs[1].trim();
   }
-}
+} // const hexColorsValues = Object.values(cssVariablesColors);
 
-var hexColorsValues = Object.values(cssVariablesColors);
+
 var hexColorsNames = Object.keys(cssVariablesColors);
 var j = 0;
 
 for (var _i = 0; _i < cssVariables.length / 2; _i++) {
   var colorName = hexColorsNames[j].slice(2).slice(0, -6);
-  allTiles[colorName] = new Tile(hexColorsValues[_i], hexColorsValues[_i + 1], false);
+  allTiles[colorName] = new Tile(tilesColorsValues[_i], tilesColorsValues[_i + 1], false);
   j += 2;
 }
 
