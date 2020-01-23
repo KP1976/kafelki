@@ -120,6 +120,8 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 })({"index.js":[function(require,module,exports) {
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+var DOMTiles = document.querySelectorAll('.tiles-container__tile');
+
 var Tile = function Tile(lightColor, shadowColor, isClicked) {
   _classCallCheck(this, Tile);
 
@@ -131,7 +133,7 @@ var Tile = function Tile(lightColor, shadowColor, isClicked) {
 var cssVariables = document.styleSheets[0].cssRules[0].style.cssText.split(';');
 var cssVariablesColors = {};
 var tilesColorsValues = [];
-var allTiles = [];
+var allTiles = {};
 cssVariables.splice(0, 2);
 cssVariables.splice(-2, 2);
 
@@ -142,19 +144,32 @@ for (var i = 0; i < cssVariables.length; i++) {
   if (keyValuePairs[0] !== '') {
     cssVariablesColors[keyValuePairs[0].trim()] = keyValuePairs[1].trim();
   }
-} // const hexColorsValues = Object.values(cssVariablesColors);
-
+}
 
 var hexColorsNames = Object.keys(cssVariablesColors);
 var j = 0;
 
 for (var _i = 0; _i < cssVariables.length / 2; _i++) {
   var colorName = hexColorsNames[j].slice(2).slice(0, -6);
-  allTiles[colorName] = new Tile(tilesColorsValues[_i], tilesColorsValues[_i + 1], false);
+  allTiles[colorName] = new Tile(tilesColorsValues[j], tilesColorsValues[j + 1], false);
   j += 2;
-}
+} // DOMTiles[0].style.background = `linear-gradient(to right bottom, ${allTiles.red.lightColor}, ${allTiles.red.shadowColor})`;
+// DOMTiles[1].style.background = `linear-gradient(to right bottom, ${allTiles.blue.lightColor}, ${allTiles.blue.shadowColor})`;
+// DOMTiles[2].style.background = `linear-gradient(to right bottom, ${allTiles.green.lightColor}, ${allTiles.green.shadowColor})`;
+// DOMTiles[3].style.background = `linear-gradient(to right bottom, ${allTiles.yellow.lightColor}, ${allTiles.yellow.shadowColor})`;
+// DOMTiles[4].style.background = `linear-gradient(to right bottom, ${allTiles.pink.lightColor}, ${allTiles.pink.shadowColor})`;
+// DOMTiles[5].style.background = `linear-gradient(to right bottom, ${allTiles.brown.lightColor}, ${allTiles.brown.shadowColor})`;
 
-console.log(allTiles);
+
+j = 0;
+
+for (colors in allTiles) {
+  console.dir("".concat(allTiles[colors].lightColor));
+  DOMTiles[j].style.background = "linear-gradient(to right bottom, ".concat(allTiles[colors].lightColor, ", ").concat(allTiles[colors].shadowColor, ")");
+  j++; // for (properties in colors) {
+  // 	console.log(`${properties}`);
+  // }
+}
 },{}],"C:/Users/Krzysiek/AppData/Roaming/nvm/v10.16.0/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -183,7 +198,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50703" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50840" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
