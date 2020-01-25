@@ -45,5 +45,23 @@ body {
   height: 100%;
   cursor: pointer;
 }
+.tiles-container__tile.red {
+  background: linear-gradient(to right bottom, var(--red-light), var(--red-dark));
+}
+.tiles-container__tile.blue {
+  background: linear-gradient(to right bottom, var(--blue-light), var(--blue-dark));
+}
+.tiles-container__tile.green {
+  background: linear-gradient(to right bottom, var(--green-light), var(--green-dark));
+}
+.tiles-container__tile.yellow {
+  background: linear-gradient(to right bottom, var(--yellow-light), var(--yellow-dark));
+}
+.tiles-container__tile.pink {
+  background: linear-gradient(to right bottom, var(--pink-light), var(--pink-dark));
+}
+.tiles-container__tile.brown {
+  background: linear-gradient(to right bottom, var(--brown-light), var(--brown-dark));
+}
 
 /*# sourceMappingURL=/main.77bb5cfd.css.map */

@@ -40,11 +40,20 @@ for (let i = 0; i < cssVariables.length / 2; i++) {
 	j += 2;
 }
 
+// j = 0;
+// for (const colors in allTiles) {
+// 	DOMTiles[
+// 		j
+// 	].style.background = `linear-gradient(to right bottom, ${allTiles[colors].lightColor}, ${allTiles[colors].shadowColor})`;
+// 	j++;
+// }
+
 j = 0;
-for (const colors in allTiles) {
-	console.dir(`${allTiles[colors].lightColor}`);
-	DOMTiles[
-		j
-	].style.background = `linear-gradient(to right bottom, ${allTiles[colors].lightColor}, ${allTiles[colors].shadowColor})`;
+for (let i = 0; i < DOMTiles.length; i++) {
+	DOMTiles[i].classList.add(Object.keys(allTiles)[j]);
 	j++;
+	if (j > 5) {
+		j = 0;
+	}
 }
+console.dir(Object.keys(allTiles));

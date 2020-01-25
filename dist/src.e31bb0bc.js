@@ -153,23 +153,28 @@ for (var _i = 0; _i < cssVariables.length / 2; _i++) {
   var colorName = hexColorsNames[j].slice(2).slice(0, -6);
   allTiles[colorName] = new Tile(tilesColorsValues[j], tilesColorsValues[j + 1], false);
   j += 2;
-} // DOMTiles[0].style.background = `linear-gradient(to right bottom, ${allTiles.red.lightColor}, ${allTiles.red.shadowColor})`;
-// DOMTiles[1].style.background = `linear-gradient(to right bottom, ${allTiles.blue.lightColor}, ${allTiles.blue.shadowColor})`;
-// DOMTiles[2].style.background = `linear-gradient(to right bottom, ${allTiles.green.lightColor}, ${allTiles.green.shadowColor})`;
-// DOMTiles[3].style.background = `linear-gradient(to right bottom, ${allTiles.yellow.lightColor}, ${allTiles.yellow.shadowColor})`;
-// DOMTiles[4].style.background = `linear-gradient(to right bottom, ${allTiles.pink.lightColor}, ${allTiles.pink.shadowColor})`;
-// DOMTiles[5].style.background = `linear-gradient(to right bottom, ${allTiles.brown.lightColor}, ${allTiles.brown.shadowColor})`;
+} // j = 0;
+// for (const colors in allTiles) {
+// 	DOMTiles[
+// 		j
+// 	].style.background = `linear-gradient(to right bottom, ${allTiles[colors].lightColor}, ${allTiles[colors].shadowColor})`;
+// 	j++;
+// }
 
 
 j = 0;
 
-for (colors in allTiles) {
-  console.dir("".concat(allTiles[colors].lightColor));
-  DOMTiles[j].style.background = "linear-gradient(to right bottom, ".concat(allTiles[colors].lightColor, ", ").concat(allTiles[colors].shadowColor, ")");
-  j++; // for (properties in colors) {
-  // 	console.log(`${properties}`);
-  // }
+for (var _i2 = 0; _i2 < DOMTiles.length; _i2++) {
+  DOMTiles[_i2].classList.add(Object.keys(allTiles)[j]);
+
+  j++;
+
+  if (j > 5) {
+    j = 0;
+  }
 }
+
+console.dir(Object.keys(allTiles));
 },{}],"C:/Users/Krzysiek/AppData/Roaming/nvm/v10.16.0/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -198,7 +203,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50840" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50371" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
