@@ -46,11 +46,15 @@ const generateRandomNumbers = () => {
 	}
 };
 
+const removeColorsFromTiles = () => {
+	setTimeout(() => {
+		for (let i = 0; i < DOMTiles.length; i++) {
+			DOMTiles[i].classList = 'tiles-container__tile';
+		}
+	}, 2000);
+};
+
 generateRandomNumbers();
-
-const arrayRandomNumber = [...randomNumbers];
-
-console.log([...randomNumbers][0]);
 
 j = 0;
 for (let i = 0; i < DOMTiles.length; i++) {
@@ -60,3 +64,5 @@ for (let i = 0; i < DOMTiles.length; i++) {
 		j = 0;
 	}
 }
+
+removeColorsFromTiles();

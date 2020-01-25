@@ -170,15 +170,19 @@ var generateRandomNumbers = function generateRandomNumbers() {
   }
 };
 
+var removeColorsFromTiles = function removeColorsFromTiles() {
+  setTimeout(function () {
+    for (var _i2 = 0; _i2 < DOMTiles.length; _i2++) {
+      DOMTiles[_i2].classList = 'tiles-container__tile';
+    }
+  }, 2000);
+};
+
 generateRandomNumbers();
-
-var arrayRandomNumber = _toConsumableArray(randomNumbers);
-
-console.log(_toConsumableArray(randomNumbers)[0]);
 j = 0;
 
-for (var _i2 = 0; _i2 < DOMTiles.length; _i2++) {
-  DOMTiles[_toConsumableArray(randomNumbers)[_i2]].classList.add(Object.keys(allTiles)[j]);
+for (var _i3 = 0; _i3 < DOMTiles.length; _i3++) {
+  DOMTiles[_toConsumableArray(randomNumbers)[_i3]].classList.add(Object.keys(allTiles)[j]);
 
   j++;
 
@@ -186,6 +190,8 @@ for (var _i2 = 0; _i2 < DOMTiles.length; _i2++) {
     j = 0;
   }
 }
+
+removeColorsFromTiles();
 },{}],"C:/Users/Krzysiek/AppData/Roaming/nvm/v10.16.0/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
