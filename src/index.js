@@ -14,6 +14,8 @@ const cssVariables = document.styleSheets[0].cssRules[0].style.cssText.split(
 const cssVariablesColors = {};
 let tilesColorsValues = [];
 const allTiles = {};
+let j = 0;
+const randomNumbers = new Set();
 
 cssVariables.splice(0, 2);
 cssVariables.splice(-2, 2);
@@ -28,8 +30,6 @@ for (let i = 0; i < cssVariables.length; i++) {
 
 const hexColorsNames = Object.keys(cssVariablesColors);
 
-let j = 0;
-
 for (let i = 0; i < cssVariables.length / 2; i++) {
 	const colorName = hexColorsNames[j].slice(2).slice(0, -6);
 	allTiles[colorName] = new Tile(
@@ -40,20 +40,23 @@ for (let i = 0; i < cssVariables.length / 2; i++) {
 	j += 2;
 }
 
-// j = 0;
-// for (const colors in allTiles) {
-// 	DOMTiles[
-// 		j
-// 	].style.background = `linear-gradient(to right bottom, ${allTiles[colors].lightColor}, ${allTiles[colors].shadowColor})`;
-// 	j++;
-// }
+const generateRandomNumbers = () => {
+	while (randomNumbers.size !== 12) {
+		randomNumbers.add(Math.floor(Math.random() * 12));
+	}
+};
+
+generateRandomNumbers();
+
+const arrayRandomNumber = [...randomNumbers];
+
+console.log([...randomNumbers][0]);
 
 j = 0;
 for (let i = 0; i < DOMTiles.length; i++) {
-	DOMTiles[i].classList.add(Object.keys(allTiles)[j]);
+	DOMTiles[[...randomNumbers][i]].classList.add(Object.keys(allTiles)[j]);
 	j++;
 	if (j > 5) {
 		j = 0;
 	}
 }
-console.dir(Object.keys(allTiles));

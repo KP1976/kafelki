@@ -118,6 +118,14 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
   return newRequire;
 })({"index.js":[function(require,module,exports) {
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var DOMTiles = document.querySelectorAll('.tiles-container__tile');
@@ -134,6 +142,8 @@ var cssVariables = document.styleSheets[0].cssRules[0].style.cssText.split(';');
 var cssVariablesColors = {};
 var tilesColorsValues = [];
 var allTiles = {};
+var j = 0;
+var randomNumbers = new Set();
 cssVariables.splice(0, 2);
 cssVariables.splice(-2, 2);
 
@@ -147,25 +157,28 @@ for (var i = 0; i < cssVariables.length; i++) {
 }
 
 var hexColorsNames = Object.keys(cssVariablesColors);
-var j = 0;
 
 for (var _i = 0; _i < cssVariables.length / 2; _i++) {
   var colorName = hexColorsNames[j].slice(2).slice(0, -6);
   allTiles[colorName] = new Tile(tilesColorsValues[j], tilesColorsValues[j + 1], false);
   j += 2;
-} // j = 0;
-// for (const colors in allTiles) {
-// 	DOMTiles[
-// 		j
-// 	].style.background = `linear-gradient(to right bottom, ${allTiles[colors].lightColor}, ${allTiles[colors].shadowColor})`;
-// 	j++;
-// }
+}
 
+var generateRandomNumbers = function generateRandomNumbers() {
+  while (randomNumbers.size !== 12) {
+    randomNumbers.add(Math.floor(Math.random() * 12));
+  }
+};
 
+generateRandomNumbers();
+
+var arrayRandomNumber = _toConsumableArray(randomNumbers);
+
+console.log(_toConsumableArray(randomNumbers)[0]);
 j = 0;
 
 for (var _i2 = 0; _i2 < DOMTiles.length; _i2++) {
-  DOMTiles[_i2].classList.add(Object.keys(allTiles)[j]);
+  DOMTiles[_toConsumableArray(randomNumbers)[_i2]].classList.add(Object.keys(allTiles)[j]);
 
   j++;
 
@@ -173,8 +186,6 @@ for (var _i2 = 0; _i2 < DOMTiles.length; _i2++) {
     j = 0;
   }
 }
-
-console.dir(Object.keys(allTiles));
 },{}],"C:/Users/Krzysiek/AppData/Roaming/nvm/v10.16.0/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
