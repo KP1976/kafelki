@@ -117,7 +117,49 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"index.js":[function(require,module,exports) {
+})({"varaibles_from_css.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var cssVariables = document.styleSheets[0].cssRules[0].style.cssText.split(';'); // Usunięcie z listy koloru szarego i czarnego (dwa pierwsze elementy)
+
+cssVariables.splice(0, 2); // Usunięcie z listy zmiennej --radius i pustego stringa (dwa ostatnie elementy)
+
+cssVariables.splice(-2, 2);
+var _default = cssVariables;
+exports.default = _default;
+},{}],"random_numbers.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var randomNumbers = new Set();
+
+var generateRandomNumbers = function generateRandomNumbers() {
+  while (randomNumbers.size !== 12) {
+    randomNumbers.add(Math.floor(Math.random() * 12));
+  }
+
+  return randomNumbers;
+};
+
+generateRandomNumbers();
+var _default = randomNumbers;
+exports.default = _default;
+},{}],"index.js":[function(require,module,exports) {
+"use strict";
+
+var _varaibles_from_css = _interopRequireDefault(require("./varaibles_from_css"));
+
+var _random_numbers = _interopRequireDefault(require("./random_numbers"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
@@ -138,18 +180,15 @@ var Tile = function Tile(lightColor, shadowColor, isClicked) {
   this.isClicked = isClicked;
 };
 
-var cssVariables = document.styleSheets[0].cssRules[0].style.cssText.split(';');
 var cssVariablesColors = {};
 var tilesColorsValues = [];
 var allTiles = {};
 var j = 0;
-var randomNumbers = new Set();
-cssVariables.splice(0, 2);
-cssVariables.splice(-2, 2);
 
-for (var i = 0; i < cssVariables.length; i++) {
-  var keyValuePairs = cssVariables[i].split(':');
-  tilesColorsValues[i] = cssVariables[i].slice(-7);
+for (var i = 0; i < _varaibles_from_css.default.length; i++) {
+  var keyValuePairs = _varaibles_from_css.default[i].split(':');
+
+  tilesColorsValues[i] = _varaibles_from_css.default[i].slice(-7);
 
   if (keyValuePairs[0] !== '') {
     cssVariablesColors[keyValuePairs[0].trim()] = keyValuePairs[1].trim();
@@ -158,17 +197,11 @@ for (var i = 0; i < cssVariables.length; i++) {
 
 var hexColorsNames = Object.keys(cssVariablesColors);
 
-for (var _i = 0; _i < cssVariables.length / 2; _i++) {
+for (var _i = 0; _i < _varaibles_from_css.default.length / 2; _i++) {
   var colorName = hexColorsNames[j].slice(2).slice(0, -6);
   allTiles[colorName] = new Tile(tilesColorsValues[j], tilesColorsValues[j + 1], false);
   j += 2;
 }
-
-var generateRandomNumbers = function generateRandomNumbers() {
-  while (randomNumbers.size !== 12) {
-    randomNumbers.add(Math.floor(Math.random() * 12));
-  }
-};
 
 var removeColorsFromTiles = function removeColorsFromTiles() {
   setTimeout(function () {
@@ -178,11 +211,10 @@ var removeColorsFromTiles = function removeColorsFromTiles() {
   }, 2000);
 };
 
-generateRandomNumbers();
 j = 0;
 
 for (var _i3 = 0; _i3 < DOMTiles.length; _i3++) {
-  DOMTiles[_toConsumableArray(randomNumbers)[_i3]].classList.add(Object.keys(allTiles)[j]);
+  DOMTiles[_toConsumableArray(_random_numbers.default)[_i3]].classList.add(Object.keys(allTiles)[j]);
 
   j++;
 
@@ -192,7 +224,7 @@ for (var _i3 = 0; _i3 < DOMTiles.length; _i3++) {
 }
 
 removeColorsFromTiles();
-},{}],"C:/Users/Krzysiek/AppData/Roaming/nvm/v10.16.0/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./varaibles_from_css":"varaibles_from_css.js","./random_numbers":"random_numbers.js"}],"C:/Users/Krzysiek/AppData/Roaming/nvm/v10.16.0/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -220,7 +252,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50371" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51255" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

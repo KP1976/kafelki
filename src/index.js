@@ -1,3 +1,6 @@
+import cssVariables from './varaibles_from_css';
+import randomNumbers from './random_numbers';
+
 const DOMTiles = document.querySelectorAll('.tiles-container__tile');
 
 class Tile {
@@ -8,17 +11,10 @@ class Tile {
 	}
 }
 
-const cssVariables = document.styleSheets[0].cssRules[0].style.cssText.split(
-	';',
-);
 const cssVariablesColors = {};
 let tilesColorsValues = [];
 const allTiles = {};
 let j = 0;
-const randomNumbers = new Set();
-
-cssVariables.splice(0, 2);
-cssVariables.splice(-2, 2);
 
 for (let i = 0; i < cssVariables.length; i++) {
 	let keyValuePairs = cssVariables[i].split(':');
@@ -40,12 +36,6 @@ for (let i = 0; i < cssVariables.length / 2; i++) {
 	j += 2;
 }
 
-const generateRandomNumbers = () => {
-	while (randomNumbers.size !== 12) {
-		randomNumbers.add(Math.floor(Math.random() * 12));
-	}
-};
-
 const removeColorsFromTiles = () => {
 	setTimeout(() => {
 		for (let i = 0; i < DOMTiles.length; i++) {
@@ -53,8 +43,6 @@ const removeColorsFromTiles = () => {
 		}
 	}, 2000);
 };
-
-generateRandomNumbers();
 
 j = 0;
 for (let i = 0; i < DOMTiles.length; i++) {
