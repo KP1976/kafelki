@@ -1,17 +1,25 @@
-import { generateTiles, DOMTilesContainer } from './create_tiles';
-import cssVariables from './varaibles_from_css';
-import randomNumbers from './random_numbers';
+// DO ZROBIENIA
+/*
+	1. Plansza startowa, gdzie mamy do wyboru 4 plansze: 4 x 3, 4 x 4, 6 x 3 i 5 x 4 (rząd x kolumna).
+	2. Po wybraniu rodzaju planszy generowanie odpowiedniej liczby kafelków.
+	3. Losowe przydzielanie koloru do połowy liczby kafelków.
+	4. Pojawienie się kolorowej planszy na 3 sekundy po czym wszystkie stają  się szare.
+*/
 
-const numbersOfTiles = 20;
+// import { generateTiles, DOMTilesContainer } from './create_tiles';
+// import cssVariables from './varaibles_from_css';
+// import randomNumbers from './random_numbers';
 
-if (numbersOfTiles === 12 || numbersOfTiles === 18) {
-	generateTiles(numbersOfTiles);
-}
+// const numbersOfTiles = 20;
 
-if (numbersOfTiles === 16 || numbersOfTiles === 20) {
-	DOMTilesContainer.classList.add('four-columns');
-	generateTiles(numbersOfTiles);
-}
+// if (numbersOfTiles === 12 || numbersOfTiles === 18) {
+// 	generateTiles(numbersOfTiles);
+// }
+
+// if (numbersOfTiles === 16 || numbersOfTiles === 20) {
+// 	DOMTilesContainer.classList.add('four-columns');
+// 	generateTiles(numbersOfTiles);
+// }
 
 // class Tile {
 // 	constructor(lightColor, shadowColor, isClicked) {

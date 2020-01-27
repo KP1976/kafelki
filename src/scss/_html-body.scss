@@ -1,100 +1,15 @@
 html {
 	box-sizing: border-box;
 	font-size: 10px;
+	font-family: 'Overpass', sans-serif;
 }
 
 body {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 	background-color: var(--grey);
 	margin: 0;
 	padding: 1.7rem;
-}
-
-.tiles-container {
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
-	display: grid;
-	grid-template-columns: repeat(3, 1fr);
-	gap: 0.5rem;
 	height: calc(100vh - 3.4rem);
-
-	&.four-columns {
-		grid-template-columns: repeat(4, 1fr);
-	}
-
-	&__tile {
-		background: linear-gradient(
-			to right bottom,
-			var(--grey),
-			rgba(50, 50, 50, 0.1)
-		);
-		border-radius: var(--radius);
-		box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.3),
-			-2px -2px 5px 0 rgba(255, 255, 255, 0.2);
-		width: 100%;
-		height: 100%;
-		// position: relative;
-		cursor: pointer;
-
-		// &:hover::before {
-		// 	content: '';
-		// 	background-color: transparent;
-		// 	border-radius: $radius;
-		// 	box-shadow: inset 2px 2px 5px 0 rgba(0, 0, 0, 0.3),
-		// 		inset -2px -2px 5px 0 rgba(255, 255, 255, 0.2);
-		// 	position: absolute;
-		// 	width: calc(100% - 2rem);
-		// 	height: calc(100% - 2rem);
-		// 	left: 1rem;
-		// 	top: 1rem;
-		// }
-
-		&.red {
-			background: linear-gradient(
-				to right bottom,
-				var(--red-light),
-				var(--red-dark)
-			);
-		}
-
-		&.blue {
-			background: linear-gradient(
-				to right bottom,
-				var(--blue-light),
-				var(--blue-dark)
-			);
-		}
-
-		&.green {
-			background: linear-gradient(
-				to right bottom,
-				var(--green-light),
-				var(--green-dark)
-			);
-		}
-
-		&.yellow {
-			background: linear-gradient(
-				to right bottom,
-				var(--yellow-light),
-				var(--yellow-dark)
-			);
-		}
-
-		&.pink {
-			background: linear-gradient(
-				to right bottom,
-				var(--pink-light),
-				var(--pink-dark)
-			);
-		}
-
-		&.brown {
-			background: linear-gradient(
-				to right bottom,
-				var(--brown-light),
-				var(--brown-dark)
-			);
-		}
-	}
 }

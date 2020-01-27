@@ -117,81 +117,27 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"create_tiles.js":[function(require,module,exports) {
-"use strict";
+})({"index.js":[function(require,module,exports) {
+// DO ZROBIENIA
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.DOMTilesContainer = exports.generateTiles = void 0;
-var DOMTilesContainer = document.querySelector('.tiles-container');
-exports.DOMTilesContainer = DOMTilesContainer;
-
-var generateTiles = function generateTiles(numberOfTiles) {
-  for (var i = 0; i < numberOfTiles; i++) {
-    var tile = document.createElement('li');
-    tile.classList.add('tiles-container__tile');
-    DOMTilesContainer.appendChild(tile);
-  }
-};
-
-exports.generateTiles = generateTiles;
-},{}],"varaibles_from_css.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var cssVariables = document.styleSheets[0].cssRules[0].style.cssText.split(';'); // Usunięcie z listy koloru szarego i czarnego (dwa pierwsze elementy)
-
-cssVariables.splice(0, 2); // Usunięcie z listy zmiennej --radius i pustego stringa (dwa ostatnie elementy)
-
-cssVariables.splice(-2, 2);
-var _default = cssVariables;
-exports.default = _default;
-},{}],"random_numbers.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var randomNumbers = new Set();
-
-var generateRandomNumbers = function generateRandomNumbers() {
-  while (randomNumbers.size !== 12) {
-    randomNumbers.add(Math.floor(Math.random() * 12));
-  }
-
-  return randomNumbers;
-};
-
-generateRandomNumbers();
-var _default = randomNumbers;
-exports.default = _default;
-},{}],"index.js":[function(require,module,exports) {
-"use strict";
-
-var _create_tiles = require("./create_tiles");
-
-var _varaibles_from_css = _interopRequireDefault(require("./varaibles_from_css"));
-
-var _random_numbers = _interopRequireDefault(require("./random_numbers"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var numbersOfTiles = 20;
-
-if (numbersOfTiles === 12 || numbersOfTiles === 18) {
-  (0, _create_tiles.generateTiles)(numbersOfTiles);
-}
-
-if (numbersOfTiles === 16 || numbersOfTiles === 20) {
-  _create_tiles.DOMTilesContainer.classList.add('four-columns');
-
-  (0, _create_tiles.generateTiles)(numbersOfTiles);
-} // class Tile {
+/*
+	1. Plansza startowa, gdzie mamy do wyboru 4 plansze: 4 x 3, 4 x 4, 6 x 3 i 5 x 4 (rząd x kolumna).
+	2. Po wybraniu rodzaju planszy generowanie odpowiedniej liczby kafelków.
+	3. Losowe przydzielanie koloru do połowy liczby kafelków.
+	4. Pojawienie się kolorowej planszy na 3 sekundy po czym wszystkie stają  się szare.
+*/
+// import { generateTiles, DOMTilesContainer } from './create_tiles';
+// import cssVariables from './varaibles_from_css';
+// import randomNumbers from './random_numbers';
+// const numbersOfTiles = 20;
+// if (numbersOfTiles === 12 || numbersOfTiles === 18) {
+// 	generateTiles(numbersOfTiles);
+// }
+// if (numbersOfTiles === 16 || numbersOfTiles === 20) {
+// 	DOMTilesContainer.classList.add('four-columns');
+// 	generateTiles(numbersOfTiles);
+// }
+// class Tile {
 // 	constructor(lightColor, shadowColor, isClicked) {
 // 		this.lightColor = lightColor;
 // 		this.shadowColor = shadowColor;
@@ -235,7 +181,7 @@ if (numbersOfTiles === 16 || numbersOfTiles === 20) {
 // 	}
 // }
 // removeColorsFromTiles();
-},{"./create_tiles":"create_tiles.js","./varaibles_from_css":"varaibles_from_css.js","./random_numbers":"random_numbers.js"}],"C:/Users/Krzysiek/AppData/Roaming/nvm/v10.16.0/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{}],"C:/Users/Krzysiek/AppData/Roaming/nvm/v10.16.0/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -263,7 +209,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50865" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49957" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
