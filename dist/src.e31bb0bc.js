@@ -117,7 +117,26 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"varaibles_from_css.js":[function(require,module,exports) {
+})({"create_tiles.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.DOMTilesContainer = exports.generateTiles = void 0;
+var DOMTilesContainer = document.querySelector('.tiles-container');
+exports.DOMTilesContainer = DOMTilesContainer;
+
+var generateTiles = function generateTiles(numberOfTiles) {
+  for (var i = 0; i < numberOfTiles; i++) {
+    var tile = document.createElement('li');
+    tile.classList.add('tiles-container__tile');
+    DOMTilesContainer.appendChild(tile);
+  }
+};
+
+exports.generateTiles = generateTiles;
+},{}],"varaibles_from_css.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -154,77 +173,69 @@ exports.default = _default;
 },{}],"index.js":[function(require,module,exports) {
 "use strict";
 
+var _create_tiles = require("./create_tiles");
+
 var _varaibles_from_css = _interopRequireDefault(require("./varaibles_from_css"));
 
 var _random_numbers = _interopRequireDefault(require("./random_numbers"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+var numbersOfTiles = 20;
 
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
-
-function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
-
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var DOMTiles = document.querySelectorAll('.tiles-container__tile');
-
-var Tile = function Tile(lightColor, shadowColor, isClicked) {
-  _classCallCheck(this, Tile);
-
-  this.lightColor = lightColor;
-  this.shadowColor = shadowColor;
-  this.isClicked = isClicked;
-};
-
-var cssVariablesColors = {};
-var tilesColorsValues = [];
-var allTiles = {};
-var j = 0;
-
-for (var i = 0; i < _varaibles_from_css.default.length; i++) {
-  var keyValuePairs = _varaibles_from_css.default[i].split(':');
-
-  tilesColorsValues[i] = _varaibles_from_css.default[i].slice(-7);
-
-  if (keyValuePairs[0] !== '') {
-    cssVariablesColors[keyValuePairs[0].trim()] = keyValuePairs[1].trim();
-  }
+if (numbersOfTiles === 12 || numbersOfTiles === 18) {
+  (0, _create_tiles.generateTiles)(numbersOfTiles);
 }
 
-var hexColorsNames = Object.keys(cssVariablesColors);
+if (numbersOfTiles === 16 || numbersOfTiles === 20) {
+  _create_tiles.DOMTilesContainer.classList.add('four-columns');
 
-for (var _i = 0; _i < _varaibles_from_css.default.length / 2; _i++) {
-  var colorName = hexColorsNames[j].slice(2).slice(0, -6);
-  allTiles[colorName] = new Tile(tilesColorsValues[j], tilesColorsValues[j + 1], false);
-  j += 2;
-}
-
-var removeColorsFromTiles = function removeColorsFromTiles() {
-  setTimeout(function () {
-    for (var _i2 = 0; _i2 < DOMTiles.length; _i2++) {
-      DOMTiles[_i2].classList = 'tiles-container__tile';
-    }
-  }, 2000);
-};
-
-j = 0;
-
-for (var _i3 = 0; _i3 < DOMTiles.length; _i3++) {
-  DOMTiles[_toConsumableArray(_random_numbers.default)[_i3]].classList.add(Object.keys(allTiles)[j]);
-
-  j++;
-
-  if (j > 5) {
-    j = 0;
-  }
-}
-
-removeColorsFromTiles();
-},{"./varaibles_from_css":"varaibles_from_css.js","./random_numbers":"random_numbers.js"}],"C:/Users/Krzysiek/AppData/Roaming/nvm/v10.16.0/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+  (0, _create_tiles.generateTiles)(numbersOfTiles);
+} // class Tile {
+// 	constructor(lightColor, shadowColor, isClicked) {
+// 		this.lightColor = lightColor;
+// 		this.shadowColor = shadowColor;
+// 		this.isClicked = isClicked;
+// 	}
+// }
+// const cssVariablesColors = {};
+// let tilesColorsValues = [];
+// const allTiles = {};
+// let j = 0;
+// for (let i = 0; i < cssVariables.length; i++) {
+// 	let keyValuePairs = cssVariables[i].split(':');
+// 	tilesColorsValues[i] = cssVariables[i].slice(-7);
+// 	if (keyValuePairs[0] !== '') {
+// 		cssVariablesColors[keyValuePairs[0].trim()] = keyValuePairs[1].trim();
+// 	}
+// }
+// const hexColorsNames = Object.keys(cssVariablesColors);
+// for (let i = 0; i < cssVariables.length / 2; i++) {
+// 	const colorName = hexColorsNames[j].slice(2).slice(0, -6);
+// 	allTiles[colorName] = new Tile(
+// 		tilesColorsValues[j],
+// 		tilesColorsValues[j + 1],
+// 		false,
+// 	);
+// 	j += 2;
+// }
+// const removeColorsFromTiles = () => {
+// 	setTimeout(() => {
+// 		for (let i = 0; i < DOMTiles.length; i++) {
+// 			DOMTiles[i].classList = 'tiles-container__tile';
+// 		}
+// 	}, 2000);
+// };
+// j = 0;
+// for (let i = 0; i < DOMTiles.length; i++) {
+// 	DOMTiles[[...randomNumbers][i]].classList.add(Object.keys(allTiles)[j]);
+// 	j++;
+// 	if (j > 5) {
+// 		j = 0;
+// 	}
+// }
+// removeColorsFromTiles();
+},{"./create_tiles":"create_tiles.js","./varaibles_from_css":"varaibles_from_css.js","./random_numbers":"random_numbers.js"}],"C:/Users/Krzysiek/AppData/Roaming/nvm/v10.16.0/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -252,7 +263,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51255" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50865" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
