@@ -1,6 +1,12 @@
 :root {
-  --grey: #717171;
-  --black: #000;
+  --black-light: #4d4d4d;
+  --black-dark: #1d1d1d;
+  --purple-light: #8000ff;
+  --purple-dark: #6500c9;
+  --light-blue-light: #00c2ff;
+  --light-blue-dark: #0099c9;
+  --orange-light: #ff9900;
+  --orange-dark: #c57600;
   --red-light: #f50707;
   --red-dark: #aa0000;
   --blue-light: #0000ff;
@@ -13,6 +19,7 @@
   --pink-dark: #b500a3;
   --brown-light: #a43c00;
   --brown-dark: #572000;
+  --grey: #717171;
   --radius: 1rem;
 }
 
