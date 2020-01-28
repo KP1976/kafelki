@@ -5,12 +5,16 @@
 }
 
 .title {
-	color: white;
 	font-size: 3rem;
 	font-weight: 600;
 	text-align: center;
 	margin: 0;
 	text-transform: uppercase;
+
+	&--small {
+		font-size: 1.8rem;
+		font-weight: 400;
+	}
 }
 
 .tiles-grid {
@@ -83,4 +87,11 @@
 			);
 		}
 	}
+}
+
+.radios-container {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 2.4rem 3.2rem;
+	font-size: 1.8rem;
 }
