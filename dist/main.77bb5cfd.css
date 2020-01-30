@@ -1,3 +1,4 @@
+@charset "UTF-8";
 :root {
   --black-light: #4d4d4d;
   --black-dark: #1d1d1d;
@@ -96,28 +97,50 @@ body {
 .radios-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 2.4rem 3.2rem;
+  gap: 2.4rem 4.4rem;
   font-size: 1.8rem;
-  margin: 3.8rem 0;
+  margin: 3.8rem 0 0 2rem;
   padding: 0;
   list-style-type: none;
 }
 .radios-container__radio {
   align-items: center;
   display: flex;
-  flex-direction: row-reverse;
+  position: relative;
 }
 .radios-container__radio-label {
   margin-left: 1.2rem;
   position: relative;
 }
+.radios-container__radio-label::before {
+  background-color: var(--grey);
+  box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.3), -2px -2px 5px 0 rgba(255, 255, 255, 0.2);
+  border-radius: 0.3rem;
+  content: "";
+  width: 2rem;
+  height: 2rem;
+  position: absolute;
+  left: -3.2rem;
+}
 .radios-container__radio-input {
-  background-color: red;
   margin: 0;
 }
 .radios-container__radio-input:checked, .radios-container__radio-input:not(:checked) {
   position: absolute;
+  left: -2rem;
   opacity: 0;
+  width: 2rem;
+  height: 2rem;
+}
+.radios-container__radio-input:checked + .radios-container__radio-label::before {
+  box-shadow: inset 2px 2px 5px 0 rgba(0, 0, 0, 0.3), inset -2px -2px 5px 0 rgba(255, 255, 255, 0.2);
+}
+.radios-container__radio-input:checked + .radios-container__radio-label::after {
+  content: "✓";
+  font-size: 1.2rem;
+  position: absolute;
+  left: -2.7rem;
+  top: 0.2rem;
 }
 
 .tiles-container {
