@@ -14,6 +14,7 @@
 	&--small {
 		font-size: 1.8rem;
 		font-weight: 400;
+		text-transform: none;
 	}
 }
 
@@ -94,4 +95,28 @@
 	grid-template-columns: 1fr 1fr;
 	gap: 2.4rem 3.2rem;
 	font-size: 1.8rem;
+	margin: 3.8rem 0;
+	padding: 0;
+	list-style-type: none;
+
+	&__radio {
+		align-items: center;
+		display: flex;
+		flex-direction: row-reverse;
+	}
+
+	&__radio-label {
+		margin-left: 1.2rem;
+		position: relative;
+	}
+
+	&__radio-input {
+		background-color: red;
+		margin: 0;
+		&:checked,
+		&:not(:checked) {
+			position: absolute;
+			opacity: 0;
+		}
+	}
 }

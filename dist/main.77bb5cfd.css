@@ -26,7 +26,7 @@
 html {
   box-sizing: border-box;
   font-size: 10px;
-  font-family: "Overpass", sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 body {
@@ -56,6 +56,7 @@ body {
 .title--small {
   font-size: 1.8rem;
   font-weight: 400;
+  text-transform: none;
 }
 
 .tiles-grid {
@@ -97,6 +98,26 @@ body {
   grid-template-columns: 1fr 1fr;
   gap: 2.4rem 3.2rem;
   font-size: 1.8rem;
+  margin: 3.8rem 0;
+  padding: 0;
+  list-style-type: none;
+}
+.radios-container__radio {
+  align-items: center;
+  display: flex;
+  flex-direction: row-reverse;
+}
+.radios-container__radio-label {
+  margin-left: 1.2rem;
+  position: relative;
+}
+.radios-container__radio-input {
+  background-color: red;
+  margin: 0;
+}
+.radios-container__radio-input:checked, .radios-container__radio-input:not(:checked) {
+  position: absolute;
+  opacity: 0;
 }
 
 .tiles-container {
