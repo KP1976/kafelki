@@ -5,12 +5,9 @@ html {
 }
 
 body {
-	color: var(--white);
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	background-color: var(--grey);
+	color: var(--black);
+	background-color: var(--white);
 	margin: 0;
-	padding: 1.7rem;
-	height: calc(100vh - 3.4rem);
+	padding: 5rem 3.4rem;
+	height: calc(100vh - 10rem);
 }
