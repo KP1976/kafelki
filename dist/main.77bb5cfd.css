@@ -161,6 +161,45 @@ body {
   text-transform: uppercase;
 }
 
+.switch-mode-container {
+  display: flex;
+  margin-top: 1rem;
+}
+.switch-mode-container__switch {
+  height: 0;
+  width: 0;
+  visibility: hidden;
+  margin: 0;
+}
+.switch-mode-container__switch:checked + label::before {
+  left: calc(100% - 0.3rem);
+  transform: translateX(-100%);
+}
+.switch-mode-container__switch-label {
+  cursor: pointer;
+  width: 4rem;
+  height: 2rem;
+  background: grey;
+  display: block;
+  border-radius: 100px;
+  position: relative;
+  margin: 0 0.5rem;
+}
+.switch-mode-container__switch-label::before {
+  content: "";
+  position: absolute;
+  top: 0.3rem;
+  left: 0.3rem;
+  width: 1.4rem;
+  height: 1.4rem;
+  background: var(--white);
+  border-radius: 100%;
+  transition: 0.3s;
+}
+.switch-mode-container .fas {
+  font-size: 2rem;
+}
+
 .tiles-container {
   list-style-type: none;
   margin: 0;
