@@ -117,8 +117,36 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"index.js":[function(require,module,exports) {
-// DO ZROBIENIA
+})({"change-mode.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var body = document.querySelector('body');
+var switcher = document.querySelector('.switch-mode-container__switch');
+
+var switchColorTheme = function switchColorTheme() {
+  switcher.addEventListener('click', function () {
+    if (!this.checked) {
+      body.classList.add('dark-mode');
+    } else {
+      body.classList.remove('dark-mode');
+    }
+  });
+};
+
+var _default = switchColorTheme;
+exports.default = _default;
+},{}],"index.js":[function(require,module,exports) {
+"use strict";
+
+var _changeMode = _interopRequireDefault(require("./change-mode"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+(0, _changeMode.default)(); // DO ZROBIENIA
 
 /*
 	1. Plansza startowa, gdzie mamy do wyboru 4 plansze: 4 x 3, 4 x 4, 6 x 3 i 5 x 4 (rząd x kolumna).
@@ -181,7 +209,7 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 // 	}
 // }
 // removeColorsFromTiles();
-},{}],"C:/Users/Krzysiek/AppData/Roaming/nvm/v10.16.0/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./change-mode":"change-mode.js"}],"C:/Users/Krzysiek/AppData/Roaming/nvm/v10.16.0/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;

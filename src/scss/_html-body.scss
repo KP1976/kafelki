@@ -10,4 +10,8 @@ body {
 	margin: 0;
 	padding: 5rem 3.4rem;
 	height: calc(100vh - 10rem);
+
+	&.dark-mode {
+		background-color: var(--grey);
+	}
 }

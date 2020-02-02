@@ -39,6 +39,9 @@ body {
   padding: 5rem 3.4rem;
   height: calc(100vh - 10rem);
 }
+body.dark-mode {
+  background-color: var(--grey);
+}
 
 .container {
   display: flex;

@@ -1,3 +1,7 @@
+import switchColorTheme from './change-mode';
+
+switchColorTheme();
+
 // DO ZROBIENIA
 /*
 	1. Plansza startowa, gdzie mamy do wyboru 4 plansze: 4 x 3, 4 x 4, 6 x 3 i 5 x 4 (rząd x kolumna).
