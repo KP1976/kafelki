@@ -125,14 +125,17 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 var body = document.querySelector('body');
+var startButton = document.querySelector('.radios-container__button');
 var switcher = document.querySelector('.switch-mode-container__switch');
 
 var switchColorTheme = function switchColorTheme() {
   switcher.addEventListener('click', function () {
     if (!this.checked) {
       body.classList.add('dark-mode');
+      startButton.classList.add('dark-mode');
     } else {
       body.classList.remove('dark-mode');
+      startButton.classList.remove('dark-mode');
     }
   });
 };

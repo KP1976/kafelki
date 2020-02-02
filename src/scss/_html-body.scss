@@ -10,6 +10,7 @@ body {
 	margin: 0;
 	padding: 5rem 3.4rem;
 	height: calc(100vh - 10rem);
+	transition: background-color 0.3s cubic-bezier(0.65, 0.05, 0.36, 1);
 
 	&.dark-mode {
 		background-color: var(--grey);

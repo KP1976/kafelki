@@ -175,6 +175,13 @@
 			box-shadow: inset 2px 2px 5px 0 rgba(0, 0, 0, 0.3),
 				inset -2px -2px 5px 0 rgba(255, 255, 255, 0.8);
 		}
+
+		&.dark-mode {
+			background-color: var(--grey);
+			box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.3),
+				-2px -2px 5px 0 rgba(255, 255, 255, 0.2);
+			color: var(--white);
+		}
 	}
 }
 
