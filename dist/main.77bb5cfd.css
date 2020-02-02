@@ -137,6 +137,7 @@ body {
   position: relative;
 }
 .radios-container__radio-label::before {
+  cursor: pointer;
   background-color: var(--white);
   box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.3), -2px -2px 5px 0 rgba(255, 255, 255, 0.8);
   border-radius: 0.3rem;
@@ -147,6 +148,7 @@ body {
   left: -3.2rem;
 }
 .radios-container__button {
+  cursor: pointer;
   background-color: var(--white);
   box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.3), -2px -2px 5px 0 rgba(255, 255, 255, 0.8);
   color: var(--black);
@@ -159,6 +161,10 @@ body {
   font-size: 3rem;
   font-weight: 600;
   text-transform: uppercase;
+  outline: none;
+}
+.radios-container__button:active {
+  box-shadow: inset 2px 2px 5px 0 rgba(0, 0, 0, 0.3), inset -2px -2px 5px 0 rgba(255, 255, 255, 0.8);
 }
 
 .switch-mode-container {
