@@ -34,14 +34,14 @@ html {
 
 body {
   color: var(--black);
-  background-color: var(--white);
+  background-color: var(--grey);
   margin: 0;
   padding: 5rem 3.4rem;
   height: calc(100vh - 10rem);
   transition: background-color 0.3s cubic-bezier(0.65, 0.05, 0.36, 1);
 }
-body.dark-mode {
-  background-color: var(--grey);
+body.light-mode {
+  background-color: var(--white);
 }
 
 .container {
@@ -51,6 +51,7 @@ body.dark-mode {
 }
 
 .title {
+  color: var(--white);
   font-size: 3rem;
   font-weight: 600;
   text-align: center;
@@ -60,6 +61,9 @@ body.dark-mode {
 .title--small {
   font-size: 1.6rem;
   margin: 0;
+}
+.title.light-mode {
+  color: var(--black);
 }
 
 .container-of-tiles {
@@ -125,9 +129,10 @@ body.dark-mode {
   height: 2rem;
 }
 .radios-container__radio-input:checked + .radios-container__radio-label::before {
-  box-shadow: inset 2px 2px 5px 0 rgba(0, 0, 0, 0.2), inset -2px -2px 5px 0 rgba(255, 255, 255, 0.8);
+  box-shadow: inset 2px 2px 5px 0 rgba(0, 0, 0, 0.2), inset -2px -2px 5px 0 rgba(255, 255, 255, 0.3);
 }
 .radios-container__radio-input:checked + .radios-container__radio-label::after {
+  color: white;
   font-family: FontAwesome;
   content: "";
   font-size: 1.2rem;
@@ -137,13 +142,14 @@ body.dark-mode {
   top: 0.4rem;
 }
 .radios-container__radio-label {
+  color: var(--white);
   margin-left: 1.2rem;
   position: relative;
 }
 .radios-container__radio-label::before {
   cursor: pointer;
-  background-color: var(--white);
-  box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.3), -2px -2px 5px 0 rgba(255, 255, 255, 0.8);
+  background-color: var(--grey);
+  box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.3), -2px -2px 5px 0 rgba(255, 255, 255, 0.2);
   border-radius: 0.3rem;
   content: "";
   width: 2rem;
@@ -151,29 +157,11 @@ body.dark-mode {
   position: absolute;
   left: -3.2rem;
 }
-.radios-container__button {
-  cursor: pointer;
-  background-color: var(--white);
-  box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.3), -2px -2px 5px 0 rgba(255, 255, 255, 0.8);
+.radios-container__radio-label::before.light-mode {
   color: var(--black);
-  border-radius: 0.3rem;
-  width: 17.4rem;
-  margin-top: 4.3rem;
-  padding: 0.9rem 0;
-  border: none;
-  font-family: "Montserrat", sans-serif;
-  font-size: 3rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  outline: none;
 }
-.radios-container__button:active {
-  box-shadow: inset 2px 2px 5px 0 rgba(0, 0, 0, 0.3), inset -2px -2px 5px 0 rgba(255, 255, 255, 0.8);
-}
-.radios-container__button.dark-mode {
-  background-color: var(--grey);
-  box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.3), -2px -2px 5px 0 rgba(255, 255, 255, 0.2);
-  color: var(--white);
+.radios-container__radio-label.light-mode {
+  color: var(--black);
 }
 
 .switch-mode-container {
@@ -181,12 +169,15 @@ body.dark-mode {
   margin-top: 1rem;
 }
 .switch-mode-container__switch {
-  height: 0;
-  width: 0;
-  visibility: hidden;
+  position: absolute;
   margin: 0;
+  left: -9999px;
+}
+.switch-mode-container__switch:checked + label {
+  background-color: var(--black);
 }
 .switch-mode-container__switch:checked + label::before {
+  background-color: var(--white);
   left: calc(100% - 0.3rem);
   transform: translateX(-100%);
 }
@@ -194,7 +185,7 @@ body.dark-mode {
   cursor: pointer;
   width: 4rem;
   height: 2rem;
-  background: grey;
+  background: var(--white);
   display: block;
   border-radius: 100px;
   position: relative;
@@ -207,12 +198,40 @@ body.dark-mode {
   left: 0.3rem;
   width: 1.4rem;
   height: 1.4rem;
-  background: var(--white);
+  background: var(--grey);
   border-radius: 100%;
-  transition: 0.3s;
+  transition: all 0.3s cubic-bezier(0.65, 0.05, 0.36, 1);
 }
 .switch-mode-container .fas {
   font-size: 2rem;
+}
+
+.button {
+  cursor: pointer;
+  background-color: var(--grey);
+  box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.3), -2px -2px 5px 0 rgba(255, 255, 255, 0.2);
+  color: var(--white);
+  border-radius: 0.3rem;
+  width: 17.4rem;
+  margin-top: 4.3rem;
+  padding: 0.9rem 0;
+  border: none;
+  font-family: "Montserrat", sans-serif;
+  font-size: 3rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  outline: none;
+}
+.button:active {
+  box-shadow: inset 2px 2px 5px 0 rgba(0, 0, 0, 0.3), inset -2px -2px 5px 0 rgba(255, 255, 255, 0.2);
+}
+.button:active.light-mode {
+  box-shadow: inset 2px 2px 5px 0 rgba(0, 0, 0, 0.3), inset -2px -2px 5px 0 rgba(255, 255, 255, 0.8);
+}
+.button.light-mode {
+  color: var(--black);
+  background-color: var(--white);
+  box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.3), -2px -2px 5px 0 rgba(255, 255, 255, 0.8);
 }
 
 .tiles-container {
