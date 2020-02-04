@@ -126,10 +126,10 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = void 0;
 var body = document.querySelector('body');
 var startButton = document.querySelector('.button');
-var backgroundColor = document.styleSheets[1].cssRules[24].style;
 var radioLabels = document.querySelectorAll('.radios-container__radio-label');
 var switcher = document.querySelector('.switch-mode-container__switch');
 var titles = document.querySelectorAll('.title');
+console.log(document.styleSheets[1].cssRules);
 
 var switchColorTheme = function switchColorTheme() {
   switcher.addEventListener('click', function () {
@@ -183,8 +183,6 @@ var switchColorTheme = function switchColorTheme() {
           }
         }
       }
-
-      backgroundColor.setProperty('background-color', '#ececec');
     } else {
       body.classList.remove('light-mode');
       startButton.classList.remove('light-mode');
@@ -237,8 +235,6 @@ var switchColorTheme = function switchColorTheme() {
           }
         }
       }
-
-      backgroundColor.setProperty('background-color', '#696969');
     }
   });
 };
@@ -343,7 +339,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50155" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58464" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

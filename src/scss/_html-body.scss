@@ -5,6 +5,9 @@ html {
 }
 
 body {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 	color: var(--black);
 	background-color: var(--grey);
 	margin: 0;
