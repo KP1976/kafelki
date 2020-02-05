@@ -174,6 +174,7 @@ body.light-mode {
 .switch-mode-container {
   display: flex;
   margin-top: 1rem;
+  align-items: center;
 }
 .switch-mode-container__switch {
   position: absolute;
@@ -210,7 +211,21 @@ body.light-mode {
   transition: all 0.3s cubic-bezier(0.65, 0.05, 0.36, 1);
 }
 .switch-mode-container .fas {
-  font-size: 2rem;
+  font-size: 1.6rem;
+  opacity: 0;
+  transition: opacity 0.3s cubic-bezier(0.65, 0.05, 0.36, 1);
+}
+.switch-mode-container .fa-moon {
+  color: white;
+}
+.switch-mode-container .fa-moon.isVisible {
+  opacity: 1;
+}
+.switch-mode-container .fa-sun {
+  color: black;
+}
+.switch-mode-container .fa-sun.isVisible {
+  opacity: 1;
 }
 
 .button {

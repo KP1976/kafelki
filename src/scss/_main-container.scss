@@ -183,6 +183,7 @@
 .switch-mode-container {
 	display: flex;
 	margin-top: 1rem;
+	align-items: center;
 
 	&__switch {
 		position: absolute;
@@ -224,7 +225,25 @@
 	}
 
 	.fas {
-		font-size: 2rem;
+		font-size: 1.6rem;
+		opacity: 0;
+		transition: opacity 0.3s cubic-bezier(0.65, 0.05, 0.36, 1);
+	}
+
+	.fa-moon {
+		color: white;
+
+		&.isVisible {
+			opacity: 1;
+		}
+	}
+
+	.fa-sun {
+		color: black;
+
+		&.isVisible {
+			opacity: 1;
+		}
 	}
 }
 
