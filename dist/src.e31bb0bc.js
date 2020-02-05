@@ -127,9 +127,10 @@ exports.default = void 0;
 var body = document.querySelector('body');
 var startButton = document.querySelector('.button');
 var radioLabels = document.querySelectorAll('.radios-container__radio-label');
+var radioBoxes = document.querySelectorAll('.radios-container__radio-box');
 var switcher = document.querySelector('.switch-mode-container__switch');
 var titles = document.querySelectorAll('.title');
-console.log(document.styleSheets[1].cssRules);
+var isCheckedFonts = document.querySelectorAll('.fa-check');
 
 var switchColorTheme = function switchColorTheme() {
   switcher.addEventListener('click', function () {
@@ -165,9 +166,9 @@ var switchColorTheme = function switchColorTheme() {
       var _iteratorError2 = undefined;
 
       try {
-        for (var _iterator2 = titles[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-          var title = _step2.value;
-          title.classList.add('light-mode');
+        for (var _iterator2 = radioBoxes[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+          var radioBox = _step2.value;
+          radioBox.classList.add('light-mode');
         }
       } catch (err) {
         _didIteratorError2 = true;
@@ -183,18 +184,15 @@ var switchColorTheme = function switchColorTheme() {
           }
         }
       }
-    } else {
-      body.classList.remove('light-mode');
-      startButton.classList.remove('light-mode');
+
       var _iteratorNormalCompletion3 = true;
       var _didIteratorError3 = false;
       var _iteratorError3 = undefined;
 
       try {
-        for (var _iterator3 = radioLabels[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
-          var _radioLabel = _step3.value;
-
-          _radioLabel.classList.remove('light-mode');
+        for (var _iterator3 = titles[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+          var title = _step3.value;
+          title.classList.add('light-mode');
         }
       } catch (err) {
         _didIteratorError3 = true;
@@ -216,10 +214,9 @@ var switchColorTheme = function switchColorTheme() {
       var _iteratorError4 = undefined;
 
       try {
-        for (var _iterator4 = titles[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
-          var _title = _step4.value;
-
-          _title.classList.remove('light-mode');
+        for (var _iterator4 = isCheckedFonts[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
+          var isCheckedFont = _step4.value;
+          isCheckedFont.classList.add('light-mode');
         }
       } catch (err) {
         _didIteratorError4 = true;
@@ -232,6 +229,108 @@ var switchColorTheme = function switchColorTheme() {
         } finally {
           if (_didIteratorError4) {
             throw _iteratorError4;
+          }
+        }
+      }
+    } else {
+      body.classList.remove('light-mode');
+      startButton.classList.remove('light-mode');
+      var _iteratorNormalCompletion5 = true;
+      var _didIteratorError5 = false;
+      var _iteratorError5 = undefined;
+
+      try {
+        for (var _iterator5 = radioLabels[Symbol.iterator](), _step5; !(_iteratorNormalCompletion5 = (_step5 = _iterator5.next()).done); _iteratorNormalCompletion5 = true) {
+          var _radioLabel = _step5.value;
+
+          _radioLabel.classList.remove('light-mode');
+        }
+      } catch (err) {
+        _didIteratorError5 = true;
+        _iteratorError5 = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion5 && _iterator5.return != null) {
+            _iterator5.return();
+          }
+        } finally {
+          if (_didIteratorError5) {
+            throw _iteratorError5;
+          }
+        }
+      }
+
+      var _iteratorNormalCompletion6 = true;
+      var _didIteratorError6 = false;
+      var _iteratorError6 = undefined;
+
+      try {
+        for (var _iterator6 = radioBoxes[Symbol.iterator](), _step6; !(_iteratorNormalCompletion6 = (_step6 = _iterator6.next()).done); _iteratorNormalCompletion6 = true) {
+          var _radioBox = _step6.value;
+
+          _radioBox.classList.remove('light-mode');
+        }
+      } catch (err) {
+        _didIteratorError6 = true;
+        _iteratorError6 = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion6 && _iterator6.return != null) {
+            _iterator6.return();
+          }
+        } finally {
+          if (_didIteratorError6) {
+            throw _iteratorError6;
+          }
+        }
+      }
+
+      var _iteratorNormalCompletion7 = true;
+      var _didIteratorError7 = false;
+      var _iteratorError7 = undefined;
+
+      try {
+        for (var _iterator7 = titles[Symbol.iterator](), _step7; !(_iteratorNormalCompletion7 = (_step7 = _iterator7.next()).done); _iteratorNormalCompletion7 = true) {
+          var _title = _step7.value;
+
+          _title.classList.remove('light-mode');
+        }
+      } catch (err) {
+        _didIteratorError7 = true;
+        _iteratorError7 = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion7 && _iterator7.return != null) {
+            _iterator7.return();
+          }
+        } finally {
+          if (_didIteratorError7) {
+            throw _iteratorError7;
+          }
+        }
+      }
+
+      var _iteratorNormalCompletion8 = true;
+      var _didIteratorError8 = false;
+      var _iteratorError8 = undefined;
+
+      try {
+        for (var _iterator8 = isCheckedFonts[Symbol.iterator](), _step8; !(_iteratorNormalCompletion8 = (_step8 = _iterator8.next()).done); _iteratorNormalCompletion8 = true) {
+          var _isCheckedFont = _step8.value;
+
+          _isCheckedFont.classList.remove('light-mode');
+        }
+      } catch (err) {
+        _didIteratorError8 = true;
+        _iteratorError8 = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion8 && _iterator8.return != null) {
+            _iterator8.return();
+          }
+        } finally {
+          if (_didIteratorError8) {
+            throw _iteratorError8;
           }
         }
       }
@@ -339,7 +438,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58464" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60518" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

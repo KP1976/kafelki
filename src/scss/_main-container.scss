@@ -128,22 +128,25 @@
 		&:checked ~ .radios-container__radio-box {
 			box-shadow: inset 2px 2px 5px 0 rgba(0, 0, 0, 0.2),
 				inset -2px -2px 5px 0 rgba(255, 255, 255, 0.3);
+
+			.fa-check {
+				color: white;
+				font-size: 1.2rem;
+				font-weight: 900;
+				position: absolute;
+				left: 0.4rem;
+				top: 0.4rem;
+
+				&.light-mode {
+					color: var(--black);
+				}
+			}
 		}
 
-		// &:checked + .radios-container__radio-label::before {
-		// 	box-shadow: inset 2px 2px 5px 0 rgba(0, 0, 0, 0.2),
-		// 		inset -2px -2px 5px 0 rgba(255, 255, 255, 0.3);
-		// }
-
-		&:checked + .radios-container__radio-label::after {
-			color: white;
-			font-family: FontAwesome;
-			content: '\f00c';
-			font-size: 1.2rem;
-			font-weight: 900;
-			position: absolute;
-			left: -2.8rem;
-			top: 0.2rem;
+		&:not(:checked) ~ .radios-container__radio-box {
+			.fa-check {
+				display: none;
+			}
 		}
 	}
 
@@ -151,23 +154,6 @@
 		color: var(--white);
 		margin-left: 1.2rem;
 		position: relative;
-
-		// &::before {
-		// 	cursor: pointer;
-		// 	background-color: var(--grey);
-		// 	box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.3),
-		// 		-2px -2px 5px 0 rgba(255, 255, 255, 0.2);
-		// 	border-radius: 0.3rem;
-		// 	content: '';
-		// 	width: 2rem;
-		// 	height: 2rem;
-		// 	position: absolute;
-		// 	left: -3.2rem;
-
-		// 	&.light-mode {
-		// 		color: var(--black);
-		// 	}
-		// }
 
 		&.light-mode {
 			color: var(--black);
@@ -185,6 +171,12 @@
 		position: absolute;
 		left: -2rem;
 		z-index: -1;
+
+		&.light-mode {
+			background-color: var(--white);
+			box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.3),
+				-2px -2px 5px 0 rgba(255, 255, 255, 0.8);
+		}
 	}
 }
 
