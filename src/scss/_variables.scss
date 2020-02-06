@@ -20,9 +20,29 @@
 	--brown-light: #a43c00;
 	--brown-dark: #572000;
 
-	--grey: #696969;
-	--white: #ececec;
+	--background-color: #696969;
+	--text-color: #ececec;
 	--black: #0a0a0a;
 
+	--moon-visible: 1;
+	--sun-visible: 0;
+
+	--light-alpha: 0.2;
+	--light-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.3),
+		-2px -2px 5px 0 rgba(255, 255, 255, var(--light-alpha));
+
 	--radius: 1rem;
+}
+
+[data-colormode='light'] {
+	--background-color: #ececec;
+	--text-color: #0a0a0a;
+	--grey: #696969;
+
+	--moon-visible: 0;
+	--sun-visible: 1;
+
+	--light-alpha: 0.8;
+	--light-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.3),
+		-2px -2px 5px 0 rgba(255, 255, 255, var(--light-alpha));
 }

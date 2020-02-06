@@ -19,10 +19,26 @@
   --pink-dark: #b500a3;
   --brown-light: #a43c00;
   --brown-dark: #572000;
-  --grey: #696969;
-  --white: #ececec;
+  --background-color: #696969;
+  --text-color: #ececec;
   --black: #0a0a0a;
+  --moon-visible: 1;
+  --sun-visible: 0;
+  --light-alpha: 0.2;
+  --light-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.3),
+  	-2px -2px 5px 0 rgba(255, 255, 255, var(--light-alpha));
   --radius: 1rem;
+}
+
+[data-colormode=light] {
+  --background-color: #ececec;
+  --text-color: #0a0a0a;
+  --grey: #696969;
+  --moon-visible: 0;
+  --sun-visible: 1;
+  --light-alpha: 0.8;
+  --light-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.3),
+  	-2px -2px 5px 0 rgba(255, 255, 255, var(--light-alpha));
 }
 
 html {
@@ -36,14 +52,11 @@ body {
   flex-direction: column;
   justify-content: center;
   color: var(--black);
-  background-color: var(--grey);
+  background-color: var(--background-color);
   margin: 0;
   padding: 5rem 3.4rem;
   height: calc(100vh - 10rem);
   transition: background-color 0.3s cubic-bezier(0.65, 0.05, 0.36, 1);
-}
-body.light-mode {
-  background-color: var(--white);
 }
 
 .container {
@@ -53,7 +66,7 @@ body.light-mode {
 }
 
 .title {
-  color: var(--white);
+  color: var(--text-color);
   font-size: 3rem;
   font-weight: 600;
   text-align: center;
@@ -63,9 +76,6 @@ body.light-mode {
 .title--small {
   font-size: 1.6rem;
   margin: 0;
-}
-.title.light-mode {
-  color: var(--black);
 }
 
 .container-of-tiles {
@@ -131,44 +141,34 @@ body.light-mode {
   height: 2rem;
 }
 .radios-container__radio-input:checked ~ .radios-container__radio-box {
-  box-shadow: inset 2px 2px 5px 0 rgba(0, 0, 0, 0.2), inset -2px -2px 5px 0 rgba(255, 255, 255, 0.3);
+  box-shadow: inset 2px 2px 5px 0 rgba(0, 0, 0, 0.2), inset -2px -2px 5px 0 rgba(255, 255, 255, var(--light-shadow));
 }
 .radios-container__radio-input:checked ~ .radios-container__radio-box .fa-check {
-  color: white;
+  color: var(--text-color);
   font-size: 1.2rem;
   font-weight: 900;
   position: absolute;
   left: 0.4rem;
   top: 0.4rem;
 }
-.radios-container__radio-input:checked ~ .radios-container__radio-box .fa-check.light-mode {
-  color: var(--black);
-}
 .radios-container__radio-input:not(:checked) ~ .radios-container__radio-box .fa-check {
   display: none;
 }
 .radios-container__radio-label {
-  color: var(--white);
+  color: var(--text-color);
   margin-left: 1.2rem;
   position: relative;
 }
-.radios-container__radio-label.light-mode {
-  color: var(--black);
-}
 .radios-container__radio-box {
   cursor: pointer;
-  background-color: var(--grey);
-  box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.3), -2px -2px 5px 0 rgba(255, 255, 255, 0.2);
+  background-color: var(--background-color);
+  box-shadow: var(--light-shadow);
   border-radius: 0.3rem;
   width: 2rem;
   height: 2rem;
   position: absolute;
   left: -2rem;
   z-index: -1;
-}
-.radios-container__radio-box.light-mode {
-  background-color: var(--white);
-  box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.3), -2px -2px 5px 0 rgba(255, 255, 255, 0.8);
 }
 
 .switch-mode-container {
@@ -185,7 +185,7 @@ body.light-mode {
   background-color: var(--black);
 }
 .switch-mode-container__switch:checked + label::before {
-  background-color: var(--white);
+  background-color: var(--background-color);
   left: calc(100% - 0.3rem);
   transform: translateX(-100%);
 }
@@ -193,7 +193,7 @@ body.light-mode {
   cursor: pointer;
   width: 4rem;
   height: 2rem;
-  background: var(--white);
+  background: var(--text-color);
   display: block;
   border-radius: 100px;
   position: relative;
@@ -206,33 +206,28 @@ body.light-mode {
   left: 0.3rem;
   width: 1.4rem;
   height: 1.4rem;
-  background: var(--grey);
+  background: var(--background-color);
   border-radius: 100%;
   transition: all 0.3s cubic-bezier(0.65, 0.05, 0.36, 1);
 }
 .switch-mode-container .fas {
   font-size: 1.6rem;
-  opacity: 0;
   transition: opacity 0.3s cubic-bezier(0.65, 0.05, 0.36, 1);
 }
 .switch-mode-container .fa-moon {
   color: white;
-}
-.switch-mode-container .fa-moon.isVisible {
-  opacity: 1;
+  opacity: var(--moon-visible);
 }
 .switch-mode-container .fa-sun {
   color: black;
-}
-.switch-mode-container .fa-sun.isVisible {
-  opacity: 1;
+  opacity: var(--sun-visible);
 }
 
 .button {
   cursor: pointer;
-  background-color: var(--grey);
-  box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.3), -2px -2px 5px 0 rgba(255, 255, 255, 0.2);
-  color: var(--white);
+  background-color: var(--background-color);
+  box-shadow: var(--light-shadow);
+  color: var(--text-color);
   border-radius: 0.3rem;
   width: 17.4rem;
   margin-top: 4.3rem;
@@ -246,14 +241,6 @@ body.light-mode {
 }
 .button:active {
   box-shadow: inset 2px 2px 5px 0 rgba(0, 0, 0, 0.3), inset -2px -2px 5px 0 rgba(255, 255, 255, 0.2);
-}
-.button:active.light-mode {
-  box-shadow: inset 2px 2px 5px 0 rgba(0, 0, 0, 0.3), inset -2px -2px 5px 0 rgba(255, 255, 255, 0.8);
-}
-.button.light-mode {
-  color: var(--black);
-  background-color: var(--white);
-  box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.3), -2px -2px 5px 0 rgba(255, 255, 255, 0.8);
 }
 
 .tiles-container {

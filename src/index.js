@@ -1,6 +1,6 @@
-import switchColorTheme from './change-mode';
+import changeThemeColorMode from './change-mode';
 
-switchColorTheme();
+changeThemeColorMode();
 
 // DO ZROBIENIA
 /*

@@ -124,57 +124,22 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var body = document.querySelector('body');
-var startButton = document.querySelector('.button');
-var radioLabels = document.querySelectorAll('.radios-container__radio-label');
-var radioBoxes = document.querySelectorAll('.radios-container__radio-box');
+var htmlDOM = document.documentElement;
 var switcher = document.querySelector('.switch-mode-container__switch');
-var titles = document.querySelectorAll('.title');
-var isCheckedFonts = document.querySelectorAll('.fa-check');
-var moonFont = document.querySelector('.fa-moon');
-var sunFont = document.querySelector('.fa-sun');
-console.log(radioLabels.length, radioBoxes.length, isCheckedFonts.length);
 
-var switchColorTheme = function switchColorTheme() {
-  switcher.addEventListener('click', function () {
-    for (var i = 0; i < radioLabels.length; i++) {
-      radioLabels[i].classList.toggle('light-mode');
-      radioBoxes[i].classList.toggle('light-mode');
-      isCheckedFonts[i].classList.toggle('light-mode');
-    }
-
-    body.classList.toggle('light-mode');
-    startButton.classList.toggle('light-mode');
-    var _iteratorNormalCompletion = true;
-    var _didIteratorError = false;
-    var _iteratorError = undefined;
-
-    try {
-      for (var _iterator = titles[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-        var title = _step.value;
-        title.classList.toggle('light-mode');
-      }
-    } catch (err) {
-      _didIteratorError = true;
-      _iteratorError = err;
-    } finally {
-      try {
-        if (!_iteratorNormalCompletion && _iterator.return != null) {
-          _iterator.return();
-        }
-      } finally {
-        if (_didIteratorError) {
-          throw _iteratorError;
-        }
-      }
-    }
-
-    moonFont.classList.toggle('isVisible');
-    sunFont.classList.toggle('isVisible');
-  });
+var changeThemeColorMode = function changeThemeColorMode() {
+  switcher.addEventListener('click', switchColorTheme);
 };
 
-var _default = switchColorTheme;
+var switchColorTheme = function switchColorTheme(e) {
+  if (e.target.checked) {
+    htmlDOM.setAttribute('data-colormode', 'light');
+  } else {
+    htmlDOM.setAttribute('data-colormode', 'dark');
+  }
+};
+
+var _default = changeThemeColorMode;
 exports.default = _default;
 },{}],"index.js":[function(require,module,exports) {
 "use strict";
@@ -274,7 +239,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60518" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52048" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
