@@ -27,6 +27,8 @@
   --light-alpha: 0.2;
   --light-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.3),
   	-2px -2px 5px 0 rgba(255, 255, 255, var(--light-alpha));
+  --light-shadow-inset: inset 2px 2px 5px 0 rgba(0, 0, 0, 0.3),
+  	inset -2px -2px 5px 0 rgba(255, 255, 255, var(--light-alpha));
   --radius: 1rem;
 }
 
@@ -39,6 +41,8 @@
   --light-alpha: 0.8;
   --light-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.3),
   	-2px -2px 5px 0 rgba(255, 255, 255, var(--light-alpha));
+  --light-shadow-inset: inset 2px 2px 5px 0 rgba(0, 0, 0, 0.3),
+  	inset -2px -2px 5px 0 rgba(255, 255, 255, var(--light-alpha));
 }
 
 html {
@@ -141,7 +145,7 @@ body {
   height: 2rem;
 }
 .radios-container__radio-input:checked ~ .radios-container__radio-box {
-  box-shadow: inset 2px 2px 5px 0 rgba(0, 0, 0, 0.2), inset -2px -2px 5px 0 rgba(255, 255, 255, var(--light-shadow));
+  box-shadow: var(--light-shadow-inset);
 }
 .radios-container__radio-input:checked ~ .radios-container__radio-box .fa-check {
   color: var(--text-color);
