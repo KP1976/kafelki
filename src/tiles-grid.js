@@ -1,4 +1,7 @@
 const tilesContainer = document.querySelector('.tiles-grid');
+const mainTitle = document.querySelector('.title');
+const containerOfTiles = document.querySelector('.container-of-tiles');
+const buttonStart = document.querySelector('.button');
 
 const generateTilesGrid = (rows, columns) => {
 	for (let i = 0; i < columns; i++) {
@@ -9,6 +12,17 @@ const generateTilesGrid = (rows, columns) => {
 		}
 	}
 	tilesContainer.dataset.gridColumns = columns;
+	tilesContainer.dataset.marginTiles = 2 * columns + 1;
+
+	if (rows === 5) {
+		mainTitle.classList.add('margin-five-rows');
+		containerOfTiles.classList.add('margin-five-rows');
+		buttonStart.classList.add('margin-five-rows');
+	} else if (rows === 6) {
+		mainTitle.classList.add('margin-six-rows');
+		containerOfTiles.classList.add('margin-six-rows');
+		buttonStart.classList.add('margin-six-rows');
+	}
 };
 
 export default generateTilesGrid;

@@ -149,6 +149,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 var tilesContainer = document.querySelector('.tiles-grid');
+var mainTitle = document.querySelector('.title');
+var containerOfTiles = document.querySelector('.container-of-tiles');
+var buttonStart = document.querySelector('.button');
 
 var generateTilesGrid = function generateTilesGrid(rows, columns) {
   for (var i = 0; i < columns; i++) {
@@ -160,6 +163,17 @@ var generateTilesGrid = function generateTilesGrid(rows, columns) {
   }
 
   tilesContainer.dataset.gridColumns = columns;
+  tilesContainer.dataset.marginTiles = 2 * columns + 1;
+
+  if (rows === 5) {
+    mainTitle.classList.add('margin-five-rows');
+    containerOfTiles.classList.add('margin-five-rows');
+    buttonStart.classList.add('margin-five-rows');
+  } else if (rows === 6) {
+    mainTitle.classList.add('margin-six-rows');
+    containerOfTiles.classList.add('margin-six-rows');
+    buttonStart.classList.add('margin-six-rows');
+  }
 };
 
 var _default = generateTilesGrid;
@@ -174,7 +188,7 @@ var _tilesGrid = _interopRequireDefault(require("./tiles-grid"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 (0, _changeMode.default)();
-(0, _tilesGrid.default)(4, 4); // DO ZROBIENIA
+(0, _tilesGrid.default)(6, 3); // DO ZROBIENIA
 
 /*
 	1. Plansza startowa, gdzie mamy do wyboru 4 plansze: 4 x 3, 4 x 4, 6 x 3 i 5 x 4 (rząd x kolumna).
@@ -265,7 +279,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49372" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59907" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

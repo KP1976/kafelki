@@ -2,7 +2,7 @@ import changeThemeColorMode from './change-mode';
 import generateTilesGrid from './tiles-grid';
 
 changeThemeColorMode();
-generateTilesGrid(4, 4);
+generateTilesGrid(6, 3);
 
 // DO ZROBIENIA
 /*
