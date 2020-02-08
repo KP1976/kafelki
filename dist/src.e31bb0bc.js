@@ -141,14 +141,40 @@ var switchColorTheme = function switchColorTheme(e) {
 
 var _default = changeThemeColorMode;
 exports.default = _default;
+},{}],"tiles-grid.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var tilesContainer = document.querySelector('.tiles-grid');
+
+var generateTilesGrid = function generateTilesGrid(rows, columns) {
+  for (var i = 0; i < columns; i++) {
+    for (var j = 0; j < rows; j++) {
+      var tile = document.createElement('li');
+      tile.classList.add('tiles-grid__tile');
+      tilesContainer.appendChild(tile);
+    }
+  }
+
+  tilesContainer.dataset.gridColumns = columns;
+};
+
+var _default = generateTilesGrid;
+exports.default = _default;
 },{}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _changeMode = _interopRequireDefault(require("./change-mode"));
 
+var _tilesGrid = _interopRequireDefault(require("./tiles-grid"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-(0, _changeMode.default)(); // DO ZROBIENIA
+(0, _changeMode.default)();
+(0, _tilesGrid.default)(4, 4); // DO ZROBIENIA
 
 /*
 	1. Plansza startowa, gdzie mamy do wyboru 4 plansze: 4 x 3, 4 x 4, 6 x 3 i 5 x 4 (rząd x kolumna).
@@ -211,7 +237,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 // 	}
 // }
 // removeColorsFromTiles();
-},{"./change-mode":"change-mode.js"}],"C:/Users/Krzysiek/AppData/Roaming/nvm/v10.16.0/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./change-mode":"change-mode.js","./tiles-grid":"tiles-grid.js"}],"C:/Users/Krzysiek/AppData/Roaming/nvm/v10.16.0/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
