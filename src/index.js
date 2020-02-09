@@ -1,8 +1,8 @@
 import changeThemeColorMode from './change-mode';
-import generateTilesGrid from './tiles-grid';
+import getTilesBoardDimension from './get-rows-and-columns';
 
+getTilesBoardDimension();
 changeThemeColorMode();
-generateTilesGrid(6, 3);
 
 // DO ZROBIENIA
 /*

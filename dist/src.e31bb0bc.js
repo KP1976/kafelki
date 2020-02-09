@@ -154,6 +154,8 @@ var containerOfTiles = document.querySelector('.container-of-tiles');
 var buttonStart = document.querySelector('.button');
 
 var generateTilesGrid = function generateTilesGrid(rows, columns) {
+  tilesContainer.innerHTML = '';
+
   for (var i = 0; i < columns; i++) {
     for (var j = 0; j < rows; j++) {
       var tile = document.createElement('li');
@@ -169,26 +171,72 @@ var generateTilesGrid = function generateTilesGrid(rows, columns) {
     mainTitle.classList.add('margin-five-rows');
     containerOfTiles.classList.add('margin-five-rows');
     buttonStart.classList.add('margin-five-rows');
+    mainTitle.classList.remove('margin-six-rows');
+    containerOfTiles.classList.remove('margin-six-rows');
+    buttonStart.classList.remove('margin-six-rows');
   } else if (rows === 6) {
+    mainTitle.classList.remove('margin-five-rows');
+    containerOfTiles.classList.remove('margin-five-rows');
+    buttonStart.classList.remove('margin-five-rows');
     mainTitle.classList.add('margin-six-rows');
     containerOfTiles.classList.add('margin-six-rows');
     buttonStart.classList.add('margin-six-rows');
+  } else {
+    mainTitle.classList.remove('margin-five-rows');
+    containerOfTiles.classList.remove('margin-five-rows');
+    buttonStart.classList.remove('margin-five-rows');
+    mainTitle.classList.remove('margin-six-rows');
+    containerOfTiles.classList.remove('margin-six-rows');
+    buttonStart.classList.remove('margin-six-rows');
   }
 };
 
 var _default = generateTilesGrid;
 exports.default = _default;
-},{}],"index.js":[function(require,module,exports) {
+},{}],"get-rows-and-columns.js":[function(require,module,exports) {
 "use strict";
 
-var _changeMode = _interopRequireDefault(require("./change-mode"));
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
 
 var _tilesGrid = _interopRequireDefault(require("./tiles-grid"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-(0, _changeMode.default)();
-(0, _tilesGrid.default)(6, 3); // DO ZROBIENIA
+var radioInputs = document.querySelectorAll('.radios-container__radio-input');
+(0, _tilesGrid.default)(4, 3);
+
+var getTilesBoardDimension = function getTilesBoardDimension() {
+  var getRowsAndColumns = function getRowsAndColumns(e) {
+    var diemensionString = e.target.nextElementSibling.textContent;
+    var boardRows = parseInt(diemensionString.charAt(0));
+    var boardColumns = parseInt(diemensionString.charAt(diemensionString.length - 1));
+
+    if (e.target.checked) {
+      (0, _tilesGrid.default)(boardRows, boardColumns);
+    }
+  };
+
+  for (var i = 0; i < radioInputs.length; i++) {
+    radioInputs[i].addEventListener('change', getRowsAndColumns);
+  }
+};
+
+var _default = getTilesBoardDimension;
+exports.default = _default;
+},{"./tiles-grid":"tiles-grid.js"}],"index.js":[function(require,module,exports) {
+"use strict";
+
+var _changeMode = _interopRequireDefault(require("./change-mode"));
+
+var _getRowsAndColumns = _interopRequireDefault(require("./get-rows-and-columns"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+(0, _getRowsAndColumns.default)();
+(0, _changeMode.default)(); // DO ZROBIENIA
 
 /*
 	1. Plansza startowa, gdzie mamy do wyboru 4 plansze: 4 x 3, 4 x 4, 6 x 3 i 5 x 4 (rząd x kolumna).
@@ -251,7 +299,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 // 	}
 // }
 // removeColorsFromTiles();
-},{"./change-mode":"change-mode.js","./tiles-grid":"tiles-grid.js"}],"C:/Users/Krzysiek/AppData/Roaming/nvm/v10.16.0/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./change-mode":"change-mode.js","./get-rows-and-columns":"get-rows-and-columns.js"}],"C:/Users/Krzysiek/AppData/Roaming/nvm/v10.16.0/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -279,7 +327,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59907" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56484" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
