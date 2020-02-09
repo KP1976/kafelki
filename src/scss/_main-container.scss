@@ -58,7 +58,7 @@
 			-2px -2px 5px 0 rgba(255, 255, 255, 0.2);
 
 		&:nth-child(1),
-		&:nth-child(9) {
+		&:nth-child(2) {
 			background: linear-gradient(
 				to bottom right,
 				var(--red-light),
@@ -66,8 +66,8 @@
 			);
 		}
 
-		&:nth-child(2),
-		&:nth-child(8) {
+		&:nth-child(3),
+		&:nth-child(4) {
 			background: linear-gradient(
 				to bottom right,
 				var(--blue-light),
@@ -75,8 +75,8 @@
 			);
 		}
 
-		&:nth-child(3),
-		&:nth-child(7) {
+		&:nth-child(5),
+		&:nth-child(6) {
 			background: linear-gradient(
 				to bottom right,
 				var(--green-light),
@@ -84,8 +84,8 @@
 			);
 		}
 
-		&:nth-child(4),
-		&:nth-child(11) {
+		&:nth-child(7),
+		&:nth-child(8) {
 			background: linear-gradient(
 				to bottom right,
 				var(--yellow-light),
@@ -93,7 +93,7 @@
 			);
 		}
 
-		&:nth-child(5),
+		&:nth-child(9),
 		&:nth-child(10) {
 			background: linear-gradient(
 				to bottom right,
@@ -102,12 +102,48 @@
 			);
 		}
 
-		&:nth-child(6),
+		&:nth-child(11),
 		&:nth-child(12) {
 			background: linear-gradient(
 				to bottom right,
 				var(--brown-light),
 				var(--brown-dark)
+			);
+		}
+
+		&:nth-child(13),
+		&:nth-child(14) {
+			background: linear-gradient(
+				to bottom right,
+				var(--black-light),
+				var(--black-dark)
+			);
+		}
+
+		&:nth-child(15),
+		&:nth-child(16) {
+			background: linear-gradient(
+				to bottom right,
+				var(--purple-light),
+				var(--purple-dark)
+			);
+		}
+
+		&:nth-child(17),
+		&:nth-child(18) {
+			background: linear-gradient(
+				to bottom right,
+				var(--light-blue-light),
+				var(--light-blue-dark)
+			);
+		}
+
+		&:nth-child(19),
+		&:nth-child(20) {
+			background: linear-gradient(
+				to bottom right,
+				var(--orange-light),
+				var(--orange-dark)
 			);
 		}
 	}

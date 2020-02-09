@@ -116,23 +116,35 @@ body {
   width: 3rem;
   box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.3), -2px -2px 5px 0 rgba(255, 255, 255, 0.2);
 }
-.tiles-grid__tile:nth-child(1), .tiles-grid__tile:nth-child(9) {
+.tiles-grid__tile:nth-child(1), .tiles-grid__tile:nth-child(2) {
   background: linear-gradient(to bottom right, var(--red-light), var(--red-dark));
 }
-.tiles-grid__tile:nth-child(2), .tiles-grid__tile:nth-child(8) {
+.tiles-grid__tile:nth-child(3), .tiles-grid__tile:nth-child(4) {
   background: linear-gradient(to bottom right, var(--blue-light), var(--blue-dark));
 }
-.tiles-grid__tile:nth-child(3), .tiles-grid__tile:nth-child(7) {
+.tiles-grid__tile:nth-child(5), .tiles-grid__tile:nth-child(6) {
   background: linear-gradient(to bottom right, var(--green-light), var(--green-dark));
 }
-.tiles-grid__tile:nth-child(4), .tiles-grid__tile:nth-child(11) {
+.tiles-grid__tile:nth-child(7), .tiles-grid__tile:nth-child(8) {
   background: linear-gradient(to bottom right, var(--yellow-light), var(--yellow-dark));
 }
-.tiles-grid__tile:nth-child(5), .tiles-grid__tile:nth-child(10) {
+.tiles-grid__tile:nth-child(9), .tiles-grid__tile:nth-child(10) {
   background: linear-gradient(to bottom right, var(--pink-light), var(--pink-dark));
 }
-.tiles-grid__tile:nth-child(6), .tiles-grid__tile:nth-child(12) {
+.tiles-grid__tile:nth-child(11), .tiles-grid__tile:nth-child(12) {
   background: linear-gradient(to bottom right, var(--brown-light), var(--brown-dark));
+}
+.tiles-grid__tile:nth-child(13), .tiles-grid__tile:nth-child(14) {
+  background: linear-gradient(to bottom right, var(--black-light), var(--black-dark));
+}
+.tiles-grid__tile:nth-child(15), .tiles-grid__tile:nth-child(16) {
+  background: linear-gradient(to bottom right, var(--purple-light), var(--purple-dark));
+}
+.tiles-grid__tile:nth-child(17), .tiles-grid__tile:nth-child(18) {
+  background: linear-gradient(to bottom right, var(--light-blue-light), var(--light-blue-dark));
+}
+.tiles-grid__tile:nth-child(19), .tiles-grid__tile:nth-child(20) {
+  background: linear-gradient(to bottom right, var(--orange-light), var(--orange-dark));
 }
 
 .radios-container {
