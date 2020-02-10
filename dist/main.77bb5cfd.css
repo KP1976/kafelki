@@ -67,6 +67,8 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  height: 100vh;
 }
 
 .title {
@@ -77,9 +79,19 @@ body {
   margin: 0 0 5rem 0;
   text-transform: uppercase;
 }
+@media (min-width: 600px) {
+  .title {
+    font-size: 5rem;
+  }
+}
 .title--small {
   font-size: 1.6rem;
   margin: 0;
+}
+@media (min-width: 600px) {
+  .title--small {
+    font-size: 2.5rem;
+  }
 }
 .title.margin-five-rows {
   margin-bottom: 4rem;

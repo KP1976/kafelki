@@ -2,6 +2,8 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	justify-content: center;
+	height: 100vh;
 }
 
 .title {
@@ -12,9 +14,17 @@
 	margin: 0 0 5rem 0;
 	text-transform: uppercase;
 
+	@include for-tablet-portrait-up {
+		font-size: 5rem;
+	}
+
 	&--small {
 		font-size: 1.6rem;
 		margin: 0;
+
+		@include for-tablet-portrait-up {
+			font-size: 2.5rem;
+		}
 	}
 
 	&.margin-five-rows {
