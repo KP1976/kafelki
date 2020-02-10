@@ -3,3 +3,9 @@
 		@content;
 	}
 }
+
+@mixin for-tablet-landscape-up {
+	@media (min-width: 900px) and (max-height: 740px) {
+		@content;
+	}
+}

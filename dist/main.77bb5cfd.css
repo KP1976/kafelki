@@ -94,6 +94,15 @@ body {
     font-size: 2.5rem;
   }
 }
+.title--smallest {
+  font-size: 1.4rem;
+  margin: 0;
+}
+@media (min-width: 600px) {
+  .title--smallest {
+    font-size: 1.8rem;
+  }
+}
 .title.margin-five-rows {
   margin-bottom: 4rem;
 }
@@ -244,8 +253,13 @@ body {
 }
 .radios-container__radio-label {
   color: var(--text-color);
-  margin-left: 4rem;
+  margin-left: 1.2rem;
   position: relative;
+}
+@media (min-width: 600px) {
+  .radios-container__radio-label {
+    margin-left: 4rem;
+  }
 }
 .radios-container__radio-box {
   cursor: pointer;

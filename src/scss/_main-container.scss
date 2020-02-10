@@ -28,6 +28,15 @@
 		}
 	}
 
+	&--smallest {
+		font-size: 1.4rem;
+		margin: 0;
+
+		@include for-tablet-portrait-up {
+			font-size: 1.8rem;
+		}
+	}
+
 	&.margin-five-rows {
 		margin-bottom: 4rem;
 	}
@@ -245,8 +254,12 @@
 
 	&__radio-label {
 		color: var(--text-color);
-		margin-left: 4rem;
+		margin-left: 1.2rem;
 		position: relative;
+
+		@include for-tablet-portrait-up {
+			margin-left: 4rem;
+		}
 	}
 
 	&__radio-box {
