@@ -30,9 +30,13 @@
 	--sun-visible: 0;
 
 	--light-alpha: 0.2;
-	--light-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.3),
+
+	--light-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.2),
 		-2px -2px 5px 0 rgba(255, 255, 255, var(--light-alpha));
-	--light-shadow-inset: inset 2px 2px 5px 0 rgba(0, 0, 0, 0.3),
+	--very-light-shadow: 1px 1px 2px 0 rgba(0, 0, 0, 0.4),
+		-1px -1px 2px 0 rgba(255, 255, 255, var(--light-alpha));
+
+	--light-shadow-inset: inset 2px 2px 5px 0 rgba(0, 0, 0, 0.2),
 		inset -2px -2px 5px 0 rgba(255, 255, 255, var(--light-alpha));
 
 	--radius: 1rem;
