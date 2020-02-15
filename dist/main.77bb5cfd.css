@@ -20,6 +20,8 @@
   --brown-light: #a43c00;
   --brown-dark: #572000;
   --background-color: #696969;
+  --top-bottom-bar-color-dark: #4d4b4b;
+  --top-bottom-bar-color-light: #d4d4d4;
   --text-color: #ececec;
   --black: #0a0a0a;
   --moon-visible: 1;
@@ -48,7 +50,7 @@
 html {
   box-sizing: border-box;
   font-size: 10px;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Nunito", sans-serif;
 }
 
 body {
@@ -58,9 +60,81 @@ body {
   color: var(--black);
   background-color: var(--background-color);
   margin: 0;
-  padding: 5rem 3.4rem;
-  height: calc(100vh - 10rem);
+  height: 100vh;
   transition: background-color 0.3s cubic-bezier(0.65, 0.05, 0.36, 1);
+}
+
+.top-bar {
+  background-color: var(--top-bottom-bar-color-dark);
+  align-items: center;
+  justify-content: space-between;
+  display: flex;
+  padding: 0 2rem;
+  height: 5rem;
+}
+.top-bar__title {
+  color: var(--text-color);
+  font-size: 2rem;
+  font-weight: 600;
+  text-align: center;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.switch-mode-container {
+  position: relative;
+}
+.switch-mode-container__switch {
+  position: absolute;
+  margin: 0;
+  left: -9999px;
+}
+.switch-mode-container__switch:checked + label {
+  background-color: var(--black);
+}
+.switch-mode-container__switch:checked + label::before {
+  background-color: var(--background-color);
+  left: calc(100% - 0.3rem);
+  transform: translateX(-100%);
+}
+.switch-mode-container__switch-label {
+  cursor: pointer;
+  width: 4rem;
+  height: 2rem;
+  background: var(--text-color);
+  display: block;
+  border-radius: 100px;
+  position: relative;
+  margin: 0 0.5rem;
+}
+.switch-mode-container__switch-label::before {
+  content: "";
+  position: absolute;
+  top: 0.2rem;
+  left: 0.2rem;
+  width: 1.6rem;
+  height: 1.6rem;
+  background: var(--background-color);
+  border-radius: 100%;
+  transition: all 0.3s cubic-bezier(0.65, 0.05, 0.36, 1);
+}
+.switch-mode-container .fas {
+  font-size: 0.8rem;
+  transition: opacity 0.3s cubic-bezier(0.65, 0.05, 0.36, 1);
+}
+.switch-mode-container .fa-moon {
+  left: 1.1rem;
+  top: 0.6rem;
+  color: white;
+  opacity: var(--moon-visible);
+  position: absolute;
+  z-index: 1;
+}
+.switch-mode-container .fa-sun {
+  color: black;
+  opacity: var(--sun-visible);
+  position: absolute;
+  z-index: 1;
 }
 
 .container {
@@ -69,45 +143,6 @@ body {
   align-items: center;
   justify-content: center;
   height: 100vh;
-}
-
-.title {
-  color: var(--text-color);
-  font-size: 3rem;
-  font-weight: 600;
-  text-align: center;
-  margin: 0 0 5rem 0;
-  text-transform: uppercase;
-}
-@media (min-width: 600px) {
-  .title {
-    font-size: 5rem;
-    margin-bottom: 7rem;
-  }
-}
-.title--small {
-  font-size: 1.6rem;
-  margin: 0;
-}
-@media (min-width: 600px) {
-  .title--small {
-    font-size: 2.5rem;
-  }
-}
-.title--smallest {
-  font-size: 1.4rem;
-  margin: 0;
-}
-@media (min-width: 600px) {
-  .title--smallest {
-    font-size: 1.8rem;
-  }
-}
-.title.margin-five-rows {
-  margin-bottom: 4rem;
-}
-.title.margin-six-rows {
-  margin-bottom: 3rem;
 }
 
 .container-of-tiles {
@@ -277,82 +312,6 @@ body {
     width: 4rem;
     height: 4rem;
   }
-}
-
-.switch-mode-container {
-  display: flex;
-  margin-top: 1rem;
-  align-items: center;
-}
-@media (min-width: 600px) {
-  .switch-mode-container {
-    margin-top: 2rem;
-  }
-}
-.switch-mode-container__switch {
-  position: absolute;
-  margin: 0;
-  left: -9999px;
-}
-.switch-mode-container__switch:checked + label {
-  background-color: var(--black);
-}
-.switch-mode-container__switch:checked + label::before {
-  background-color: var(--background-color);
-  left: calc(100% - 0.3rem);
-  transform: translateX(-100%);
-}
-.switch-mode-container__switch-label {
-  cursor: pointer;
-  width: 4rem;
-  height: 2rem;
-  background: var(--text-color);
-  display: block;
-  border-radius: 100px;
-  position: relative;
-  margin: 0 0.5rem;
-}
-@media (min-width: 600px) {
-  .switch-mode-container__switch-label {
-    width: 6rem;
-    height: 3rem;
-  }
-}
-.switch-mode-container__switch-label::before {
-  content: "";
-  position: absolute;
-  top: 0.3rem;
-  left: 0.3rem;
-  width: 1.4rem;
-  height: 1.4rem;
-  background: var(--background-color);
-  border-radius: 100%;
-  transition: all 0.3s cubic-bezier(0.65, 0.05, 0.36, 1);
-}
-@media (min-width: 600px) {
-  .switch-mode-container__switch-label::before {
-    top: 0.4rem;
-    left: 0.4rem;
-    width: 2.2rem;
-    height: 2.2rem;
-  }
-}
-.switch-mode-container .fas {
-  font-size: 1.6rem;
-  transition: opacity 0.3s cubic-bezier(0.65, 0.05, 0.36, 1);
-}
-@media (min-width: 600px) {
-  .switch-mode-container .fas {
-    font-size: 3rem;
-  }
-}
-.switch-mode-container .fa-moon {
-  color: white;
-  opacity: var(--moon-visible);
-}
-.switch-mode-container .fa-sun {
-  color: black;
-  opacity: var(--sun-visible);
 }
 
 .button {

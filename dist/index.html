@@ -5,48 +5,78 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta http-equiv="X-UA-Compatible" content="ie=edge">
 		<meta name="description" content="gra w kafelki">
-		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,600&display=swap&subset=latin-ext" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Nunito:400,600&display=swap&subset=latin-ext" rel="stylesheet">
 		<script src="https://kit.fontawesome.com/7352a3873f.js" crossorigin="anonymous"></script>
 		<link rel="stylesheet" href="/main.77bb5cfd.css">
 		<title>Gra w kafelki</title>
 	<script src="/main.77bb5cfd.js"></script></head>
 	<body>
-		<main class="container">
-			<h1 class="title">gra w kafelki</h1>
-			<h2 class="title title--small">Wybierz rozmiar planszy</h2>
-			<div class="container-of-tiles">
-				<ul class="tiles-grid" data-grid-columns="3" data-margin-tiles="7"></ul>
-				<ul class="radios-container">
-					<li class="radios-container__radio">
-						<input class="radios-container__radio-input" type="radio" name="board" id="board-4x3" checked="">
-						<label class="radios-container__radio-label" for="board-4x3">4 x 3</label>
-						<div class="radios-container__radio-box"><i class="fas fa-check"></i></div>
-					</li>
-					<li class="radios-container__radio">
-						<input class="radios-container__radio-input" type="radio" name="board" id="board-4x4">
-						<label class="radios-container__radio-label" for="board-4x4">4 x 4</label>
-						<div class="radios-container__radio-box"><i class="fas fa-check"></i></div>
-					</li>
-					<li class="radios-container__radio">
-						<input class="radios-container__radio-input" type="radio" name="board" id="board-6x3">
-						<label class="radios-container__radio-label" for="board-6x3">6 x 3</label>
-						<div class="radios-container__radio-box"><i class="fas fa-check"></i></div>
-					</li>
-					<li class="radios-container__radio">
-						<input class="radios-container__radio-input" type="radio" name="board" id="board-5x4">
-						<label class="radios-container__radio-label" for="board-5x4">5 x 4</label>
-						<div class="radios-container__radio-box"><i class="fas fa-check"></i></div>
-					</li>
-				</ul>
-			</div>
-			<h2 class="title title--smallest">Przełącz motyw</h2>
+		<div class="top-bar">
+			<h1 class="top-bar__title">gra w kafelki</h1>
 			<div class="switch-mode-container">
 				<i class="fas fa-moon isVisible"></i>
 				<input class="switch-mode-container__switch" type="checkbox" id="switch">
 				<label for="switch" class="switch-mode-container__switch-label"></label>
 				<i class="fas fa-sun"></i>
 			</div>
-			<button class="button" role="button">start!</button>
+		</div>
+		<main class="container">
+			<!-- <h2 class="title title--small">Wybierz rozmiar planszy</h2>
+			<div class="container-of-tiles">
+				<ul class="tiles-grid" data-grid-columns='3' data-margin-tiles='7'></ul>
+				<ul class="radios-container">
+					<li class="radios-container__radio">
+						<input
+							class="radios-container__radio-input"
+							type="radio"
+							name="board"
+							id="board-4x3"
+							checked
+						/>
+						<label class="radios-container__radio-label" for="board-4x3"
+							>4 x 3</label
+						>
+						<div class="radios-container__radio-box"><i class="fas fa-check"></i></div>
+					</li>
+					<li class="radios-container__radio">
+						<input
+							class="radios-container__radio-input"
+							type="radio"
+							name="board"
+							id="board-4x4"
+						/>
+						<label class="radios-container__radio-label" for="board-4x4"
+							>4 x 4</label
+						>
+						<div class="radios-container__radio-box"><i class="fas fa-check"></i></div>
+					</li>
+					<li class="radios-container__radio">
+						<input
+							class="radios-container__radio-input"
+							type="radio"
+							name="board"
+							id="board-6x3"
+						/>
+						<label class="radios-container__radio-label" for="board-6x3"
+							>6 x 3</label
+						>
+						<div class="radios-container__radio-box"><i class="fas fa-check"></i></div>
+					</li>
+					<li class="radios-container__radio">
+						<input
+							class="radios-container__radio-input"
+							type="radio"
+							name="board"
+							id="board-5x4"
+						/>
+						<label class="radios-container__radio-label" for="board-5x4"
+							>5 x 4</label
+						>
+						<div class="radios-container__radio-box"><i class="fas fa-check"></i></div>
+					</li>
+				</ul>
+			</div>	
+			<button class="button" role="button">start!</button> -->
 			<ul class="tiles-container"></ul>
 		</main>
 	</body>

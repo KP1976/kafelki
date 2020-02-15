@@ -6,46 +6,6 @@
 	height: 100vh;
 }
 
-.title {
-	color: var(--text-color);
-	font-size: 3rem;
-	font-weight: 600;
-	text-align: center;
-	margin: 0 0 5rem 0;
-	text-transform: uppercase;
-
-	@include for-tablet-portrait-up {
-		font-size: 5rem;
-		margin-bottom: 7rem;
-	}
-
-	&--small {
-		font-size: 1.6rem;
-		margin: 0;
-
-		@include for-tablet-portrait-up {
-			font-size: 2.5rem;
-		}
-	}
-
-	&--smallest {
-		font-size: 1.4rem;
-		margin: 0;
-
-		@include for-tablet-portrait-up {
-			font-size: 1.8rem;
-		}
-	}
-
-	&.margin-five-rows {
-		margin-bottom: 4rem;
-	}
-
-	&.margin-six-rows {
-		margin-bottom: 3rem;
-	}
-}
-
 .container-of-tiles {
 	display: flex;
 	justify-content: center;
@@ -277,86 +237,6 @@
 			width: 4rem;
 			height: 4rem;
 		}
-	}
-}
-
-.switch-mode-container {
-	display: flex;
-	margin-top: 1rem;
-	align-items: center;
-
-	@include for-tablet-portrait-up {
-		margin-top: 2rem;
-	}
-
-	&__switch {
-		position: absolute;
-		margin: 0;
-		left: -9999px;
-
-		&:checked + label {
-			background-color: var(--black);
-		}
-
-		&:checked + label::before {
-			background-color: var(--background-color);
-			left: calc(100% - 0.3rem);
-			transform: translateX(-100%);
-		}
-	}
-
-	&__switch-label {
-		cursor: pointer;
-		width: 4rem;
-		height: 2rem;
-		background: var(--text-color);
-		display: block;
-		border-radius: 100px;
-		position: relative;
-		margin: 0 0.5rem;
-
-		@include for-tablet-portrait-up {
-			width: 6rem;
-			height: 3rem;
-		}
-
-		&::before {
-			content: '';
-			position: absolute;
-			top: 0.3rem;
-			left: 0.3rem;
-			width: 1.4rem;
-			height: 1.4rem;
-			background: var(--background-color);
-			border-radius: 100%;
-			transition: all 0.3s cubic-bezier(0.65, 0.05, 0.36, 1);
-
-			@include for-tablet-portrait-up {
-				top: 0.4rem;
-				left: 0.4rem;
-				width: 2.2rem;
-				height: 2.2rem;
-			}
-		}
-	}
-
-	.fas {
-		font-size: 1.6rem;
-		transition: opacity 0.3s cubic-bezier(0.65, 0.05, 0.36, 1);
-
-		@include for-tablet-portrait-up {
-			font-size: 3rem;
-		}
-	}
-
-	.fa-moon {
-		color: white;
-		opacity: var(--moon-visible);
-	}
-
-	.fa-sun {
-		color: black;
-		opacity: var(--sun-visible);
 	}
 }
 
