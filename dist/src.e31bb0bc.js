@@ -143,8 +143,6 @@ var switchColorTheme = function switchColorTheme(e) {
     moon.classList.add('isVisible');
     sun.classList.remove('isVisible');
   }
-
-  console.log(moon);
 };
 
 var _default = changeThemeColorMode;
@@ -171,8 +169,8 @@ var generateTilesGrid = function generateTilesGrid(rows, columns) {
     }
   }
 
-  tilesContainer.dataset.gridColumns = columns;
-  tilesContainer.dataset.marginTiles = 2 * columns + 1; // if (rows === 5) {
+  tilesContainer.dataset.gridColumns = columns; // tilesContainer.dataset.marginTiles = 2 * columns + 1;
+  // if (rows === 5) {
   // 	mainTitle.classList.add('margin-five-rows');
   // 	containerOfTiles.classList.add('margin-five-rows');
   // 	buttonStart.classList.add('margin-five-rows');

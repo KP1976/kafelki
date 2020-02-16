@@ -118,7 +118,7 @@ body {
   left: calc(100% - 1.8rem);
   width: 1.6rem;
   height: 1.6rem;
-  background: var(--top-bottom-bar-color-dark);
+  background: var(--top-bottom-bar-color);
   border-radius: 100%;
   transition: all 0.3s cubic-bezier(0.65, 0.05, 0.36, 1);
 }
@@ -300,12 +300,6 @@ body {
   width: 1.5rem;
   height: 1.5rem;
   left: 5px;
-}
-@media (min-width: 600px) {
-  .radios-container__radio-box {
-    width: 4rem;
-    height: 4rem;
-  }
 }
 
 /*# sourceMappingURL=/main.77bb5cfd.css.map */

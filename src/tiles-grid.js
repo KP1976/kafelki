@@ -13,7 +13,7 @@ const generateTilesGrid = (rows, columns) => {
 		}
 	}
 	tilesContainer.dataset.gridColumns = columns;
-	tilesContainer.dataset.marginTiles = 2 * columns + 1;
+	// tilesContainer.dataset.marginTiles = 2 * columns + 1;
 
 	// if (rows === 5) {
 	// 	mainTitle.classList.add('margin-five-rows');

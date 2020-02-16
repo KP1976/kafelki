@@ -17,7 +17,6 @@ const switchColorTheme = e => {
 		moon.classList.add('isVisible');
 		sun.classList.remove('isVisible');
 	}
-	console.log(moon);
 };
 
 export default changeThemeColorMode;

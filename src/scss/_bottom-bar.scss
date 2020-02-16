@@ -86,12 +86,11 @@
 		border-radius: 0.3rem;
 		width: 1.5rem;
 		height: 1.5rem;
-		// position: absolute;
 		left: 5px;
 
-		@include for-tablet-portrait-up {
-			width: 4rem;
-			height: 4rem;
-		}
+		// @include for-tablet-portrait-up {
+		// 	width: 4rem;
+		// 	height: 4rem;
+		// }
 	}
 }
