@@ -154,9 +154,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var tilesContainer = document.querySelector('.tiles-grid'); // const mainTitle = document.querySelector('.title');
-// const containerOfTiles = document.querySelector('.container-of-tiles');
-// const buttonStart = document.querySelector('.button');
+var tilesContainer = document.querySelector('.tiles-grid');
+var margin;
 
 var generateTilesGrid = function generateTilesGrid(rows, columns) {
   tilesContainer.innerHTML = '';
@@ -164,34 +163,34 @@ var generateTilesGrid = function generateTilesGrid(rows, columns) {
   for (var i = 0; i < columns; i++) {
     for (var j = 0; j < rows; j++) {
       var tile = document.createElement('li');
-      tile.classList.add('tiles-grid__tile');
+
+      if (rows === 4) {
+        tile.classList.add('tiles-grid__tile');
+        tile.classList.remove('small-tile');
+        tile.classList.remove('smallest-tile');
+        margin = 50;
+      }
+
+      if (rows === 5) {
+        tile.classList.add('tiles-grid__tile');
+        tile.classList.add('small-tile');
+        tile.classList.remove('smallest-tile');
+        margin = 45;
+      }
+
+      if (rows === 6) {
+        tile.classList.add('tiles-grid__tile');
+        tile.classList.remove('small-tile');
+        tile.classList.add('smallest-tile');
+        margin = 35;
+      }
+
       tilesContainer.appendChild(tile);
     }
   }
 
-  tilesContainer.dataset.gridColumns = columns; // tilesContainer.dataset.marginTiles = 2 * columns + 1;
-  // if (rows === 5) {
-  // 	mainTitle.classList.add('margin-five-rows');
-  // 	containerOfTiles.classList.add('margin-five-rows');
-  // 	buttonStart.classList.add('margin-five-rows');
-  // 	mainTitle.classList.remove('margin-six-rows');
-  // 	containerOfTiles.classList.remove('margin-six-rows');
-  // 	buttonStart.classList.remove('margin-six-rows');
-  // } else if (rows === 6) {
-  // 	mainTitle.classList.remove('margin-five-rows');
-  // 	containerOfTiles.classList.remove('margin-five-rows');
-  // 	buttonStart.classList.remove('margin-five-rows');
-  // 	mainTitle.classList.add('margin-six-rows');
-  // 	containerOfTiles.classList.add('margin-six-rows');
-  // 	buttonStart.classList.add('margin-six-rows');
-  // } else {
-  // 	mainTitle.classList.remove('margin-five-rows');
-  // 	containerOfTiles.classList.remove('margin-five-rows');
-  // 	buttonStart.classList.remove('margin-five-rows');
-  // 	mainTitle.classList.remove('margin-six-rows');
-  // 	containerOfTiles.classList.remove('margin-six-rows');
-  // 	buttonStart.classList.remove('margin-six-rows');
-  // }
+  tilesContainer.dataset.gridColumns = columns;
+  tilesContainer.dataset.marginTiles = margin;
 };
 
 var _default = generateTilesGrid;

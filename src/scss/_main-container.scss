@@ -37,6 +37,16 @@
 		// 	width: 5rem;
 		// }
 
+		&.small-tile {
+			height: 4.5rem;
+			width: 4.5rem;
+		}
+
+		&.smallest-tile {
+			height: 4rem;
+			width: 4rem;
+		}
+
 		&:nth-child(1),
 		&:nth-child(2) {
 			background: linear-gradient(
@@ -179,10 +189,18 @@
 	grid-template-columns: repeat(4, 1fr);
 }
 
-[data-margin-tiles='9'] {
-	margin: 0 9rem 0 0;
+[data-margin-tiles='45'] {
+	margin: 4.5rem 0;
 
-	@include for-tablet-portrait-up {
-		margin-right: 11rem;
-	}
+	// @include for-tablet-portrait-up {
+	// 	margin-right: 11rem;
+	// }
+}
+
+[data-margin-tiles='35'] {
+	margin: 3.5rem 0;
+
+	// @include for-tablet-portrait-up {
+	// 	margin-right: 11rem;
+	// }
 }
