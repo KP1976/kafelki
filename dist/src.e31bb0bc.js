@@ -126,6 +126,8 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = void 0;
 var htmlDOM = document.documentElement;
 var switcher = document.querySelector('.switch-mode-container__switch');
+var moon = document.querySelector('.fa-moon');
+var sun = document.querySelector('.fa-sun');
 
 var changeThemeColorMode = function changeThemeColorMode() {
   switcher.addEventListener('click', switchColorTheme);
@@ -134,9 +136,15 @@ var changeThemeColorMode = function changeThemeColorMode() {
 var switchColorTheme = function switchColorTheme(e) {
   if (e.target.checked) {
     htmlDOM.setAttribute('data-colormode', 'light');
+    moon.classList.remove('isVisible');
+    sun.classList.add('isVisible');
   } else {
     htmlDOM.setAttribute('data-colormode', 'dark');
+    moon.classList.add('isVisible');
+    sun.classList.remove('isVisible');
   }
+
+  console.log(moon);
 };
 
 var _default = changeThemeColorMode;
@@ -148,10 +156,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var tilesContainer = document.querySelector('.tiles-grid');
-var mainTitle = document.querySelector('.title');
-var containerOfTiles = document.querySelector('.container-of-tiles');
-var buttonStart = document.querySelector('.button');
+var tilesContainer = document.querySelector('.tiles-grid'); // const mainTitle = document.querySelector('.title');
+// const containerOfTiles = document.querySelector('.container-of-tiles');
+// const buttonStart = document.querySelector('.button');
 
 var generateTilesGrid = function generateTilesGrid(rows, columns) {
   tilesContainer.innerHTML = '';
@@ -165,30 +172,28 @@ var generateTilesGrid = function generateTilesGrid(rows, columns) {
   }
 
   tilesContainer.dataset.gridColumns = columns;
-  tilesContainer.dataset.marginTiles = 2 * columns + 1;
-
-  if (rows === 5) {
-    mainTitle.classList.add('margin-five-rows');
-    containerOfTiles.classList.add('margin-five-rows');
-    buttonStart.classList.add('margin-five-rows');
-    mainTitle.classList.remove('margin-six-rows');
-    containerOfTiles.classList.remove('margin-six-rows');
-    buttonStart.classList.remove('margin-six-rows');
-  } else if (rows === 6) {
-    mainTitle.classList.remove('margin-five-rows');
-    containerOfTiles.classList.remove('margin-five-rows');
-    buttonStart.classList.remove('margin-five-rows');
-    mainTitle.classList.add('margin-six-rows');
-    containerOfTiles.classList.add('margin-six-rows');
-    buttonStart.classList.add('margin-six-rows');
-  } else {
-    mainTitle.classList.remove('margin-five-rows');
-    containerOfTiles.classList.remove('margin-five-rows');
-    buttonStart.classList.remove('margin-five-rows');
-    mainTitle.classList.remove('margin-six-rows');
-    containerOfTiles.classList.remove('margin-six-rows');
-    buttonStart.classList.remove('margin-six-rows');
-  }
+  tilesContainer.dataset.marginTiles = 2 * columns + 1; // if (rows === 5) {
+  // 	mainTitle.classList.add('margin-five-rows');
+  // 	containerOfTiles.classList.add('margin-five-rows');
+  // 	buttonStart.classList.add('margin-five-rows');
+  // 	mainTitle.classList.remove('margin-six-rows');
+  // 	containerOfTiles.classList.remove('margin-six-rows');
+  // 	buttonStart.classList.remove('margin-six-rows');
+  // } else if (rows === 6) {
+  // 	mainTitle.classList.remove('margin-five-rows');
+  // 	containerOfTiles.classList.remove('margin-five-rows');
+  // 	buttonStart.classList.remove('margin-five-rows');
+  // 	mainTitle.classList.add('margin-six-rows');
+  // 	containerOfTiles.classList.add('margin-six-rows');
+  // 	buttonStart.classList.add('margin-six-rows');
+  // } else {
+  // 	mainTitle.classList.remove('margin-five-rows');
+  // 	containerOfTiles.classList.remove('margin-five-rows');
+  // 	buttonStart.classList.remove('margin-five-rows');
+  // 	mainTitle.classList.remove('margin-six-rows');
+  // 	containerOfTiles.classList.remove('margin-six-rows');
+  // 	buttonStart.classList.remove('margin-six-rows');
+  // }
 };
 
 var _default = generateTilesGrid;
@@ -327,7 +332,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50402" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50622" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

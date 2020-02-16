@@ -1,5 +1,5 @@
 .bottom-bar {
-	background-color: var(--top-bottom-bar-color-dark);
+	background-color: var(--top-bottom-bar-color);
 	display: flex;
 	height: 6rem;
 	align-items: center;
@@ -81,7 +81,7 @@
 
 	&__radio-box {
 		cursor: pointer;
-		background-color: var(--top-bottom-bar-color-dark);
+		background-color: var(--top-bottom-bar-color);
 		box-shadow: var(--very-light-shadow);
 		border-radius: 0.3rem;
 		width: 1.5rem;
