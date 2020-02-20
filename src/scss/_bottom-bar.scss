@@ -44,7 +44,7 @@
 		}
 
 		&:checked ~ .radios-container__radio-box {
-			box-shadow: var(--light-shadow-inset);
+			box-shadow: var(--small-shadow-inner);
 
 			.fa-check {
 				color: var(--text-color);
@@ -82,7 +82,7 @@
 	&__radio-box {
 		cursor: pointer;
 		background-color: var(--top-bottom-bar-color);
-		box-shadow: var(--very-light-shadow);
+		box-shadow: var(--small-shadow-outer);
 		border-radius: 0.3rem;
 		width: 1.5rem;
 		height: 1.5rem;
