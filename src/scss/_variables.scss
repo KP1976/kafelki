@@ -33,6 +33,10 @@
 	--shadow-outer: 5px 5px 8px 0 #5a5a5a, -5px -5px 8px 0 #888888;
 	--shadow-inner: inset 5px 5px 8px 0 #5a5a5a, inset -5px -5px 8px 0 #888888;
 
+	--shadow-outer-min600px: 8px 8px 15px #5a5a5a, -8px -8px 15px #888888;
+	--shadow-inner-min600px: inset 8px 8px 15px #5a5a5a,
+		inset -8px -8px 15px #888888;
+
 	--small-shadow-outer: 2px 2px 3px 0 #3e3c3c, -2px -2px 3px 0 #5c5a5a;
 	--small-shadow-inner: inset 2px 2px 3px 0 #3e3c3c,
 		inset -2px -2px 3px 0 #5c5a5a;
@@ -45,6 +49,10 @@
 
 	--shadow-outer: 5px 5px 8px 0 #bdbdbd, -5px -5px 8px 0 #ffffff;
 	--shadow-inner: inset 5px 5px 8px 0 #bdbdbd, inset -5px -5px 8px 0 #ffffff;
+
+	--shadow-outer-min600px: 8px 8px 15px #bdbdbd, -8px -8px 15px #ffffff;
+	--shadow-inner-min600px: inset 8px 8px 15px #bdbdbd,
+		inset -8px -8px 15px #ffffff;
 
 	--small-shadow-outer: 2px 2px 3px 0 #aaaaaa, -2px -2px 3px 0 #fefefe;
 	--small-shadow-inner: inset 2px 2px 3px 0 #aaaaaa,

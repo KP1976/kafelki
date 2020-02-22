@@ -165,7 +165,7 @@
 	outline: none;
 
 	@include for-tablet-portrait-up {
-		box-shadow: 8px 8px 15px #5a5a5a, -8px -8px 15px #888888;
+		box-shadow: var(--shadow-outer-min600px);
 		width: 25.9rem;
 		height: 7.6rem;
 		font-size: 4.5rem;
