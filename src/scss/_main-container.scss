@@ -21,9 +21,9 @@
 	list-style-type: none;
 	gap: 0.5rem;
 
-	// @include for-tablet-portrait-up {
-	// 	width: 16rem;
-	// }
+	@include for-tablet-portrait-up {
+		gap: 1rem;
+	}
 
 	&__tile {
 		border-radius: 0.3rem;
@@ -31,10 +31,10 @@
 		width: 5.5rem;
 		box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
 
-		// @include for-tablet-portrait-up {
-		// 	height: 5rem;
-		// 	width: 5rem;
-		// }
+		@include for-tablet-portrait-up {
+			height: 8rem;
+			width: 8rem;
+		}
 
 		&.small-tile {
 			height: 4.5rem;
