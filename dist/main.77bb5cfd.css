@@ -70,6 +70,12 @@ body {
   padding: 0 2rem;
   height: 5rem;
 }
+@media (min-width: 600px) {
+  .top-bar {
+    height: 10rem;
+    padding: 0 4rem;
+  }
+}
 .top-bar__title {
   color: var(--text-color);
   font-size: 2rem;
@@ -77,6 +83,11 @@ body {
   text-align: center;
   margin: 0;
   text-transform: uppercase;
+}
+@media (min-width: 600px) {
+  .top-bar__title {
+    font-size: 3.8rem;
+  }
 }
 
 .switch-mode-container {
@@ -95,6 +106,11 @@ body {
   left: 1.8rem;
   transform: translateX(-100%);
 }
+@media (min-width: 600px) {
+  .switch-mode-container__switch:checked + label::before {
+    left: 2.6rem;
+  }
+}
 .switch-mode-container__switch-label {
   cursor: pointer;
   width: 4rem;
@@ -104,6 +120,12 @@ body {
   border-radius: 100px;
   position: relative;
   margin: 0 0.5rem;
+}
+@media (min-width: 600px) {
+  .switch-mode-container__switch-label {
+    width: 5.7rem;
+    height: 2.8rem;
+  }
 }
 .switch-mode-container__switch-label::before {
   content: "";
@@ -116,10 +138,23 @@ body {
   border-radius: 100%;
   transition: all 0.3s cubic-bezier(0.65, 0.05, 0.36, 1);
 }
+@media (min-width: 600px) {
+  .switch-mode-container__switch-label::before {
+    top: 0.2rem;
+    left: calc(100% - 2.6rem);
+    width: 2.4rem;
+    height: 2.4rem;
+  }
+}
 .switch-mode-container .fas {
   font-size: 1.4rem;
   opacity: 0;
   transition: opacity 0.3s cubic-bezier(0.65, 0.05, 0.36, 1);
+}
+@media (min-width: 600px) {
+  .switch-mode-container .fas {
+    font-size: 2.2rem;
+  }
 }
 .switch-mode-container .fa-moon {
   left: 0.2rem;
@@ -133,7 +168,7 @@ body {
 }
 .switch-mode-container .fa-sun {
   top: 0.3rem;
-  right: 0.2rem;
+  right: 0.3rem;
   color: var(--background-color);
   position: absolute;
   z-index: 1;

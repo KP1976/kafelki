@@ -6,6 +6,11 @@
 	padding: 0 2rem;
 	height: 5rem;
 
+	@include for-tablet-portrait-up {
+		height: 10rem;
+		padding: 0 4rem;
+	}
+
 	&__title {
 		color: var(--text-color);
 		font-size: 2rem;
@@ -14,18 +19,9 @@
 		margin: 0;
 		text-transform: uppercase;
 
-		// @include for-tablet-portrait-up {
-		// 	font-size: 5rem;
-		// 	margin-bottom: 7rem;
-		// }
-
-		// &.margin-five-rows {
-		// 	margin-bottom: 4rem;
-		// }
-
-		// &.margin-six-rows {
-		// 	margin-bottom: 3rem;
-		// }
+		@include for-tablet-portrait-up {
+			font-size: 3.8rem;
+		}
 	}
 }
 
@@ -45,6 +41,10 @@
 			background-color: var(--background-color);
 			left: 1.8rem;
 			transform: translateX(-100%);
+
+			@include for-tablet-portrait-up {
+				left: 2.6rem;
+			}
 		}
 	}
 
@@ -58,10 +58,10 @@
 		position: relative;
 		margin: 0 0.5rem;
 
-		// @include for-tablet-portrait-up {
-		// 	width: 6rem;
-		// 	height: 3rem;
-		// }
+		@include for-tablet-portrait-up {
+			width: 5.7rem;
+			height: 2.8rem;
+		}
 
 		&::before {
 			content: '';
@@ -74,12 +74,12 @@
 			border-radius: 100%;
 			transition: all 0.3s cubic-bezier(0.65, 0.05, 0.36, 1);
 
-			// @include for-tablet-portrait-up {
-			// 	top: 0.4rem;
-			// 	left: 0.4rem;
-			// 	width: 2.2rem;
-			// 	height: 2.2rem;
-			// }
+			@include for-tablet-portrait-up {
+				top: 0.2rem;
+				left: calc(100% - 2.6rem);
+				width: 2.4rem;
+				height: 2.4rem;
+			}
 		}
 	}
 
@@ -88,9 +88,9 @@
 		opacity: 0;
 		transition: opacity 0.3s cubic-bezier(0.65, 0.05, 0.36, 1);
 
-		// @include for-tablet-portrait-up {
-		// 	font-size: 3rem;
-		// }
+		@include for-tablet-portrait-up {
+			font-size: 2.2rem;
+		}
 	}
 
 	.fa-moon {
@@ -107,7 +107,7 @@
 
 	.fa-sun {
 		top: 0.3rem;
-		right: 0.2rem;
+		right: 0.3rem;
 		color: var(--background-color);
 		position: absolute;
 		z-index: 1;
