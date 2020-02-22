@@ -168,21 +168,21 @@ var generateTilesGrid = function generateTilesGrid(rows, columns) {
         tile.classList.add('tiles-grid__tile');
         tile.classList.remove('small-tile');
         tile.classList.remove('smallest-tile');
-        margin = 50;
+        margin = 'big';
       }
 
       if (rows === 5) {
         tile.classList.add('tiles-grid__tile');
         tile.classList.add('small-tile');
         tile.classList.remove('smallest-tile');
-        margin = 45;
+        margin = 'medium';
       }
 
       if (rows === 6) {
         tile.classList.add('tiles-grid__tile');
         tile.classList.remove('small-tile');
         tile.classList.add('smallest-tile');
-        margin = 35;
+        margin = 'small';
       }
 
       tilesContainer.appendChild(tile);
@@ -329,7 +329,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50088" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59099" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

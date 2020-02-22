@@ -10,19 +10,19 @@ const generateTilesGrid = (rows, columns) => {
 				tile.classList.add('tiles-grid__tile');
 				tile.classList.remove('small-tile');
 				tile.classList.remove('smallest-tile');
-				margin = 50;
+				margin = 'big';
 			}
 			if (rows === 5) {
 				tile.classList.add('tiles-grid__tile');
 				tile.classList.add('small-tile');
 				tile.classList.remove('smallest-tile');
-				margin = 45;
+				margin = 'medium';
 			}
 			if (rows === 6) {
 				tile.classList.add('tiles-grid__tile');
 				tile.classList.remove('small-tile');
 				tile.classList.add('smallest-tile');
-				margin = 35;
+				margin = 'small';
 			}
 			tilesContainer.appendChild(tile);
 		}
