@@ -23,6 +23,7 @@
 
 	@include for-tablet-portrait-up {
 		gap: 1rem;
+		margin: 7rem 0;
 	}
 
 	&__tile {
@@ -154,16 +155,19 @@
 	text-transform: uppercase;
 	outline: none;
 
-	// @include for-tablet-portrait-up {
-	// 	margin-top: 7rem;
-	// 	width: 25rem;
-	// 	height: 6.5rem;
-	// 	font-size: 4rem;
-	// 	padding: 0;
-	// }
+	@include for-tablet-portrait-up {
+		box-shadow: 8px 8px 15px #5a5a5a, -8px -8px 15px #888888;
+		width: 25.9rem;
+		height: 7.6rem;
+		font-size: 4.5rem;
+	}
 
 	&:active {
 		box-shadow: var(--shadow-inner);
+
+		@include for-tablet-portrait-up {
+			box-shadow: inset 8px 8px 15px #5a5a5a, inset -8px -8px 15px #888888;
+		}
 	}
 
 	// &.margin-five-rows {

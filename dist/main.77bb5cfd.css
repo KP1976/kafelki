@@ -202,6 +202,7 @@ body {
 @media (min-width: 600px) {
   .tiles-grid {
     gap: 1rem;
+    margin: 7rem 0;
   }
 }
 .tiles-grid__tile {
@@ -271,8 +272,21 @@ body {
   text-transform: uppercase;
   outline: none;
 }
+@media (min-width: 600px) {
+  .start-button {
+    box-shadow: 8px 8px 15px #5a5a5a, -8px -8px 15px #888888;
+    width: 25.9rem;
+    height: 7.6rem;
+    font-size: 4.5rem;
+  }
+}
 .start-button:active {
   box-shadow: var(--shadow-inner);
+}
+@media (min-width: 600px) {
+  .start-button:active {
+    box-shadow: inset 8px 8px 15px #5a5a5a, inset -8px -8px 15px #888888;
+  }
 }
 
 [data-grid-columns="4"] {
