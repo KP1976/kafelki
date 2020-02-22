@@ -10,6 +10,11 @@
 		font-weight: 600;
 		font-size: 1.6rem;
 		margin: 3.3rem 0 1.6rem 0;
+
+		@include for-tablet-portrait-up {
+			font-size: 3rem;
+			margin: 4.9rem 0 2.4rem 0;
+		}
 	}
 }
 
@@ -169,22 +174,6 @@
 			box-shadow: inset 8px 8px 15px #5a5a5a, inset -8px -8px 15px #888888;
 		}
 	}
-
-	// &.margin-five-rows {
-	// 	margin-top: 4rem;
-
-	// 	@include for-tablet-portrait-up {
-	// 		margin-top: 5.5rem;
-	// 	}
-	// }
-
-	// &.margin-six-rows {
-	// 	margin-top: 3rem;
-
-	// 	@include for-tablet-portrait-up {
-	// 		margin-top: 4rem;
-	// 	}
-	// }
 }
 
 [data-grid-columns='4'] {
