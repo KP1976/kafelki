@@ -76,16 +76,26 @@ body {
 
 .top-bar {
   background-color: var(--top-bottom-bar-color);
+  display: flex;
+  justify-content: center;
+}
+.top-bar__container {
   align-items: center;
   justify-content: space-between;
   display: flex;
   padding: 0 2rem;
   height: 5rem;
+  width: 100%;
 }
 @media (min-width: 600px) {
-  .top-bar {
+  .top-bar__container {
     height: 10rem;
     padding: 0 4rem;
+  }
+}
+@media (min-width: 1200px) {
+  .top-bar__container {
+    max-width: 120rem;
   }
 }
 .top-bar__title {

@@ -1,14 +1,24 @@
 .top-bar {
 	background-color: var(--top-bottom-bar-color);
-	align-items: center;
-	justify-content: space-between;
 	display: flex;
-	padding: 0 2rem;
-	height: 5rem;
+	justify-content: center;
 
-	@include for-tablet-portrait-up {
-		height: 10rem;
-		padding: 0 4rem;
+	&__container {
+		align-items: center;
+		justify-content: space-between;
+		display: flex;
+		padding: 0 2rem;
+		height: 5rem;
+		width: 100%;
+
+		@include for-tablet-portrait-up {
+			height: 10rem;
+			padding: 0 4rem;
+		}
+
+		@include for-desktop {
+			max-width: 120rem;
+		}
 	}
 
 	&__title {
