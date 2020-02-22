@@ -54,7 +54,7 @@
 			box-shadow: var(--small-shadow-inner);
 
 			@include for-tablet-portrait-up {
-				box-shadow: inset 3px 3px 6px #3e3c3c, inset -3px -3px 6px #5c5a5a;
+				box-shadow: var(--small-shadow-inner-min600px);
 			}
 
 			.fa-check {
@@ -100,7 +100,7 @@
 		left: 5px;
 
 		@include for-tablet-portrait-up {
-			box-shadow: 3px 3px 6px #3e3c3c, -3px -3px 6px #5c5a5a;
+			box-shadow: var(--small-shadow-outer-min600px);
 			width: 2.8rem;
 			height: 2.8rem;
 		}

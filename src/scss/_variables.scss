@@ -40,6 +40,10 @@
 	--small-shadow-outer: 2px 2px 3px 0 #3e3c3c, -2px -2px 3px 0 #5c5a5a;
 	--small-shadow-inner: inset 2px 2px 3px 0 #3e3c3c,
 		inset -2px -2px 3px 0 #5c5a5a;
+
+	--small-shadow-outer-min600px: 3px 3px 6px 0 #3e3c3c, -3px -3px 6px 0 #5c5a5a;
+	--small-shadow-inner-min600px: inset 3px 3px 6px 0 #3e3c3c,
+		inset -3px -3px 6px 0 #5c5a5a;
 }
 
 [data-colormode='light'] {
@@ -57,4 +61,8 @@
 	--small-shadow-outer: 2px 2px 3px 0 #aaaaaa, -2px -2px 3px 0 #fefefe;
 	--small-shadow-inner: inset 2px 2px 3px 0 #aaaaaa,
 		inset -2px -2px 3px 0 #fefefe;
+
+	--small-shadow-outer-min600px: 3px 3px 6px 0 #aaaaaa, -3px -3px 6px 0 #fefefe;
+	--small-shadow-inner-min600px: inset 3px 3px 6px 0 #aaaaaa,
+		inset -3px -3px 6px 0 #fefefe;
 }

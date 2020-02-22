@@ -175,7 +175,7 @@
 		box-shadow: var(--shadow-inner);
 
 		@include for-tablet-portrait-up {
-			box-shadow: inset 8px 8px 15px #5a5a5a, inset -8px -8px 15px #888888;
+			box-shadow: var(--shadow-inner-min600px);
 		}
 	}
 }
