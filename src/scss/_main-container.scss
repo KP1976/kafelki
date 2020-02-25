@@ -3,22 +3,14 @@
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	height: calc(100vh - 11rem);
+	height: calc(100vh - 15rem);
+
+	@include mobile-landscape {
+		flex-direction: row;
+	}
 
 	@include for-tablet-portrait-up {
 		height: calc(100vh - 22rem);
-	}
-
-	&__title {
-		color: var(--text-color);
-		font-weight: 600;
-		font-size: 1.6rem;
-		margin: 3.3rem 0 1.6rem 0;
-
-		@include for-tablet-portrait-up {
-			font-size: 3rem;
-			margin: 4.9rem 0 2.4rem 0;
-		}
 	}
 }
 
@@ -26,9 +18,13 @@
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
 	padding: 0;
-	margin: 5rem 0;
+	margin: 0 0 4.6rem 0;
 	list-style-type: none;
 	gap: 0.5rem;
+
+	@include mobile-landscape {
+		margin: 0;
+	}
 
 	@include for-tablet-portrait-up {
 		gap: 1rem;
@@ -41,6 +37,11 @@
 		width: 5.5rem;
 		box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
 
+		@include mobile-landscape {
+			height: 3.5rem;
+			width: 3.5rem;
+		}
+
 		@include for-tablet-portrait-up {
 			height: 8rem;
 			width: 8rem;
@@ -49,6 +50,11 @@
 		&.small-tile {
 			height: 4.5rem;
 			width: 4.5rem;
+
+			@include mobile-landscape {
+				height: 3rem;
+				width: 3rem;
+			}
 
 			@include for-tablet-portrait-up {
 				height: 6.5rem;
@@ -59,6 +65,11 @@
 		&.smallest-tile {
 			height: 4rem;
 			width: 4rem;
+
+			@include mobile-landscape {
+				height: 2.5rem;
+				width: 2.5rem;
+			}
 
 			@include for-tablet-portrait-up {
 				height: 5.5rem;
@@ -195,7 +206,7 @@
 }
 
 [data-margin-tiles='medium'] {
-	margin: 4.5rem 0;
+	margin: 0 0 4.5rem 0;
 
 	@include for-tablet-portrait-up {
 		margin: 5.5rem 0 7rem 0;
@@ -203,7 +214,7 @@
 }
 
 [data-margin-tiles='small'] {
-	margin: 3.5rem 0;
+	margin: 0 0 3.5rem 0;
 
 	@include for-tablet-portrait-up {
 		margin: 5.5rem 0;

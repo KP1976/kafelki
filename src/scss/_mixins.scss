@@ -1,5 +1,11 @@
+@mixin mobile-landscape {
+	@media (orientation: landscape) and (max-width: 1024px) {
+		@content;
+	}
+}
+
 @mixin for-tablet-portrait-up {
-	@media (min-width: 600px) {
+	@media (min-width: 600px) and (min-height: 700px) {
 		@content;
 	}
 }
