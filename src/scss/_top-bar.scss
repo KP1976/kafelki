@@ -11,10 +11,6 @@
 		height: 5rem;
 		width: 100%;
 
-		@include mobile-landscape {
-			height: 5rem;
-		}
-
 		@include for-tablet-portrait-up {
 			height: 10rem;
 			padding: 0 4rem;

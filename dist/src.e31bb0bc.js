@@ -237,6 +237,7 @@ var _getRowsAndColumns = _interopRequireDefault(require("./get-rows-and-columns"
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+document.querySelector('.radios-container__radio').checked = true;
 (0, _getRowsAndColumns.default)();
 (0, _changeMode.default)(); // DO ZROBIENIA
 
@@ -329,7 +330,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51862" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65468" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

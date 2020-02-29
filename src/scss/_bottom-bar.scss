@@ -7,7 +7,12 @@
 	justify-content: center;
 
 	@include for-tablet-portrait-up {
-		height: 12rem;
+		height: 18rem;
+		padding: 2.8rem 0;
+	}
+
+	@include for-desktop {
+		height: 10rem;
 	}
 
 	&__title {
@@ -18,7 +23,32 @@
 
 		@include for-tablet-portrait-up {
 			font-size: 3rem;
-			margin: 4.9rem 0 2.4rem 0;
+			margin: 0 0 1.5rem 0;
+		}
+
+		@include for-desktop {
+			display: none;
+		}
+
+		&.desktop {
+			display: none;
+
+			@include for-desktop {
+				display: block;
+				margin-bottom: 8.7rem;
+			}
+		}
+	}
+
+	&.desktop {
+		display: none;
+
+		@include for-desktop {
+			display: flex;
+			background-color: transparent;
+			height: auto;
+			padding: 0;
+			align-self: start;
 		}
 	}
 }
@@ -35,6 +65,16 @@
 	@include for-tablet-portrait-up {
 		font-size: 2.6rem;
 		gap: 0 4.3rem;
+	}
+
+	@include for-desktop {
+		display: none;
+	}
+
+	&.desktop {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 5rem 7rem;
 	}
 
 	&__radio {
@@ -62,6 +102,12 @@
 				left: 0.9rem;
 				top: 4rem;
 			}
+
+			@include for-desktop {
+				width: 4rem;
+				height: 4rem;
+				left: 0.1rem;
+			}
 		}
 
 		&:checked ~ .radios-container__radio-box {
@@ -69,6 +115,10 @@
 
 			@include for-tablet-portrait-up {
 				box-shadow: var(--small-shadow-inner-min600px);
+			}
+
+			@include for-desktop {
+				box-shadow: inset 5px 5px 10px #5a5a5a, inset -5px -5px 10px #888888;
 			}
 
 			.fa-check {
@@ -83,6 +133,12 @@
 					font-size: 1.5rem;
 					left: 1.5rem;
 					top: 4.6rem;
+				}
+
+				@include for-desktop {
+					font-size: 1.8rem;
+					left: 1.35rem;
+					top: 5.1rem;
 				}
 			}
 		}
@@ -116,6 +172,13 @@
 			box-shadow: var(--small-shadow-outer-min600px);
 			width: 2.8rem;
 			height: 2.8rem;
+		}
+
+		@include for-desktop {
+			width: 4rem;
+			height: 4rem;
+			background-color: var(--background-color);
+			box-shadow: 5px 5px 10px #5a5a5a, -5px -5px 10px #888888;
 		}
 	}
 }

@@ -33,6 +33,60 @@
 		<main class="container">
 			<ul class="tiles-grid" data-margin-tiles='50'></ul>
 			<button class="start-button" role="button">start</button>
+			<div class="bottom-bar desktop">
+				<h2 class="bottom-bar__title desktop">Wybierz rozmiar planszy</h2>
+				<ul class="radios-container desktop">
+					<li class="radios-container__radio">
+						<input
+							class="radios-container__radio-input"
+							type="radio"
+							name="board-desktop"
+							id="board-4x3-desktop"
+							checked
+						/>
+						<label class="radios-container__radio-label" for="board-4x3-desktop"
+							>4x3</label
+						>
+						<div class="radios-container__radio-box"><i class="fas fa-check"></i></div>
+					</li>
+					<li class="radios-container__radio">
+						<input
+							class="radios-container__radio-input"
+							type="radio"
+							name="board-desktop"
+							id="board-4x4-desktop"
+						/>
+						<label class="radios-container__radio-label" for="board-4x4-desktop"
+							>4x4</label
+						>
+						<div class="radios-container__radio-box"><i class="fas fa-check"></i></div>
+					</li>
+					<li class="radios-container__radio">
+						<input
+							class="radios-container__radio-input"
+							type="radio"
+							name="board-desktop"
+							id="board-5x4-desktop"
+						/>
+						<label class="radios-container__radio-label" for="board-5x4-desktop"
+							>5x4</label
+						>
+						<div class="radios-container__radio-box"><i class="fas fa-check"></i></div>
+					</li>
+					<li class="radios-container__radio">
+						<input
+							class="radios-container__radio-input"
+							type="radio"
+							name="board-desktop"
+							id="board-6x3-desktop"
+						/>
+						<label class="radios-container__radio-label" for="board-6x3-desktop"
+							>6x3</label
+						>
+						<div class="radios-container__radio-box"><i class="fas fa-check"></i></div>
+					</li>
+				</ul>
+			</div>
 			<!-- <ul class="tiles-container"></ul> -->
 		</main>
 		<div class="bottom-bar">
@@ -88,7 +142,6 @@
 					<div class="radios-container__radio-box"><i class="fas fa-check"></i></div>
 				</li>
 			</ul>
-		</div>
 		</div>
 	</body>
 	<script type="module" src="index.js"></script>
