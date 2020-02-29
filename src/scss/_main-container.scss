@@ -78,6 +78,11 @@
 				height: 5.5rem;
 				width: 5.5rem;
 			}
+
+			@include for-desktop {
+				height: 11.5rem;
+				width: 11.5rem;
+			}
 		}
 
 		&:nth-child(1),
@@ -209,6 +214,10 @@
 	}
 }
 
+[data-width='portrait'] {
+	width: auto;
+}
+
 [data-width='800'] {
 	width: 80rem;
 }
@@ -238,5 +247,9 @@
 
 	@include for-tablet-portrait-up {
 		margin: 0 0 5.7rem 0;
+	}
+
+	@include for-desktop {
+		margin: 0;
 	}
 }

@@ -158,6 +158,7 @@ var mainContainer = document.querySelector('.container');
 var tilesContainer = document.querySelector('.tiles-grid');
 var margin;
 var width;
+console.log(window.innerWidth);
 
 var generateTilesGrid = function generateTilesGrid(rows, columns) {
   tilesContainer.innerHTML = '';
@@ -172,10 +173,12 @@ var generateTilesGrid = function generateTilesGrid(rows, columns) {
         tile.classList.remove('smallest-tile');
         margin = 'big';
 
-        if (columns === 3) {
-          width = '800';
-        } else {
-          width = '930';
+        if (window.innerWidth > 1200) {
+          if (columns === 3) {
+            width = '';
+          } else {
+            width = '930';
+          }
         }
       }
 
@@ -185,8 +188,10 @@ var generateTilesGrid = function generateTilesGrid(rows, columns) {
         tile.classList.remove('smallest-tile');
         margin = 'medium';
 
-        if (columns === 4) {
-          width = '930';
+        if (window.innerWidth > 1200) {
+          if (columns === 4) {
+            width = '930';
+          }
         }
       }
 
@@ -195,6 +200,10 @@ var generateTilesGrid = function generateTilesGrid(rows, columns) {
         tile.classList.remove('small-tile');
         tile.classList.add('smallest-tile');
         margin = 'small';
+
+        if (window.innerWidth > 1200) {
+          width = '800';
+        }
       }
 
       tilesContainer.appendChild(tile);
@@ -343,7 +352,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55367" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59636" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

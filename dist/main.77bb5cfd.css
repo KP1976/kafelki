@@ -294,6 +294,12 @@ body {
     width: 5.5rem;
   }
 }
+@media (min-width: 1200px) {
+  .tiles-grid__tile.smallest-tile {
+    height: 11.5rem;
+    width: 11.5rem;
+  }
+}
 .tiles-grid__tile:nth-child(1), .tiles-grid__tile:nth-child(2) {
   background: linear-gradient(to bottom right, var(--red-light), var(--red-dark));
 }
@@ -364,6 +370,10 @@ body {
   }
 }
 
+[data-width=portrait] {
+  width: auto;
+}
+
 [data-width="800"] {
   width: 80rem;
 }
@@ -396,6 +406,11 @@ body {
 @media (min-width: 600px) {
   [data-margin-tiles=small] {
     margin: 0 0 5.7rem 0;
+  }
+}
+@media (min-width: 1200px) {
+  [data-margin-tiles=small] {
+    margin: 0;
   }
 }
 
