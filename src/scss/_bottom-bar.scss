@@ -118,7 +118,7 @@
 			}
 
 			@include for-desktop {
-				box-shadow: inset 5px 5px 10px #5a5a5a, inset -5px -5px 10px #888888;
+				box-shadow: var(--shadow-inner);
 			}
 
 			.fa-check {
@@ -178,7 +178,7 @@
 			width: 4rem;
 			height: 4rem;
 			background-color: var(--background-color);
-			box-shadow: 5px 5px 10px #5a5a5a, -5px -5px 10px #888888;
+			box-shadow: var(--shadow-outer-min600px);
 		}
 	}
 }

@@ -506,7 +506,7 @@ body {
 }
 @media (min-width: 1200px) {
   .radios-container__radio-input:checked ~ .radios-container__radio-box {
-    box-shadow: inset 5px 5px 10px #5a5a5a, inset -5px -5px 10px #888888;
+    box-shadow: var(--shadow-inner);
   }
 }
 .radios-container__radio-input:checked ~ .radios-container__radio-box .fa-check {
@@ -564,7 +564,7 @@ body {
     width: 4rem;
     height: 4rem;
     background-color: var(--background-color);
-    box-shadow: 5px 5px 10px #5a5a5a, -5px -5px 10px #888888;
+    box-shadow: var(--shadow-outer-min600px);
   }
 }
 
