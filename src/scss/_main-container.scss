@@ -14,7 +14,6 @@
 		display: grid;
 		grid-template-columns: 1fr 1fr;
 		grid-template-rows: 42.9rem 7.6rem;
-		width: 80rem;
 		margin: auto;
 		gap: 0 8rem;
 		align-content: center;
@@ -63,6 +62,11 @@
 			@include for-tablet-portrait-up {
 				height: 6.5rem;
 				width: 6.5rem;
+			}
+
+			@include for-desktop {
+				height: 11.5rem;
+				width: 11.5rem;
 			}
 		}
 
@@ -203,6 +207,14 @@
 			box-shadow: var(--shadow-inner-min600px);
 		}
 	}
+}
+
+[data-width='800'] {
+	width: 80rem;
+}
+
+[data-width='930'] {
+	width: 93rem;
 }
 
 [data-grid-columns='4'] {

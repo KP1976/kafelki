@@ -154,8 +154,10 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
+var mainContainer = document.querySelector('.container');
 var tilesContainer = document.querySelector('.tiles-grid');
 var margin;
+var width;
 
 var generateTilesGrid = function generateTilesGrid(rows, columns) {
   tilesContainer.innerHTML = '';
@@ -169,6 +171,12 @@ var generateTilesGrid = function generateTilesGrid(rows, columns) {
         tile.classList.remove('small-tile');
         tile.classList.remove('smallest-tile');
         margin = 'big';
+
+        if (columns === 3) {
+          width = '800';
+        } else {
+          width = '930';
+        }
       }
 
       if (rows === 5) {
@@ -191,6 +199,7 @@ var generateTilesGrid = function generateTilesGrid(rows, columns) {
 
   tilesContainer.dataset.gridColumns = columns;
   tilesContainer.dataset.marginTiles = margin;
+  mainContainer.dataset.width = width;
 };
 
 var _default = generateTilesGrid;
