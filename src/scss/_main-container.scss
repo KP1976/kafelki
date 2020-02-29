@@ -227,6 +227,10 @@
 	@include for-tablet-portrait-up {
 		margin: 0 0 6.5rem 0;
 	}
+
+	@include for-desktop {
+		margin: 0;
+	}
 }
 
 [data-margin-tiles='small'] {

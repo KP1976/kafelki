@@ -184,6 +184,10 @@ var generateTilesGrid = function generateTilesGrid(rows, columns) {
         tile.classList.add('small-tile');
         tile.classList.remove('smallest-tile');
         margin = 'medium';
+
+        if (columns === 4) {
+          width = '930';
+        }
       }
 
       if (rows === 6) {
