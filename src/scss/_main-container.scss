@@ -34,7 +34,9 @@
 
 	@include for-tablet-portrait-up {
 		gap: 1rem;
-		margin: 0 0 7.2rem 0;
+		margin: 0 0 7.2vh 0;
+		height: calc(100vh - 50rem);
+		min-width: 35rem;
 	}
 
 	@include for-desktop {
@@ -50,13 +52,13 @@
 		box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
 
 		@include for-tablet-portrait-up {
-			height: 8rem;
-			width: 8rem;
+			// height: 8rem;
+			// width: 8rem;
 		}
 
 		@include for-desktop {
-			height: 11.5rem;
-			width: 11.5rem;
+			// height: 11.5rem;
+			// width: 11.5rem;
 		}
 
 		&.small-tile {
@@ -64,13 +66,13 @@
 			// width: 4.5rem;
 
 			@include for-tablet-portrait-up {
-				height: 6.5rem;
-				width: 6.5rem;
+				// height: 6.5rem;
+				// width: 6.5rem;
 			}
 
 			@include for-desktop {
-				height: 11.5rem;
-				width: 11.5rem;
+				// height: 11.5rem;
+				// width: 11.5rem;
 			}
 		}
 
@@ -79,13 +81,13 @@
 			// width: 4rem;
 
 			@include for-tablet-portrait-up {
-				height: 5.5rem;
-				width: 5.5rem;
+				// height: 5.5rem;
+				// width: 5.5rem;
 			}
 
 			@include for-desktop {
-				height: 11.5rem;
-				width: 11.5rem;
+				// height: 11.5rem;
+				// width: 11.5rem;
 			}
 		}
 

@@ -243,7 +243,9 @@ body {
 @media (min-width: 600px) {
   .tiles-grid {
     gap: 1rem;
-    margin: 0 0 7.2rem 0;
+    margin: 0 0 7.2vh 0;
+    height: calc(100vh - 50rem);
+    min-width: 35rem;
   }
 }
 @media (min-width: 1200px) {
@@ -256,42 +258,6 @@ body {
 .tiles-grid__tile {
   border-radius: 0.3rem;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-}
-@media (min-width: 600px) {
-  .tiles-grid__tile {
-    height: 8rem;
-    width: 8rem;
-  }
-}
-@media (min-width: 1200px) {
-  .tiles-grid__tile {
-    height: 11.5rem;
-    width: 11.5rem;
-  }
-}
-@media (min-width: 600px) {
-  .tiles-grid__tile.small-tile {
-    height: 6.5rem;
-    width: 6.5rem;
-  }
-}
-@media (min-width: 1200px) {
-  .tiles-grid__tile.small-tile {
-    height: 11.5rem;
-    width: 11.5rem;
-  }
-}
-@media (min-width: 600px) {
-  .tiles-grid__tile.smallest-tile {
-    height: 5.5rem;
-    width: 5.5rem;
-  }
-}
-@media (min-width: 1200px) {
-  .tiles-grid__tile.smallest-tile {
-    height: 11.5rem;
-    width: 11.5rem;
-  }
 }
 .tiles-grid__tile:nth-child(1), .tiles-grid__tile:nth-child(2) {
   background: linear-gradient(to bottom right, var(--red-light), var(--red-dark));
