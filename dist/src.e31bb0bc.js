@@ -179,6 +179,8 @@ var generateTilesGrid = function generateTilesGrid(rows, columns) {
           } else {
             width = '930';
           }
+        } else {
+          width = '';
         }
       }
 
@@ -210,7 +212,9 @@ var generateTilesGrid = function generateTilesGrid(rows, columns) {
     }
   }
 
+  console.log(rows);
   tilesContainer.dataset.gridColumns = columns;
+  tilesContainer.dataset.gridRows = rows;
   tilesContainer.dataset.marginTiles = margin;
   mainContainer.dataset.width = width;
 };
@@ -352,7 +356,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59636" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64563" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

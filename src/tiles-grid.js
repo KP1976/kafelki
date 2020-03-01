@@ -21,6 +21,8 @@ const generateTilesGrid = (rows, columns) => {
 					} else {
 						width = '930';
 					}
+				} else {
+					width = '';
 				}
 			}
 			if (rows === 5) {
@@ -46,7 +48,9 @@ const generateTilesGrid = (rows, columns) => {
 			tilesContainer.appendChild(tile);
 		}
 	}
+	console.log(rows);
 	tilesContainer.dataset.gridColumns = columns;
+	tilesContainer.dataset.gridRows = rows;
 	tilesContainer.dataset.marginTiles = margin;
 	mainContainer.dataset.width = width;
 };
