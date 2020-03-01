@@ -12,8 +12,8 @@ const generateTilesGrid = (rows, columns) => {
 			const tile = document.createElement('li');
 			if (rows === 4) {
 				tile.classList.add('tiles-grid__tile');
-				tile.classList.remove('small-tile');
-				tile.classList.remove('smallest-tile');
+				// tile.classList.remove('small-tile');
+				// tile.classList.remove('smallest-tile');
 				margin = 'big';
 				if (window.innerWidth > 1200) {
 					if (columns === 3) {
@@ -27,8 +27,8 @@ const generateTilesGrid = (rows, columns) => {
 			}
 			if (rows === 5) {
 				tile.classList.add('tiles-grid__tile');
-				tile.classList.add('small-tile');
-				tile.classList.remove('smallest-tile');
+				// tile.classList.add('small-tile');
+				// tile.classList.remove('smallest-tile');
 				margin = 'medium';
 				if (window.innerWidth > 1200) {
 					if (columns === 4) {
@@ -38,8 +38,8 @@ const generateTilesGrid = (rows, columns) => {
 			}
 			if (rows === 6) {
 				tile.classList.add('tiles-grid__tile');
-				tile.classList.remove('small-tile');
-				tile.classList.add('smallest-tile');
+				// tile.classList.remove('small-tile');
+				// tile.classList.add('smallest-tile');
 				margin = 'small';
 				if (window.innerWidth > 1200) {
 					width = '800';
