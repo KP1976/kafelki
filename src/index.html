@@ -17,7 +17,8 @@
 		<title>Gra w kafelki</title>
 	</head>
 	<body>
-		<div class="top-bar">
+		<ul class="tiles-container"></ul>
+		<div class="top-bar is-visible">
 			<div class="top-bar__container">
 				<h1 class="top-bar__title">gra w kafelki</h1>
 				<div class="switch-mode-container">
@@ -27,12 +28,11 @@
 						<i class="fas fa-sun"></i>
 					</label>
 				</div>
-
 			</div>
 		</div>
-		<main class="container">
+		<main class="container is-visible">
 			<ul class="tiles-grid"></ul>
-			<button class="start-button" role="button">start</button>
+			<button role="button" class="start-button">start</button>
 			<div class="bottom-bar desktop">
 				<h2 class="bottom-bar__title desktop">Wybierz rozmiar planszy</h2>
 				<ul class="radios-container desktop">
@@ -87,9 +87,8 @@
 					</li>
 				</ul>
 			</div>
-			<!-- <ul class="tiles-container"></ul> -->
 		</main>
-		<div class="bottom-bar">
+		<div class="bottom-bar is-visible">
 			<h2 class="bottom-bar__title">Wybierz rozmiar planszy</h2>
 			<ul class="radios-container">
 				<li class="radios-container__radio">
@@ -145,4 +144,5 @@
 		</div>
 	</body>
 	<script type="module" src="index.js"></script>
+	<script type="module" src="game.js"></script>
 </html>

@@ -117,148 +117,122 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"change-mode.js":[function(require,module,exports) {
+})({"create_tiles.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
-var htmlDOM = document.documentElement;
-var switcher = document.querySelector('.switch-mode-container__switch');
-var moon = document.querySelector('.fa-moon');
-var sun = document.querySelector('.fa-sun');
+exports.DOMTilesContainer = exports.generateTiles = void 0;
+var DOMTilesContainer = document.querySelector('.tiles-container');
+exports.DOMTilesContainer = DOMTilesContainer;
 
-var changeThemeColorMode = function changeThemeColorMode() {
-  switcher.addEventListener('click', function (e) {
-    if (e.target.checked) {
-      htmlDOM.setAttribute('data-colormode', 'light');
-      moon.classList.remove('isVisible');
-      sun.classList.add('isVisible');
-    } else {
-      htmlDOM.setAttribute('data-colormode', 'dark');
-      moon.classList.add('isVisible');
-      sun.classList.remove('isVisible');
-    }
-  });
+var generateTiles = function generateTiles(numberOfTiles) {
+  for (var i = 0; i < numberOfTiles; i++) {
+    var tile = document.createElement('li');
+    tile.classList.add('tiles-container__tile');
+    DOMTilesContainer.appendChild(tile);
+  }
 };
 
-var _default = changeThemeColorMode;
-exports.default = _default;
-},{}],"tiles-grid.js":[function(require,module,exports) {
+exports.generateTiles = generateTiles;
+},{}],"varaibles_from_css.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
+var cssVariables = document.styleSheets[1].cssRules[0].style.cssText.split(';'); // Usunięcie z listy zmiennej --radius --black i pustego stringa (trzy ostatnie elementy)
+
+cssVariables.splice(-3, 3);
+var _default = cssVariables;
+exports.default = _default;
+},{}],"game.js":[function(require,module,exports) {
+"use strict";
+
+var _create_tiles = require("./create_tiles");
+
+var _varaibles_from_css = _interopRequireDefault(require("./varaibles_from_css"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+// import randomNumbers from './random_numbers';
+var gameTiles = document.querySelector('.tiles-container');
+var topBar = document.querySelector('.top-bar');
 var mainContainer = document.querySelector('.container');
+var bottomBar = document.querySelector('.bottom-bar.is-visible');
+var startButton = document.querySelector('.start-button');
 var tilesContainer = document.querySelector('.tiles-grid');
-var width;
+startButton.addEventListener('click', function () {
+  gameTiles.classList.add('is-visible');
+  topBar.classList.remove('is-visible');
+  mainContainer.classList.remove('is-visible');
+  bottomBar.classList.remove('is-visible');
+  var numbersOfTiles = tilesContainer.dataset.gridRows * tilesContainer.dataset.gridColumns;
+  console.log(numbersOfTiles);
 
-var generateTilesGrid = function generateTilesGrid(rows, columns) {
-  tilesContainer.innerHTML = '';
-
-  for (var i = 0; i < columns; i++) {
-    for (var j = 0; j < rows; j++) {
-      var tile = document.createElement('li');
-
-      if (rows === 4) {
-        tile.classList.add('tiles-grid__tile');
-
-        if (window.innerWidth > 1200) {
-          if (columns === 3) {
-            width = '';
-          } else {
-            width = '930';
-          }
-        } else {
-          width = '';
-        }
-      }
-
-      if (rows === 5) {
-        tile.classList.add('tiles-grid__tile');
-
-        if (window.innerWidth > 1200) {
-          if (columns === 4) {
-            width = '930';
-          }
-        }
-      }
-
-      if (rows === 6) {
-        tile.classList.add('tiles-grid__tile');
-
-        if (window.innerWidth > 1200) {
-          width = '800';
-        }
-      }
-
-      tilesContainer.appendChild(tile);
-    }
+  if (numbersOfTiles === 12 || numbersOfTiles === 18) {
+    (0, _create_tiles.generateTiles)(numbersOfTiles);
   }
 
-  tilesContainer.dataset.gridColumns = columns;
-  tilesContainer.dataset.gridRows = rows;
-  mainContainer.dataset.width = width;
-};
+  if (numbersOfTiles === 16 || numbersOfTiles === 20) {
+    _create_tiles.DOMTilesContainer.classList.add('four-columns');
 
-var _default = generateTilesGrid;
-exports.default = _default;
-},{}],"get-rows-and-columns.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
+    (0, _create_tiles.generateTiles)(numbersOfTiles);
+  }
 });
-exports.default = void 0;
 
-var _tilesGrid = _interopRequireDefault(require("./tiles-grid"));
+var Tile = function Tile(lightColor, shadowColor, isClicked) {
+  _classCallCheck(this, Tile);
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var radioInputs = document.querySelectorAll('.radios-container__radio-input');
-var boardRows = 4;
-var boardColumns = 3;
-(0, _tilesGrid.default)(boardRows, boardColumns);
-
-var getTilesBoardDimension = function getTilesBoardDimension() {
-  for (var i = 0; i < radioInputs.length; i++) {
-    radioInputs[i].addEventListener('change', function (e) {
-      var diemensionString = e.target.nextElementSibling.textContent;
-      boardRows = parseInt(diemensionString.charAt(0));
-      boardColumns = parseInt(diemensionString.charAt(diemensionString.length - 1));
-
-      if (e.target.checked) {
-        (0, _tilesGrid.default)(boardRows, boardColumns);
-      }
-    });
-  }
+  this.lightColor = lightColor;
+  this.shadowColor = shadowColor;
+  this.isClicked = isClicked;
 };
 
-var _default = getTilesBoardDimension;
-exports.default = _default;
-},{"./tiles-grid":"tiles-grid.js"}],"index.js":[function(require,module,exports) {
-"use strict";
+var cssVariablesColors = {};
+var tilesColorsValues = [];
+var allTiles = {};
+var j = 0;
 
-var _changeMode = _interopRequireDefault(require("./change-mode"));
+for (var i = 0; i < _varaibles_from_css.default.length; i++) {
+  var keyValuePairs = _varaibles_from_css.default[i].split(':');
 
-var _getRowsAndColumns = _interopRequireDefault(require("./get-rows-and-columns"));
+  tilesColorsValues[i] = _varaibles_from_css.default[i].slice(-7);
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+  if (keyValuePairs[0] !== '') {
+    cssVariablesColors[keyValuePairs[0].trim()] = keyValuePairs[1].trim();
+  }
+}
 
-document.querySelector('.radios-container__radio').checked = true;
-(0, _getRowsAndColumns.default)();
-(0, _changeMode.default)(); // DO ZROBIENIA
+var hexColorsNames = Object.keys(cssVariablesColors);
 
-/*
-	1. Plansza startowa, gdzie mamy do wyboru 4 plansze: 4 x 3, 4 x 4, 6 x 3 i 5 x 4 (rząd x kolumna).
-	2. Po wybraniu rodzaju planszy generowanie odpowiedniej liczby kafelków.
-	3. Losowe przydzielanie koloru do połowy liczby kafelków.
-	4. Pojawienie się kolorowej planszy na 3 sekundy po czym wszystkie stają się szare.
-*/
-},{"./change-mode":"change-mode.js","./get-rows-and-columns":"get-rows-and-columns.js"}],"C:/Users/Krzysiek/AppData/Roaming/nvm/v10.16.0/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+for (var _i = 0; _i < _varaibles_from_css.default.length / 2; _i++) {
+  var colorName = hexColorsNames[j].slice(2).slice(0, -6);
+  allTiles[colorName] = new Tile(tilesColorsValues[j], tilesColorsValues[j + 1], false);
+  j += 2;
+}
+
+console.log(allTiles); // const removeColorsFromTiles = () => {
+// 	setTimeout(() => {
+// 		for (let i = 0; i < DOMTiles.length; i++) {
+// 			DOMTiles[i].classList = 'tiles-container__tile';
+// 		}
+// 	}, 2000);
+// };
+// j = 0;
+// for (let i = 0; i < DOMTiles.length; i++) {
+// 	DOMTiles[[...randomNumbers][i]].classList.add(Object.keys(allTiles)[j]);
+// 	j++;
+// 	if (j > 5) {
+// 		j = 0;
+// 	}
+// }
+// removeColorsFromTiles();
+},{"./create_tiles":"create_tiles.js","./varaibles_from_css":"varaibles_from_css.js"}],"C:/Users/Krzysiek/AppData/Roaming/nvm/v10.16.0/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -462,5 +436,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["C:/Users/Krzysiek/AppData/Roaming/nvm/v10.16.0/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","index.js"], null)
-//# sourceMappingURL=/src.e31bb0bc.js.map
+},{}]},{},["C:/Users/Krzysiek/AppData/Roaming/nvm/v10.16.0/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","game.js"], null)
+//# sourceMappingURL=/game.7bbe06d5.js.map

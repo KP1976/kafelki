@@ -1,7 +1,11 @@
 .top-bar {
 	background-color: var(--top-bottom-bar-color);
-	display: flex;
+	display: none;
 	justify-content: center;
+
+	&.is-visible {
+		display: flex;
+	}
 
 	&__container {
 		align-items: center;

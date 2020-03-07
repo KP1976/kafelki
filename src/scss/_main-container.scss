@@ -1,9 +1,14 @@
 .container {
-	display: flex;
-	flex-direction: column;
+	display: none;
+	grid-template-rows: auto 9.6rem;
 	align-items: center;
 	justify-content: center;
 	height: calc(100vh - 15rem);
+	padding: 4.5rem 0 4rem 0;
+
+	&.is-visible {
+		display: grid;
+	}
 
 	@include for-tablet-portrait-up {
 		height: calc(100vh - 28rem);
@@ -11,7 +16,6 @@
 
 	@include for-desktop {
 		height: calc(100vh - 20rem);
-		display: grid;
 		grid-template-columns: 1fr 1fr;
 		grid-template-rows: 42.9rem 7.6rem;
 		margin: auto;
@@ -25,15 +29,19 @@
 	grid-template-columns: repeat(3, minmax(4.5rem, 1fr));
 	grid-template-rows: repeat(4, minmax(4.5rem, 1fr));
 	padding: 0;
-	margin: 0 0 4.6vh 0;
+	// margin: 0 0 4.6vh 0;
+	margin: 0;
 	list-style-type: none;
 	gap: 0.5rem;
-	height: calc(100vh - 35rem);
+	// height: calc(100vh - 35rem);
+	height: 100%;
 	min-width: 17.5rem;
+	align-self: start;
 
 	@include for-tablet-portrait-up {
 		gap: 1rem;
-		margin: 0 0 7.2vh 0;
+		// margin: 0 0 7.2vh 0;
+		margin: 0;
 		height: calc(100vh - 50rem);
 		min-width: 25.9rem;
 	}
@@ -150,17 +158,23 @@
 	padding: 0;
 	width: 17.4rem;
 	height: 5.2rem;
+	line-height: 5.2rem;
 	border: none;
 	font-family: 'Nunito', sans-serif;
 	font-size: 3rem;
 	font-weight: 600;
+	text-align: center;
+	text-decoration: none;
 	text-transform: uppercase;
 	outline: none;
+	align-self: end;
+	justify-self: center;
 
 	@include for-tablet-portrait-up {
 		box-shadow: var(--shadow-outer-min600px);
 		width: 25.9rem;
 		height: 7.6rem;
+		line-height: 7.6rem;
 		font-size: 4.5rem;
 	}
 

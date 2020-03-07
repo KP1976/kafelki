@@ -1,10 +1,15 @@
 .tiles-container {
 	list-style-type: none;
 	margin: 0;
-	padding: 0;
-	display: grid;
+	padding: 2rem;
 	grid-template-columns: repeat(3, 1fr);
 	gap: 0.5rem;
+	display: none;
+	height: 100vh;
+
+	&.is-visible {
+		display: grid;
+	}
 
 	&.four-columns {
 		grid-template-columns: repeat(4, 1fr);
