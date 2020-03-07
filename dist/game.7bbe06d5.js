@@ -148,42 +148,19 @@ var cssVariables = document.styleSheets[1].cssRules[0].style.cssText.split(';');
 cssVariables.splice(-3, 3);
 var _default = cssVariables;
 exports.default = _default;
-},{}],"game.js":[function(require,module,exports) {
+},{}],"get-colors-for-tiles.js":[function(require,module,exports) {
 "use strict";
 
-var _create_tiles = require("./create_tiles");
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
 
 var _varaibles_from_css = _interopRequireDefault(require("./varaibles_from_css"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-// import randomNumbers from './random_numbers';
-var gameTiles = document.querySelector('.tiles-container');
-var topBar = document.querySelector('.top-bar');
-var mainContainer = document.querySelector('.container');
-var bottomBar = document.querySelector('.bottom-bar.is-visible');
-var startButton = document.querySelector('.start-button');
-var tilesContainer = document.querySelector('.tiles-grid');
-startButton.addEventListener('click', function () {
-  gameTiles.classList.add('is-visible');
-  topBar.classList.remove('is-visible');
-  mainContainer.classList.remove('is-visible');
-  bottomBar.classList.remove('is-visible');
-  var numbersOfTiles = tilesContainer.dataset.gridRows * tilesContainer.dataset.gridColumns;
-  console.log(numbersOfTiles);
-
-  if (numbersOfTiles === 12 || numbersOfTiles === 18) {
-    (0, _create_tiles.generateTiles)(numbersOfTiles);
-  }
-
-  if (numbersOfTiles === 16 || numbersOfTiles === 20) {
-    _create_tiles.DOMTilesContainer.classList.add('four-columns');
-
-    (0, _create_tiles.generateTiles)(numbersOfTiles);
-  }
-});
 
 var Tile = function Tile(lightColor, shadowColor, isClicked) {
   _classCallCheck(this, Tile);
@@ -216,7 +193,42 @@ for (var _i = 0; _i < _varaibles_from_css.default.length / 2; _i++) {
   j += 2;
 }
 
-console.log(allTiles); // const removeColorsFromTiles = () => {
+var _default = allTiles;
+exports.default = _default;
+},{"./varaibles_from_css":"varaibles_from_css.js"}],"game.js":[function(require,module,exports) {
+"use strict";
+
+var _create_tiles = require("./create_tiles");
+
+var _getColorsForTiles = _interopRequireDefault(require("./get-colors-for-tiles"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// import randomNumbers from './random_numbers';
+console.log(_getColorsForTiles.default);
+var gameTiles = document.querySelector('.tiles-container');
+var topBar = document.querySelector('.top-bar');
+var mainContainer = document.querySelector('.container');
+var bottomBar = document.querySelector('.bottom-bar.is-visible');
+var startButton = document.querySelector('.start-button');
+var tilesContainer = document.querySelector('.tiles-grid');
+startButton.addEventListener('click', function () {
+  gameTiles.classList.add('is-visible');
+  topBar.classList.remove('is-visible');
+  mainContainer.classList.remove('is-visible');
+  bottomBar.classList.remove('is-visible');
+  var numbersOfTiles = tilesContainer.dataset.gridRows * tilesContainer.dataset.gridColumns;
+
+  if (numbersOfTiles === 12 || numbersOfTiles === 18) {
+    (0, _create_tiles.generateTiles)(numbersOfTiles);
+  }
+
+  if (numbersOfTiles === 16 || numbersOfTiles === 20) {
+    _create_tiles.DOMTilesContainer.classList.add('four-columns');
+
+    (0, _create_tiles.generateTiles)(numbersOfTiles);
+  }
+}); // const removeColorsFromTiles = () => {
 // 	setTimeout(() => {
 // 		for (let i = 0; i < DOMTiles.length; i++) {
 // 			DOMTiles[i].classList = 'tiles-container__tile';
@@ -232,7 +244,7 @@ console.log(allTiles); // const removeColorsFromTiles = () => {
 // 	}
 // }
 // removeColorsFromTiles();
-},{"./create_tiles":"create_tiles.js","./varaibles_from_css":"varaibles_from_css.js"}],"C:/Users/Krzysiek/AppData/Roaming/nvm/v10.16.0/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./create_tiles":"create_tiles.js","./get-colors-for-tiles":"get-colors-for-tiles.js"}],"C:/Users/Krzysiek/AppData/Roaming/nvm/v10.16.0/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
