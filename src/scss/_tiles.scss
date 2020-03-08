@@ -16,11 +16,11 @@
 	}
 
 	&__tile {
-		background: linear-gradient(
-			to right bottom,
-			var(--grey),
-			rgba(50, 50, 50, 0.1)
-		);
+		// background: linear-gradient(
+		// 	to right bottom,
+		// 	var(--grey),
+		// 	rgba(50, 50, 50, 0.1)
+		// );
 		border-radius: var(--radius);
 		box-shadow: var(--shadow-outer);
 		width: 100%;

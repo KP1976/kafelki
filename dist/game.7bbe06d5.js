@@ -136,76 +136,38 @@ var generateTiles = function generateTiles(numberOfTiles) {
 };
 
 exports.generateTiles = generateTiles;
-},{}],"varaibles_from_css.js":[function(require,module,exports) {
+},{}],"random-numbers.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var cssVariables = document.styleSheets[1].cssRules[0].style.cssText.split(';'); // Usunięcie z listy zmiennej --radius --black i pustego stringa (trzy ostatnie elementy)
+var randomNumbers = new Set();
 
-cssVariables.splice(-3, 3);
-var _default = cssVariables;
-exports.default = _default;
-},{}],"get-colors-for-tiles.js":[function(require,module,exports) {
-"use strict";
+var generateRandomNumber = function generateRandomNumber(numbersOfTiles) {
+  if (numbersOfTiles) {
+    while (randomNumbers.size !== numbersOfTiles) {
+      randomNumbers.add(Math.floor(Math.random() * numbersOfTiles));
+    }
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _varaibles_from_css = _interopRequireDefault(require("./varaibles_from_css"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var Tile = function Tile(lightColor, shadowColor, isClicked) {
-  _classCallCheck(this, Tile);
-
-  this.lightColor = lightColor;
-  this.shadowColor = shadowColor;
-  this.isClicked = isClicked;
+    return randomNumbers;
+  }
 };
 
-var cssVariablesColors = {};
-var tilesColorsValues = [];
-var allTiles = {};
-var j = 0;
-
-for (var i = 0; i < _varaibles_from_css.default.length; i++) {
-  var keyValuePairs = _varaibles_from_css.default[i].split(':');
-
-  tilesColorsValues[i] = _varaibles_from_css.default[i].slice(-7);
-
-  if (keyValuePairs[0] !== '') {
-    cssVariablesColors[keyValuePairs[0].trim()] = keyValuePairs[1].trim();
-  }
-}
-
-var hexColorsNames = Object.keys(cssVariablesColors);
-
-for (var _i = 0; _i < _varaibles_from_css.default.length / 2; _i++) {
-  var colorName = hexColorsNames[j].slice(2).slice(0, -6);
-  allTiles[colorName] = new Tile(tilesColorsValues[j], tilesColorsValues[j + 1], false);
-  j += 2;
-}
-
-var _default = allTiles;
+var _default = generateRandomNumber;
 exports.default = _default;
-},{"./varaibles_from_css":"varaibles_from_css.js"}],"game.js":[function(require,module,exports) {
+},{}],"game.js":[function(require,module,exports) {
 "use strict";
 
 var _create_tiles = require("./create_tiles");
 
-var _getColorsForTiles = _interopRequireDefault(require("./get-colors-for-tiles"));
+var _randomNumbers = _interopRequireDefault(require("./random-numbers"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// import randomNumbers from './random_numbers';
-console.log(_getColorsForTiles.default);
+// import allTiles from './get-colors-for-tiles';
+// console.log(allTiles);
 var gameTiles = document.querySelector('.tiles-container');
 var topBar = document.querySelector('.top-bar');
 var mainContainer = document.querySelector('.container');
@@ -217,7 +179,10 @@ startButton.addEventListener('click', function () {
   topBar.classList.remove('is-visible');
   mainContainer.classList.remove('is-visible');
   bottomBar.classList.remove('is-visible');
+  var allColors = ['black', 'purple', 'light-blue', 'orange', 'red', 'blue', 'green', 'yellow', 'pink', 'brown'];
+  var randomNumbers;
   var numbersOfTiles = tilesContainer.dataset.gridRows * tilesContainer.dataset.gridColumns;
+  var pairColors = numbersOfTiles / 2;
 
   if (numbersOfTiles === 12 || numbersOfTiles === 18) {
     (0, _create_tiles.generateTiles)(numbersOfTiles);
@@ -228,6 +193,9 @@ startButton.addEventListener('click', function () {
 
     (0, _create_tiles.generateTiles)(numbersOfTiles);
   }
+
+  randomNumbers = (0, _randomNumbers.default)(numbersOfTiles);
+  console.log(randomNumbers, pairColors);
 }); // const removeColorsFromTiles = () => {
 // 	setTimeout(() => {
 // 		for (let i = 0; i < DOMTiles.length; i++) {
@@ -244,7 +212,7 @@ startButton.addEventListener('click', function () {
 // 	}
 // }
 // removeColorsFromTiles();
-},{"./create_tiles":"create_tiles.js","./get-colors-for-tiles":"get-colors-for-tiles.js"}],"C:/Users/Krzysiek/AppData/Roaming/nvm/v10.16.0/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./create_tiles":"create_tiles.js","./random-numbers":"random-numbers.js"}],"C:/Users/Krzysiek/AppData/Roaming/nvm/v10.16.0/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -272,7 +240,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50391" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58354" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

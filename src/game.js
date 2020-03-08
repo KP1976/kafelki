@@ -1,8 +1,8 @@
 import { generateTiles, DOMTilesContainer } from './create_tiles';
-import allTiles from './get-colors-for-tiles';
-// import randomNumbers from './random_numbers';
+import generateRandomNumber from './random-numbers';
+// import allTiles from './get-colors-for-tiles';
 
-console.log(allTiles);
+// console.log(allTiles);
 
 const gameTiles = document.querySelector('.tiles-container');
 const topBar = document.querySelector('.top-bar');
@@ -17,8 +17,22 @@ startButton.addEventListener('click', function() {
 	mainContainer.classList.remove('is-visible');
 	bottomBar.classList.remove('is-visible');
 
+	const allColors = [
+		'black',
+		'purple',
+		'light-blue',
+		'orange',
+		'red',
+		'blue',
+		'green',
+		'yellow',
+		'pink',
+		'brown',
+	];
+	let randomNumbers;
 	let numbersOfTiles =
 		tilesContainer.dataset.gridRows * tilesContainer.dataset.gridColumns;
+	const pairColors = numbersOfTiles / 2;
 
 	if (numbersOfTiles === 12 || numbersOfTiles === 18) {
 		generateTiles(numbersOfTiles);
@@ -28,6 +42,9 @@ startButton.addEventListener('click', function() {
 		DOMTilesContainer.classList.add('four-columns');
 		generateTiles(numbersOfTiles);
 	}
+
+	randomNumbers = generateRandomNumber(numbersOfTiles);
+	console.log(randomNumbers, pairColors);
 });
 
 // const removeColorsFromTiles = () => {
