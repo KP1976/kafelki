@@ -33,6 +33,9 @@ startButton.addEventListener('click', function() {
 	let numbersOfTiles =
 		tilesContainer.dataset.gridRows * tilesContainer.dataset.gridColumns;
 	const pairColors = numbersOfTiles / 2;
+	const arrayOfPairColors = [];
+	const randomArrayOfPairColors = [];
+	let j = 0;
 
 	if (numbersOfTiles === 12 || numbersOfTiles === 18) {
 		generateTiles(numbersOfTiles);
@@ -43,8 +46,28 @@ startButton.addEventListener('click', function() {
 		generateTiles(numbersOfTiles);
 	}
 
-	randomNumbers = generateRandomNumber(numbersOfTiles);
-	console.log(randomNumbers, pairColors);
+	const tiles = document.querySelectorAll('.tiles-container__tile');
+
+	randomNumbers = [...generateRandomNumber(numbersOfTiles)];
+
+	for (let i = 0; i < numbersOfTiles; i++) {
+		arrayOfPairColors[i] = allColors[j];
+		if (j > pairColors - 2) {
+			j = -1;
+		}
+		j++;
+	}
+
+	for (let i = 0; i < numbersOfTiles; i++) {
+		randomArrayOfPairColors[i] = arrayOfPairColors[randomNumbers[i]];
+	}
+
+	tiles.forEach((tile, index) => {
+		tile.classList.add(randomArrayOfPairColors[index]);
+	});
+
+	console.log(randomArrayOfPairColors);
+	console.log(tiles);
 });
 
 // const removeColorsFromTiles = () => {
