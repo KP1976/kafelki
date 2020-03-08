@@ -67,9 +67,18 @@ startButton.addEventListener('click', function() {
 	});
 
 	setTimeout(() => {
-		tiles.forEach(tile => {
+		tiles.forEach((tile, index) => {
 			tile.className = 'tiles-container__tile';
+			tile.addEventListener('click', function() {
+				console.log(`Clicked ${index}`);
+			});
 		});
+
+		// tiles.forEach((tile, index) => {
+		// 	tile.addEventListener('click', function() {
+		// 		console.log(`Clicked ${index}`);
+		// 	});
+		// });
 	}, 3000);
 
 	console.log(randomArrayOfPairColors);
