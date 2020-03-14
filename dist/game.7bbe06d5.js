@@ -194,6 +194,8 @@ startButton.addEventListener('click', function () {
   var arrayOfPairColors = [];
   var randomArrayOfPairColors = [];
   var j = 0;
+  var howManyClicks = 0;
+  var pairClicks = [];
 
   if (numbersOfTiles === 12 || numbersOfTiles === 18) {
     (0, _create_tiles.generateTiles)(numbersOfTiles);
@@ -229,32 +231,33 @@ startButton.addEventListener('click', function () {
     tiles.forEach(function (tile, index) {
       tile.className = 'tiles-container__tile';
       tile.addEventListener('click', function () {
-        console.log("Clicked ".concat(index));
+        howManyClicks += 1;
+
+        if (howManyClicks < 3) {
+          pairClicks.push(index);
+          this.classList.add(randomArrayOfPairColors[index]);
+        } else {
+          howManyClicks = 1;
+          pairClicks = [];
+          pairClicks.push(index);
+          this.classList.add(randomArrayOfPairColors[index]);
+        }
+
+        if (howManyClicks === 2) {
+          var firstClickedTile = tiles[pairClicks[0]];
+          var secondClickedTile = tiles[pairClicks[1]];
+
+          if (firstClickedTile.classList[1] === secondClickedTile.classList[1]) {
+            firstClickedTile.className = 'tiles-container__tile guessed';
+            secondClickedTile.className = 'tiles-container__tile guessed';
+          }
+        }
+
+        console.log(pairClicks);
       });
-    }); // tiles.forEach((tile, index) => {
-    // 	tile.addEventListener('click', function() {
-    // 		console.log(`Clicked ${index}`);
-    // 	});
-    // });
+    });
   }, 3000);
-  console.log(randomArrayOfPairColors);
-  console.log(tiles);
-}); // const removeColorsFromTiles = () => {
-// 	setTimeout(() => {
-// 		for (let i = 0; i < DOMTiles.length; i++) {
-// 			DOMTiles[i].classList = 'tiles-container__tile';
-// 		}
-// 	}, 2000);
-// };
-// j = 0;
-// for (let i = 0; i < DOMTiles.length; i++) {
-// 	DOMTiles[[...randomNumbers][i]].classList.add(Object.keys(allTiles)[j]);
-// 	j++;
-// 	if (j > 5) {
-// 		j = 0;
-// 	}
-// }
-// removeColorsFromTiles();
+});
 },{"./create_tiles":"create_tiles.js","./random-numbers":"random-numbers.js"}],"C:/Users/Krzysiek/AppData/Roaming/nvm/v10.16.0/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -283,7 +286,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58354" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50340" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
