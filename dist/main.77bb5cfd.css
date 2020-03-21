@@ -104,6 +104,7 @@ body {
 }
 .tiles-container__tile.guessed {
   box-shadow: var(--shadow-inner);
+  pointer-events: none;
 }
 .tiles-container__tile.black {
   background: linear-gradient(to right bottom, var(--black-light), var(--black-dark));

@@ -92,9 +92,11 @@ startButton.addEventListener('click', function() {
 					) {
 						firstClickedTile.className = 'tiles-container__tile guessed';
 						secondClickedTile.className = 'tiles-container__tile guessed';
+					} else {
+						firstClickedTile.className = 'tiles-container__tile';
+						secondClickedTile.className = 'tiles-container__tile';
 					}
 				}
-				console.log(pairClicks);
 			});
 		});
 	}, 3000);

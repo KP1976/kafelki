@@ -250,10 +250,11 @@ startButton.addEventListener('click', function () {
           if (firstClickedTile.classList[1] === secondClickedTile.classList[1]) {
             firstClickedTile.className = 'tiles-container__tile guessed';
             secondClickedTile.className = 'tiles-container__tile guessed';
+          } else {
+            firstClickedTile.className = 'tiles-container__tile';
+            secondClickedTile.className = 'tiles-container__tile';
           }
         }
-
-        console.log(pairClicks);
       });
     });
   }, 3000);
@@ -286,7 +287,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50340" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50365" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
