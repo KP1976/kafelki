@@ -90,8 +90,14 @@ startButton.addEventListener('click', function() {
 					if (
 						firstClickedTile.classList[1] === secondClickedTile.classList[1]
 					) {
+						const correctSign1 = document.createElement('i');
+						const correctSign2 = document.createElement('i');
+						correctSign1.className = 'fas fa-check';
+						correctSign2.className = 'fas fa-check';
 						firstClickedTile.className = 'tiles-container__tile guessed';
 						secondClickedTile.className = 'tiles-container__tile guessed';
+						firstClickedTile.insertAdjacentElement('afterbegin', correctSign1);
+						secondClickedTile.insertAdjacentElement('afterbegin', correctSign2);
 					} else {
 						firstClickedTile.className = 'tiles-container__tile';
 						secondClickedTile.className = 'tiles-container__tile';

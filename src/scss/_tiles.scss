@@ -25,6 +25,24 @@
 		&.guessed {
 			box-shadow: var(--shadow-inner);
 			pointer-events: none;
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+			grid-template-rows: repeat(3, 1fr);
+
+			.fa-check {
+				font-size: 4rem;
+				color: var(--text-color);
+				justify-content: center;
+				grid-column: 2 / 3;
+				grid-row: 2 / 3;
+				position: relative;
+
+				&::before {
+					position: absolute;
+					left: calc(50% - 2rem);
+					top: calc(50% - 2rem);
+				}
+			}
 		}
 
 		&.black {
