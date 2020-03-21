@@ -231,19 +231,15 @@ startButton.addEventListener('click', function () {
     tiles.forEach(function (tile, index) {
       tile.className = 'tiles-container__tile';
       tile.addEventListener('click', function () {
-        howManyClicks += 1;
+        var _this = this;
 
-        if (howManyClicks < 3) {
-          pairClicks.push(index);
-          this.classList.add(randomArrayOfPairColors[index]);
-        } else {
-          howManyClicks = 1;
-          pairClicks = [];
-          pairClicks.push(index);
-          this.classList.add(randomArrayOfPairColors[index]);
-        }
+        howManyClicks += 1;
+        pairClicks.push(index);
+        this.classList.add(randomArrayOfPairColors[index]);
+        this.classList.add('clicked');
 
         if (howManyClicks === 2) {
+          howManyClicks = 0;
           var firstClickedTile = tiles[pairClicks[0]];
           var secondClickedTile = tiles[pairClicks[1]];
 
@@ -257,9 +253,15 @@ startButton.addEventListener('click', function () {
             firstClickedTile.insertAdjacentElement('afterbegin', correctSign1);
             secondClickedTile.insertAdjacentElement('afterbegin', correctSign2);
           } else {
-            firstClickedTile.className = 'tiles-container__tile';
-            secondClickedTile.className = 'tiles-container__tile';
+            setTimeout(function () {
+              _this.classList.add('clicked');
+
+              firstClickedTile.className = 'tiles-container__tile';
+              secondClickedTile.className = 'tiles-container__tile';
+            }, 1000);
           }
+
+          pairClicks = [];
         }
       });
     });
@@ -293,7 +295,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50365" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52671" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

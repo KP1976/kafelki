@@ -1,5 +1,6 @@
 const mainContainer = document.querySelector('.container');
 const tilesContainer = document.querySelector('.tiles-grid');
+const gameTilesContainer = document.querySelector('.tiles-container');
 let width;
 
 const generateTilesGrid = (rows, columns) => {
@@ -38,6 +39,7 @@ const generateTilesGrid = (rows, columns) => {
 	}
 	tilesContainer.dataset.gridColumns = columns;
 	tilesContainer.dataset.gridRows = rows;
+	gameTilesContainer.dataset.rows = rows;
 	mainContainer.dataset.width = width;
 };
 

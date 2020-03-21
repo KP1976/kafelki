@@ -73,18 +73,12 @@ startButton.addEventListener('click', function() {
 			tile.className = 'tiles-container__tile';
 			tile.addEventListener('click', function() {
 				howManyClicks += 1;
-
-				if (howManyClicks < 3) {
-					pairClicks.push(index);
-					this.classList.add(randomArrayOfPairColors[index]);
-				} else {
-					howManyClicks = 1;
-					pairClicks = [];
-					pairClicks.push(index);
-					this.classList.add(randomArrayOfPairColors[index]);
-				}
+				pairClicks.push(index);
+				this.classList.add(randomArrayOfPairColors[index]);
+				this.classList.add('clicked');
 
 				if (howManyClicks === 2) {
+					howManyClicks = 0;
 					const firstClickedTile = tiles[pairClicks[0]];
 					const secondClickedTile = tiles[pairClicks[1]];
 					if (
@@ -99,9 +93,13 @@ startButton.addEventListener('click', function() {
 						firstClickedTile.insertAdjacentElement('afterbegin', correctSign1);
 						secondClickedTile.insertAdjacentElement('afterbegin', correctSign2);
 					} else {
-						firstClickedTile.className = 'tiles-container__tile';
-						secondClickedTile.className = 'tiles-container__tile';
+						setTimeout(() => {
+							this.classList.add('clicked');
+							firstClickedTile.className = 'tiles-container__tile';
+							secondClickedTile.className = 'tiles-container__tile';
+						}, 1000);
 					}
+					pairClicks = [];
 				}
 			});
 		});

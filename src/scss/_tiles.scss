@@ -22,26 +22,20 @@
 		height: 100%;
 		cursor: pointer;
 
+		&.clicked {
+			pointer-events: none;
+		}
+
 		&.guessed {
 			box-shadow: var(--shadow-inner);
+			display: flex;
+			justify-content: center;
+			align-items: center;
 			pointer-events: none;
-			display: grid;
-			grid-template-columns: repeat(3, 1fr);
-			grid-template-rows: repeat(3, 1fr);
 
 			.fa-check {
-				font-size: 4rem;
+				font-size: calc(8vh - 1rem);
 				color: var(--text-color);
-				justify-content: center;
-				grid-column: 2 / 3;
-				grid-row: 2 / 3;
-				position: relative;
-
-				&::before {
-					position: absolute;
-					left: calc(50% - 2rem);
-					top: calc(50% - 2rem);
-				}
 			}
 		}
 
@@ -125,4 +119,16 @@
 			);
 		}
 	}
+}
+
+[data-rows='4'] {
+	grid-template-rows: repeat(4, 1fr);
+}
+
+[data-rows='5'] {
+	grid-template-rows: repeat(5, 1fr);
+}
+
+[data-rows='6'] {
+	grid-template-rows: repeat(6, 1fr);
 }

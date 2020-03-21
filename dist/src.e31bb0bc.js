@@ -154,6 +154,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = void 0;
 var mainContainer = document.querySelector('.container');
 var tilesContainer = document.querySelector('.tiles-grid');
+var gameTilesContainer = document.querySelector('.tiles-container');
 var width;
 
 var generateTilesGrid = function generateTilesGrid(rows, columns) {
@@ -201,6 +202,7 @@ var generateTilesGrid = function generateTilesGrid(rows, columns) {
 
   tilesContainer.dataset.gridColumns = columns;
   tilesContainer.dataset.gridRows = rows;
+  gameTilesContainer.dataset.rows = rows;
   mainContainer.dataset.width = width;
 };
 
@@ -286,7 +288,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50365" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52671" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
