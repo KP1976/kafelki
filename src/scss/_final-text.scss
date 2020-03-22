@@ -1,0 +1,14 @@
+.final-text {
+	font-size: 4vh;
+	margin: 0 auto;
+	padding: 0;
+	line-height: 100vh;
+
+	&.text-white {
+		color: var(--text-color);
+	}
+
+	&.text-black {
+		color: var(--black);
+	}
+}

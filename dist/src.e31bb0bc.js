@@ -253,13 +253,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 document.querySelector('.radios-container__radio').checked = true;
 (0, _getRowsAndColumns.default)();
 (0, _changeMode.default)(); // DO ZROBIENIA
-
-/*
-	1. Plansza startowa, gdzie mamy do wyboru 4 plansze: 4 x 3, 4 x 4, 6 x 3 i 5 x 4 (rząd x kolumna).
-	2. Po wybraniu rodzaju planszy generowanie odpowiedniej liczby kafelków.
-	3. Losowe przydzielanie koloru do połowy liczby kafelków.
-	4. Pojawienie się kolorowej planszy na 3 sekundy po czym wszystkie stają się szare.
-*/
 },{"./change-mode":"change-mode.js","./get-rows-and-columns":"get-rows-and-columns.js"}],"C:/Users/Krzysiek/AppData/Roaming/nvm/v10.16.0/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -288,7 +281,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52671" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54277" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

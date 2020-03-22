@@ -196,6 +196,7 @@ startButton.addEventListener('click', function () {
   var j = 0;
   var howManyClicks = 0;
   var pairClicks = [];
+  var correctAnswers = 0;
 
   if (numbersOfTiles === 12 || numbersOfTiles === 18) {
     (0, _create_tiles.generateTiles)(numbersOfTiles);
@@ -228,6 +229,7 @@ startButton.addEventListener('click', function () {
     tile.classList.add(randomArrayOfPairColors[index]);
   });
   setTimeout(function () {
+    var startTime = new Date().getTime();
     tiles.forEach(function (tile, index) {
       tile.className = 'tiles-container__tile';
       tile.addEventListener('click', function () {
@@ -252,6 +254,35 @@ startButton.addEventListener('click', function () {
             secondClickedTile.className = 'tiles-container__tile guessed';
             firstClickedTile.insertAdjacentElement('afterbegin', correctSign1);
             secondClickedTile.insertAdjacentElement('afterbegin', correctSign2);
+            correctAnswers++;
+
+            if (correctAnswers === tiles.length / 2) {
+              var finalText = document.createElement('h1');
+              var endTime = new Date().getTime();
+              gameTiles.classList.remove('is-visible');
+              gameTiles.insertAdjacentElement('afterend', finalText);
+              finalText.className = 'final-text';
+              finalText.textContent = "Wygra\u0142e\u015B z czasem: ".concat((endTime - startTime) / 1000, "s");
+              console.log((endTime - startTime) / 1000);
+
+              if (document.querySelector('html').getAttribute('data-colormode') === 'dark') {
+                finalText.classList.add('text-white');
+              } else {
+                finalText.classList.add('text-black');
+              }
+
+              setTimeout(function () {
+                topBar.classList.add('is-visible');
+                mainContainer.classList.add('is-visible');
+                bottomBar.classList.add('is-visible');
+
+                while (gameTiles.firstChild) {
+                  gameTiles.firstChild.remove();
+                }
+
+                finalText.remove();
+              }, 1500);
+            }
           } else {
             setTimeout(function () {
               _this.classList.add('clicked');
@@ -295,7 +326,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52671" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54277" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -38,6 +38,7 @@ startButton.addEventListener('click', function() {
 	let j = 0;
 	let howManyClicks = 0;
 	let pairClicks = [];
+	let correctAnswers = 0;
 
 	if (numbersOfTiles === 12 || numbersOfTiles === 18) {
 		generateTiles(numbersOfTiles);
@@ -69,8 +70,11 @@ startButton.addEventListener('click', function() {
 	});
 
 	setTimeout(() => {
+		const startTime = new Date().getTime();
+
 		tiles.forEach((tile, index) => {
 			tile.className = 'tiles-container__tile';
+
 			tile.addEventListener('click', function() {
 				howManyClicks += 1;
 				pairClicks.push(index);
@@ -92,6 +96,43 @@ startButton.addEventListener('click', function() {
 						secondClickedTile.className = 'tiles-container__tile guessed';
 						firstClickedTile.insertAdjacentElement('afterbegin', correctSign1);
 						secondClickedTile.insertAdjacentElement('afterbegin', correctSign2);
+						correctAnswers++;
+
+						if (correctAnswers === tiles.length / 2) {
+							const finalText = document.createElement('h1');
+							const endTime = new Date().getTime();
+
+							gameTiles.classList.remove('is-visible');
+							gameTiles.insertAdjacentElement('afterend', finalText);
+							finalText.className = 'final-text';
+							finalText.textContent = `Wygrałeś z czasem: ${(endTime -
+								startTime) /
+								1000}s`;
+
+							console.log((endTime - startTime) / 1000);
+
+							if (
+								document
+									.querySelector('html')
+									.getAttribute('data-colormode') === 'dark'
+							) {
+								finalText.classList.add('text-white');
+							} else {
+								finalText.classList.add('text-black');
+							}
+
+							setTimeout(() => {
+								topBar.classList.add('is-visible');
+								mainContainer.classList.add('is-visible');
+								bottomBar.classList.add('is-visible');
+
+								while (gameTiles.firstChild) {
+									gameTiles.firstChild.remove();
+								}
+
+								finalText.remove();
+							}, 1500);
+						}
 					} else {
 						setTimeout(() => {
 							this.classList.add('clicked');

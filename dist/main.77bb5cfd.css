@@ -159,6 +159,19 @@ body {
   grid-template-rows: repeat(6, 1fr);
 }
 
+.final-text {
+  font-size: 4vh;
+  margin: 0 auto;
+  padding: 0;
+  line-height: 100vh;
+}
+.final-text.text-white {
+  color: var(--text-color);
+}
+.final-text.text-black {
+  color: var(--black);
+}
+
 .top-bar {
   background-color: var(--top-bottom-bar-color);
   display: none;
