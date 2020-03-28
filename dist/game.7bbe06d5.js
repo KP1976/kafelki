@@ -157,12 +157,97 @@ var generateRandomNumber = function generateRandomNumber(numbersOfTiles) {
 
 var _default = generateRandomNumber;
 exports.default = _default;
+},{}],"click-tile.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.clickTile = clickTile;
+var howManyClicks = 0;
+var pairClicks = [];
+var correctAnswers = 0;
+var gameTiles = document.querySelector('.tiles-container');
+var topBar = document.querySelector('.top-bar');
+var mainContainer = document.querySelector('.container');
+var bottomBar = document.querySelector('.bottom-bar.is-visible');
+
+function clickTile(index, startTime, tiles, randomArrayOfPairColors, event) {
+  howManyClicks += 1;
+  pairClicks.push(index);
+  event.target.classList.add(randomArrayOfPairColors[index]);
+  event.target.classList.add('clicked');
+
+  if (howManyClicks === 2) {
+    howManyClicks = 0;
+    var firstClickedTile = tiles[pairClicks[0]];
+    var secondClickedTile = tiles[pairClicks[1]];
+    console.log(firstClickedTile, secondClickedTile);
+
+    if (firstClickedTile.classList[1] === secondClickedTile.classList[1]) {
+      var correctSign1 = document.createElement('i');
+      var correctSign2 = document.createElement('i');
+      correctSign1.className = 'fas fa-check';
+      correctSign2.className = 'fas fa-check';
+      firstClickedTile.className = 'tiles-container__tile guessed';
+      secondClickedTile.className = 'tiles-container__tile guessed';
+      firstClickedTile.insertAdjacentElement('afterbegin', correctSign1);
+      secondClickedTile.insertAdjacentElement('afterbegin', correctSign2);
+      correctAnswers++;
+
+      if (correctAnswers === tiles.length / 2) {
+        var finalText = document.createElement('h1');
+        var endTime = new Date().getTime();
+        gameTiles.classList.remove('is-visible');
+        gameTiles.insertAdjacentElement('afterend', finalText);
+        finalText.className = 'final-text';
+        finalText.textContent = "Wygra\u0142e\u015B z czasem: ".concat((endTime - startTime) / 1000, "s");
+        console.log((endTime - startTime) / 1000);
+
+        if (document.querySelector('html').getAttribute('data-colormode') === 'dark') {
+          finalText.classList.add('text-white');
+        } else {
+          finalText.classList.add('text-black');
+        }
+
+        setTimeout(function () {
+          topBar.classList.add('is-visible');
+          mainContainer.classList.add('is-visible');
+          bottomBar.classList.add('is-visible');
+
+          while (gameTiles.firstChild) {
+            gameTiles.firstChild.remove();
+          }
+
+          finalText.remove();
+        }, 1500);
+      }
+    } else {
+      setTimeout(function () {
+        event.target.classList.add('clicked');
+        firstClickedTile.className = 'tiles-container__tile';
+        secondClickedTile.className = 'tiles-container__tile';
+      }, 1000);
+    }
+
+    pairClicks = [];
+  }
+}
 },{}],"game.js":[function(require,module,exports) {
 "use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.startGame = void 0;
 
 var _create_tiles = require("./create_tiles");
 
 var _randomNumbers = _interopRequireDefault(require("./random-numbers"));
+
+var _clickTile = require("./click-tile");
+
+var _this = void 0;
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -175,14 +260,13 @@ function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
 
 // import allTiles from './get-colors-for-tiles';
-// console.log(allTiles);
 var gameTiles = document.querySelector('.tiles-container');
 var topBar = document.querySelector('.top-bar');
 var mainContainer = document.querySelector('.container');
 var bottomBar = document.querySelector('.bottom-bar.is-visible');
-var startButton = document.querySelector('.start-button');
 var tilesContainer = document.querySelector('.tiles-grid');
-startButton.addEventListener('click', function () {
+
+var startGame = function startGame() {
   gameTiles.classList.add('is-visible');
   topBar.classList.remove('is-visible');
   mainContainer.classList.remove('is-visible');
@@ -193,10 +277,9 @@ startButton.addEventListener('click', function () {
   var pairColors = numbersOfTiles / 2;
   var arrayOfPairColors = [];
   var randomArrayOfPairColors = [];
-  var j = 0;
-  var howManyClicks = 0;
-  var pairClicks = [];
-  var correctAnswers = 0;
+  var j = 0; // let howManyClicks = 0;
+  // let pairClicks = [];
+  // let correctAnswers = 0;
 
   if (numbersOfTiles === 12 || numbersOfTiles === 18) {
     (0, _create_tiles.generateTiles)(numbersOfTiles);
@@ -232,73 +315,13 @@ startButton.addEventListener('click', function () {
     var startTime = new Date().getTime();
     tiles.forEach(function (tile, index) {
       tile.className = 'tiles-container__tile';
-      tile.addEventListener('click', function () {
-        var _this = this;
-
-        howManyClicks += 1;
-        pairClicks.push(index);
-        this.classList.add(randomArrayOfPairColors[index]);
-        this.classList.add('clicked');
-
-        if (howManyClicks === 2) {
-          howManyClicks = 0;
-          var firstClickedTile = tiles[pairClicks[0]];
-          var secondClickedTile = tiles[pairClicks[1]];
-
-          if (firstClickedTile.classList[1] === secondClickedTile.classList[1]) {
-            var correctSign1 = document.createElement('i');
-            var correctSign2 = document.createElement('i');
-            correctSign1.className = 'fas fa-check';
-            correctSign2.className = 'fas fa-check';
-            firstClickedTile.className = 'tiles-container__tile guessed';
-            secondClickedTile.className = 'tiles-container__tile guessed';
-            firstClickedTile.insertAdjacentElement('afterbegin', correctSign1);
-            secondClickedTile.insertAdjacentElement('afterbegin', correctSign2);
-            correctAnswers++;
-
-            if (correctAnswers === tiles.length / 2) {
-              var finalText = document.createElement('h1');
-              var endTime = new Date().getTime();
-              gameTiles.classList.remove('is-visible');
-              gameTiles.insertAdjacentElement('afterend', finalText);
-              finalText.className = 'final-text';
-              finalText.textContent = "Wygra\u0142e\u015B z czasem: ".concat((endTime - startTime) / 1000, "s");
-              console.log((endTime - startTime) / 1000);
-
-              if (document.querySelector('html').getAttribute('data-colormode') === 'dark') {
-                finalText.classList.add('text-white');
-              } else {
-                finalText.classList.add('text-black');
-              }
-
-              setTimeout(function () {
-                topBar.classList.add('is-visible');
-                mainContainer.classList.add('is-visible');
-                bottomBar.classList.add('is-visible');
-
-                while (gameTiles.firstChild) {
-                  gameTiles.firstChild.remove();
-                }
-
-                finalText.remove();
-              }, 1500);
-            }
-          } else {
-            setTimeout(function () {
-              _this.classList.add('clicked');
-
-              firstClickedTile.className = 'tiles-container__tile';
-              secondClickedTile.className = 'tiles-container__tile';
-            }, 1000);
-          }
-
-          pairClicks = [];
-        }
-      });
+      tile.addEventListener('click', _clickTile.clickTile.bind(_this, index, startTime, tiles, randomArrayOfPairColors));
     });
   }, 3000);
-});
-},{"./create_tiles":"create_tiles.js","./random-numbers":"random-numbers.js"}],"C:/Users/Krzysiek/AppData/Roaming/nvm/v10.16.0/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+};
+
+exports.startGame = startGame;
+},{"./create_tiles":"create_tiles.js","./random-numbers":"random-numbers.js","./click-tile":"click-tile.js"}],"C:/Users/Krzysiek/AppData/Roaming/nvm/v10.16.0/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -326,7 +349,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54277" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52424" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
