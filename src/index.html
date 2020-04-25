@@ -17,34 +17,36 @@
 		<title>Gra w kafelki</title>
 	</head>
 	<body>
-		<ul class="tiles-container" data-rows='4'></ul>
+		<!-- Tutaj renderowane są kafelki  -->
+		<ul class="tiles-container" data-grid-rows='4' data-grid-columns='3'></ul>
+
 		<div class="top-bar is-visible">
 			<div class="top-bar__container">
 				<h1 class="top-bar__title">gra w kafelki</h1>
 				<div class="switch-mode-container">
 					<input class="switch-mode-container__switch" type="checkbox" id="switch"></input>
 					<label for="switch" class="switch-mode-container__switch-label">
-						<i class="fas fa-moon isVisible"></i>
+						<i class="fas fa-moon"></i>
 						<i class="fas fa-sun"></i>
 					</label>
 				</div>
 			</div>
 		</div>
 		<main class="container is-visible">
-			<ul class="tiles-grid"></ul>
+			<ul class="tiles-grid" data-grid-rows='4' data-grid-columns='3' ></ul>
 			<button role="button" class="start-button">start</button>
-			<div class="bottom-bar desktop">
-				<h2 class="bottom-bar__title desktop">Wybierz rozmiar planszy</h2>
-				<ul class="radios-container desktop">
+			<div class="bottom-bar">
+				<h2 class="bottom-bar__title">Wybierz rozmiar planszy</h2>
+				<ul class="radios-container">
 					<li class="radios-container__radio">
 						<input
 							class="radios-container__radio-input"
 							type="radio"
-							name="board-desktop"
-							id="board-4x3-desktop"
+							name="board"
+							id="board-4x3"
 							checked
 						/>
-						<label class="radios-container__radio-label" for="board-4x3-desktop"
+						<label class="radios-container__radio-label" for="board-4x3"
 							>4x3</label
 						>
 						<div class="radios-container__radio-box"><i class="fas fa-check"></i></div>
@@ -53,10 +55,10 @@
 						<input
 							class="radios-container__radio-input"
 							type="radio"
-							name="board-desktop"
-							id="board-4x4-desktop"
+							name="board"
+							id="board-4x4"
 						/>
-						<label class="radios-container__radio-label" for="board-4x4-desktop"
+						<label class="radios-container__radio-label" for="board-4x4"
 							>4x4</label
 						>
 						<div class="radios-container__radio-box"><i class="fas fa-check"></i></div>
@@ -65,10 +67,10 @@
 						<input
 							class="radios-container__radio-input"
 							type="radio"
-							name="board-desktop"
-							id="board-5x4-desktop"
+							name="board"
+							id="board-5x4"
 						/>
-						<label class="radios-container__radio-label" for="board-5x4-desktop"
+						<label class="radios-container__radio-label" for="board-5x4"
 							>5x4</label
 						>
 						<div class="radios-container__radio-box"><i class="fas fa-check"></i></div>
@@ -77,10 +79,10 @@
 						<input
 							class="radios-container__radio-input"
 							type="radio"
-							name="board-desktop"
-							id="board-6x3-desktop"
+							name="board"
+							id="board-6x3"
 						/>
-						<label class="radios-container__radio-label" for="board-6x3-desktop"
+						<label class="radios-container__radio-label" for="board-6x3"
 							>6x3</label
 						>
 						<div class="radios-container__radio-box"><i class="fas fa-check"></i></div>
@@ -88,61 +90,6 @@
 				</ul>
 			</div>
 		</main>
-		<div class="bottom-bar is-visible">
-			<h2 class="bottom-bar__title">Wybierz rozmiar planszy</h2>
-			<ul class="radios-container">
-				<li class="radios-container__radio">
-					<input
-						class="radios-container__radio-input"
-						type="radio"
-						name="board"
-						id="board-4x3"
-						checked
-					/>
-					<label class="radios-container__radio-label" for="board-4x3"
-						>4x3</label
-					>
-					<div class="radios-container__radio-box"><i class="fas fa-check"></i></div>
-				</li>
-				<li class="radios-container__radio">
-					<input
-						class="radios-container__radio-input"
-						type="radio"
-						name="board"
-						id="board-4x4"
-					/>
-					<label class="radios-container__radio-label" for="board-4x4"
-						>4x4</label
-					>
-					<div class="radios-container__radio-box"><i class="fas fa-check"></i></div>
-				</li>
-				<li class="radios-container__radio">
-					<input
-						class="radios-container__radio-input"
-						type="radio"
-						name="board"
-						id="board-5x4"
-					/>
-					<label class="radios-container__radio-label" for="board-5x4"
-						>5x4</label
-					>
-					<div class="radios-container__radio-box"><i class="fas fa-check"></i></div>
-				</li>
-				<li class="radios-container__radio">
-					<input
-						class="radios-container__radio-input"
-						type="radio"
-						name="board"
-						id="board-6x3"
-					/>
-					<label class="radios-container__radio-label" for="board-6x3"
-						>6x3</label
-					>
-					<div class="radios-container__radio-box"><i class="fas fa-check"></i></div>
-				</li>
-			</ul>
-		</div>
 	</body>
-	<script type="module" src="index.js"></script>
-	<script type="module" src="game.js"></script>
+	<script src="./index.js"></script>
 </html>

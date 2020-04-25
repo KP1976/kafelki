@@ -1,14 +1,11 @@
 .bottom-bar {
 	background-color: var(--top-bottom-bar-color);
-	display: none;
+	display: flex;
 	flex-direction: column;
-	height: 10rem;
 	align-items: center;
 	justify-content: center;
-
-	&.is-visible {
-		display: flex;
-	}
+	width: 100%;
+	padding: 1.6rem 0;
 
 	@include for-tablet-portrait-up {
 		height: 18rem;
@@ -16,7 +13,10 @@
 	}
 
 	@include for-desktop {
-		height: 10rem;
+		background-color: transparent;
+		height: auto;
+		padding: 0;
+		align-self: start;
 	}
 
 	&__title {
@@ -24,35 +24,15 @@
 		font-weight: 600;
 		font-size: 1.6rem;
 		margin: 0 0 1rem 0;
+		z-index: 0;
 
 		@include for-tablet-portrait-up {
-			font-size: 3rem;
+			font-size: 2.78rem;
 			margin: 0 0 1.5rem 0;
 		}
 
 		@include for-desktop {
-			display: none;
-		}
-
-		&.desktop {
-			display: none;
-
-			@include for-desktop {
-				display: block;
-				margin-bottom: 8.7rem;
-			}
-		}
-	}
-
-	&.desktop {
-		display: none;
-
-		@include for-desktop {
-			display: flex;
-			background-color: transparent;
-			height: auto;
-			padding: 0;
-			align-self: start;
+			margin: 0;
 		}
 	}
 }
@@ -72,13 +52,9 @@
 	}
 
 	@include for-desktop {
-		display: none;
-	}
-
-	&.desktop {
-		display: grid;
 		grid-template-columns: repeat(2, 1fr);
-		gap: 5rem 7rem;
+		margin-top: 8rem;
+		gap: 5.1rem 6.8rem;
 	}
 
 	&__radio {

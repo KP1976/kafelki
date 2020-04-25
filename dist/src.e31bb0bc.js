@@ -216,7 +216,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var _tilesGrid = _interopRequireDefault(require("./tiles-grid"));
+var _tilesGrid = _interopRequireDefault(require("./tiles-grid.js"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -241,7 +241,7 @@ var getTilesBoardDimension = function getTilesBoardDimension() {
 
 var _default = getTilesBoardDimension;
 exports.default = _default;
-},{"./tiles-grid":"tiles-grid.js"}],"create_tiles.js":[function(require,module,exports) {
+},{"./tiles-grid.js":"tiles-grid.js"}],"create_tiles.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -300,15 +300,15 @@ function clickTile(index, startTime, tiles, randomArrayOfPairColors, event) {
   howManyClicks += 1;
   pairClicks.push(index);
   event.target.classList.add(randomArrayOfPairColors[index]);
-  event.target.classList.add('clicked');
+  event.target.classList.add('off-clicked');
 
   if (howManyClicks === 2) {
-    howManyClicks = 0;
     var firstClickedTile = tiles[pairClicks[0]];
     var secondClickedTile = tiles[pairClicks[1]];
-    console.log(firstClickedTile, secondClickedTile);
+    howManyClicks = 0;
 
     if (firstClickedTile.classList[1] === secondClickedTile.classList[1]) {
+      console.log(correctAnswers);
       var correctSign1 = document.createElement('i');
       var correctSign2 = document.createElement('i');
       correctSign1.className = 'fas fa-check';
@@ -334,23 +334,29 @@ function clickTile(index, startTime, tiles, randomArrayOfPairColors, event) {
           finalText.classList.add('text-black');
         }
 
+        while (gameTiles.firstChild) {
+          gameTiles.firstChild.remove();
+        }
+
         setTimeout(function () {
           topBar.classList.add('is-visible');
           mainContainer.classList.add('is-visible');
           bottomBar.classList.add('is-visible');
-
-          while (gameTiles.firstChild) {
-            gameTiles.firstChild.remove();
-          }
-
           finalText.remove();
-        }, 1500);
+          correctAnswers = 0;
+        }, 3000);
       }
     } else {
+      tiles.forEach(function (tile) {
+        tile.classList.add('off-clicked');
+      });
       setTimeout(function () {
         event.target.classList.add('clicked');
         firstClickedTile.className = 'tiles-container__tile';
         secondClickedTile.className = 'tiles-container__tile';
+        tiles.forEach(function (tile) {
+          tile.classList.remove('off-clicked');
+        });
       }, 1000);
     }
 
@@ -365,11 +371,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.startGame = void 0;
 
-var _create_tiles = require("./create_tiles");
+var _create_tiles = require("./create_tiles.js");
 
-var _randomNumbers = _interopRequireDefault(require("./random-numbers"));
+var _randomNumbers = _interopRequireDefault(require("./random-numbers.js"));
 
-var _clickTile = require("./click-tile");
+var _clickTile = require("./click-tile.js");
 
 var _this = void 0;
 
@@ -384,13 +390,13 @@ function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
 
 // import allTiles from './get-colors-for-tiles';
-var gameTiles = document.querySelector('.tiles-container');
-var topBar = document.querySelector('.top-bar');
-var mainContainer = document.querySelector('.container');
-var bottomBar = document.querySelector('.bottom-bar.is-visible');
-var tilesContainer = document.querySelector('.tiles-grid');
-
 var startGame = function startGame() {
+  var gameTiles = document.querySelector('.tiles-container');
+  var topBar = document.querySelector('.top-bar');
+  var mainContainer = document.querySelector('.container');
+  var bottomBar = document.querySelector('.bottom-bar.is-visible');
+  var tilesContainer = document.querySelector('.tiles-grid');
+  console.log(gameTiles, mainContainer, topBar, bottomBar);
   gameTiles.classList.add('is-visible');
   topBar.classList.remove('is-visible');
   mainContainer.classList.remove('is-visible');
@@ -401,11 +407,10 @@ var startGame = function startGame() {
   var pairColors = numbersOfTiles / 2;
   var arrayOfPairColors = [];
   var randomArrayOfPairColors = [];
-  var j = 0; // let howManyClicks = 0;
-  // let pairClicks = [];
-  // let correctAnswers = 0;
+  var j = 0;
 
   if (numbersOfTiles === 12 || numbersOfTiles === 18) {
+    console.log('DLACZEGO SIE ZAWIESZASZ???');
     (0, _create_tiles.generateTiles)(numbersOfTiles);
   }
 
@@ -445,23 +450,23 @@ var startGame = function startGame() {
 };
 
 exports.startGame = startGame;
-},{"./create_tiles":"create_tiles.js","./random-numbers":"random-numbers.js","./click-tile":"click-tile.js"}],"index.js":[function(require,module,exports) {
+},{"./create_tiles.js":"create_tiles.js","./random-numbers.js":"random-numbers.js","./click-tile.js":"click-tile.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
-var _changeMode = _interopRequireDefault(require("./change-mode"));
+var _changeMode = _interopRequireDefault(require("./change-mode.js"));
 
-var _getRowsAndColumns = _interopRequireDefault(require("./get-rows-and-columns"));
+var _getRowsAndColumns = _interopRequireDefault(require("./get-rows-and-columns.js"));
 
-var _game = require("./game");
+var _game = require("./game.js");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var startButton = document.querySelector('.start-button');
 document.querySelector('.radios-container__radio').checked = true;
 (0, _getRowsAndColumns.default)();
 (0, _changeMode.default)();
-var startButton = document.querySelector('.start-button');
-startButton.addEventListener('click', _game.startGame); // DO ZROBIENIA
-},{"./change-mode":"change-mode.js","./get-rows-and-columns":"get-rows-and-columns.js","./game":"game.js"}],"C:/Users/Krzysiek/AppData/Roaming/nvm/v10.16.0/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+startButton.addEventListener('click', _game.startGame);
+},{"./change-mode.js":"change-mode.js","./get-rows-and-columns.js":"get-rows-and-columns.js","./game.js":"game.js"}],"C:/Users/Krzysiek/AppData/Roaming/nvm/v10.16.0/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -489,7 +494,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52424" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52144" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

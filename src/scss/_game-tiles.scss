@@ -22,8 +22,8 @@
 		height: 100%;
 		cursor: pointer;
 
-		&.clicked {
-			pointer-events: none;
+		&:hover {
+			transform: scale(1.02);
 		}
 
 		&.guessed {
@@ -36,6 +36,7 @@
 			.fa-check {
 				font-size: calc(8vh - 1rem);
 				color: var(--text-color);
+				animation: scale-up 0.4s forwards ease-in-out;
 			}
 		}
 

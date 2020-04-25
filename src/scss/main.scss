@@ -2,9 +2,10 @@
 @import 'mixins';
 @import 'html-body';
 
-@import 'tiles';
-@import 'final-text';
+@import 'game-tiles';
 
 @import 'top-bar';
 @import 'main-container';
 @import 'bottom-bar';
+
+@import 'animation';

@@ -60,6 +60,14 @@
 				left: 2.6rem;
 			}
 		}
+
+		&:checked + label .fa-moon {
+			opacity: 0;
+		}
+
+		&:checked + label .fa-sun {
+			opacity: 1;
+		}
 	}
 
 	&__switch-label {
@@ -99,7 +107,7 @@
 
 	.fas {
 		font-size: 1.4rem;
-		opacity: 0;
+		opacity: 1;
 		transition: opacity 0.3s cubic-bezier(0.65, 0.05, 0.36, 1);
 
 		@include for-tablet-portrait-up {
@@ -113,10 +121,6 @@
 		color: var(--black);
 		position: absolute;
 		z-index: 1;
-
-		&.isVisible {
-			opacity: 1;
-		}
 	}
 
 	.fa-sun {
@@ -125,9 +129,6 @@
 		color: var(--background-color);
 		position: absolute;
 		z-index: 1;
-
-		&.isVisible {
-			opacity: 1;
-		}
+		opacity: 0;
 	}
 }

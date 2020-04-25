@@ -117,216 +117,85 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"create_tiles.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.DOMTilesContainer = exports.generateTiles = void 0;
-var DOMTilesContainer = document.querySelector('.tiles-container');
-exports.DOMTilesContainer = DOMTilesContainer;
-
-var generateTiles = function generateTiles(numberOfTiles) {
-  for (var i = 0; i < numberOfTiles; i++) {
-    var tile = document.createElement('li');
-    tile.classList.add('tiles-container__tile');
-    DOMTilesContainer.appendChild(tile);
-  }
-};
-
-exports.generateTiles = generateTiles;
-},{}],"random-numbers.js":[function(require,module,exports) {
+})({"variables_from_css.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var randomNumbers = new Set();
+var cssVariables = document.styleSheets[1].cssRules[0].style.cssText.split(';'); // Usunięcie z listy zmiennej --radius --black i pustego stringa (trzy ostatnie elementy)
 
-var generateRandomNumber = function generateRandomNumber(numbersOfTiles) {
-  if (numbersOfTiles) {
-    while (randomNumbers.size !== numbersOfTiles) {
-      randomNumbers.add(Math.floor(Math.random() * numbersOfTiles));
-    }
-
-    return randomNumbers;
-  }
-};
-
-var _default = generateRandomNumber;
+cssVariables.splice(-3, 3);
+var _default = cssVariables;
 exports.default = _default;
-},{}],"click-tile.js":[function(require,module,exports) {
+},{}],"get-colors-for-tiles.js":[function(require,module,exports) {
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.clickTile = clickTile;
-var howManyClicks = 0;
-var pairClicks = [];
-var correctAnswers = 0;
-var gameTiles = document.querySelector('.tiles-container');
-var topBar = document.querySelector('.top-bar');
-var mainContainer = document.querySelector('.container');
-var bottomBar = document.querySelector('.bottom-bar.is-visible');
-
-function clickTile(index, startTime, tiles, randomArrayOfPairColors, event) {
-  howManyClicks += 1;
-  pairClicks.push(index);
-  event.target.classList.add(randomArrayOfPairColors[index]);
-  event.target.classList.add('off-clicked');
-
-  if (howManyClicks === 2) {
-    var firstClickedTile = tiles[pairClicks[0]];
-    var secondClickedTile = tiles[pairClicks[1]];
-    howManyClicks = 0;
-
-    if (firstClickedTile.classList[1] === secondClickedTile.classList[1]) {
-      console.log(correctAnswers);
-      var correctSign1 = document.createElement('i');
-      var correctSign2 = document.createElement('i');
-      correctSign1.className = 'fas fa-check';
-      correctSign2.className = 'fas fa-check';
-      firstClickedTile.className = 'tiles-container__tile guessed';
-      secondClickedTile.className = 'tiles-container__tile guessed';
-      firstClickedTile.insertAdjacentElement('afterbegin', correctSign1);
-      secondClickedTile.insertAdjacentElement('afterbegin', correctSign2);
-      correctAnswers++;
-
-      if (correctAnswers === tiles.length / 2) {
-        var finalText = document.createElement('h1');
-        var endTime = new Date().getTime();
-        gameTiles.classList.remove('is-visible');
-        gameTiles.insertAdjacentElement('afterend', finalText);
-        finalText.className = 'final-text';
-        finalText.textContent = "Wygra\u0142e\u015B z czasem: ".concat((endTime - startTime) / 1000, "s");
-        console.log((endTime - startTime) / 1000);
-
-        if (document.querySelector('html').getAttribute('data-colormode') === 'dark') {
-          finalText.classList.add('text-white');
-        } else {
-          finalText.classList.add('text-black');
-        }
-
-        while (gameTiles.firstChild) {
-          gameTiles.firstChild.remove();
-        }
-
-        setTimeout(function () {
-          topBar.classList.add('is-visible');
-          mainContainer.classList.add('is-visible');
-          bottomBar.classList.add('is-visible');
-          finalText.remove();
-          correctAnswers = 0;
-        }, 3000);
-      }
-    } else {
-      tiles.forEach(function (tile) {
-        tile.classList.add('off-clicked');
-      });
-      setTimeout(function () {
-        event.target.classList.add('clicked');
-        firstClickedTile.className = 'tiles-container__tile';
-        secondClickedTile.className = 'tiles-container__tile';
-        tiles.forEach(function (tile) {
-          tile.classList.remove('off-clicked');
-        });
-      }, 1000);
-    }
-
-    pairClicks = [];
-  }
-}
-},{}],"game.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.startGame = void 0;
-
-var _create_tiles = require("./create_tiles.js");
-
-var _randomNumbers = _interopRequireDefault(require("./random-numbers.js"));
-
-var _clickTile = require("./click-tile.js");
-
-var _this = void 0;
+var _variables_from_css = _interopRequireDefault(require("./variables_from_css.js"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+var Tile =
+/*#__PURE__*/
+function () {
+  function Tile() {
+    _classCallCheck(this, Tile);
 
-// import allTiles from './get-colors-for-tiles';
-var startGame = function startGame() {
-  var gameTiles = document.querySelector('.tiles-container');
-  var topBar = document.querySelector('.top-bar');
-  var mainContainer = document.querySelector('.container');
-  var bottomBar = document.querySelector('.bottom-bar.is-visible');
-  var tilesContainer = document.querySelector('.tiles-grid');
-  console.log(gameTiles, mainContainer, topBar, bottomBar);
-  gameTiles.classList.add('is-visible');
-  topBar.classList.remove('is-visible');
-  mainContainer.classList.remove('is-visible');
-  bottomBar.classList.remove('is-visible');
-  var allColors = ['black', 'purple', 'light-blue', 'orange', 'red', 'blue', 'green', 'yellow', 'pink', 'brown'];
-  var randomNumbers;
-  var numbersOfTiles = tilesContainer.dataset.gridRows * tilesContainer.dataset.gridColumns;
-  var pairColors = numbersOfTiles / 2;
-  var arrayOfPairColors = [];
-  var randomArrayOfPairColors = [];
-  var j = 0;
-
-  if (numbersOfTiles === 12 || numbersOfTiles === 18) {
-    console.log('DLACZEGO SIE ZAWIESZASZ???');
-    (0, _create_tiles.generateTiles)(numbersOfTiles);
+    this.hexColorsNames;
+    this.hexColorsValues;
+    this.colorNames = [];
   }
 
-  if (numbersOfTiles === 16 || numbersOfTiles === 20) {
-    _create_tiles.DOMTilesContainer.classList.add('four-columns');
+  _createClass(Tile, [{
+    key: "getColors",
+    value: function getColors() {
+      var cssVariablesColors = {};
+      var tilesColorsValues = [];
 
-    (0, _create_tiles.generateTiles)(numbersOfTiles);
-  }
+      for (var i = 0; i < _variables_from_css.default.length; i++) {
+        var keyValuePairs = _variables_from_css.default[i].split(':');
 
-  var tiles = document.querySelectorAll('.tiles-container__tile');
-  randomNumbers = _toConsumableArray((0, _randomNumbers.default)(numbersOfTiles));
+        tilesColorsValues[i] = _variables_from_css.default[i].slice(-7);
 
-  for (var i = 0; i < numbersOfTiles; i++) {
-    arrayOfPairColors[i] = allColors[j];
+        if (keyValuePairs[0] !== '') {
+          cssVariablesColors[keyValuePairs[0].trim()] = keyValuePairs[1].trim();
+        }
+      }
 
-    if (j > pairColors - 2) {
-      j = -1;
+      return cssVariablesColors;
     }
+  }, {
+    key: "getColorNames",
+    value: function getColorNames() {
+      this.hexColorsNames = Object.keys(this.getColors());
+      var j = 0;
 
-    j++;
-  }
+      for (var i = 0; i < this.hexColorsNames.length / 2; i++) {
+        this.colorNames[i] = this.hexColorsNames[j].slice(2).slice(0, -6);
+        j += 2;
+      }
+    }
+  }, {
+    key: "getColorValues",
+    value: function getColorValues() {
+      this.hexColorsValues = Object.values(this.getColors());
+    }
+  }]);
 
-  for (var _i = 0; _i < numbersOfTiles; _i++) {
-    randomArrayOfPairColors[_i] = arrayOfPairColors[randomNumbers[_i]];
-  }
+  return Tile;
+}();
 
-  tiles.forEach(function (tile, index) {
-    tile.classList.add(randomArrayOfPairColors[index]);
-  });
-  setTimeout(function () {
-    var startTime = new Date().getTime();
-    tiles.forEach(function (tile, index) {
-      tile.className = 'tiles-container__tile';
-      tile.addEventListener('click', _clickTile.clickTile.bind(_this, index, startTime, tiles, randomArrayOfPairColors));
-    });
-  }, 3000);
-};
-
-exports.startGame = startGame;
-},{"./create_tiles.js":"create_tiles.js","./random-numbers.js":"random-numbers.js","./click-tile.js":"click-tile.js"}],"C:/Users/Krzysiek/AppData/Roaming/nvm/v10.16.0/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+var tile = new Tile();
+tile.getColorNames();
+tile.getColorValues(); // export default allTiles;
+},{"./variables_from_css.js":"variables_from_css.js"}],"C:/Users/Krzysiek/AppData/Roaming/nvm/v10.16.0/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -530,5 +399,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["C:/Users/Krzysiek/AppData/Roaming/nvm/v10.16.0/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","game.js"], null)
-//# sourceMappingURL=/game.7bbe06d5.js.map
+},{}]},{},["C:/Users/Krzysiek/AppData/Roaming/nvm/v10.16.0/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","get-colors-for-tiles.js"], null)
+//# sourceMappingURL=/get-colors-for-tiles.90ebbb70.js.map

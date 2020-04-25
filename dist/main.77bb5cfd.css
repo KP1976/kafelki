@@ -102,7 +102,7 @@ body {
   height: 100%;
   cursor: pointer;
 }
-.tiles-container__tile.clicked {
+.tiles-container__tile.off-clicked {
   pointer-events: none;
 }
 .tiles-container__tile.guessed {

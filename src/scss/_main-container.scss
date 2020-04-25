@@ -1,26 +1,38 @@
 .container {
 	display: none;
-	grid-template-rows: auto 9.6rem;
+	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	height: calc(100vh - 15rem);
-	padding: 4.5rem 0 4rem 0;
+	height: calc(100vh - 5rem);
+	padding-top: 4.5rem;
 
 	&.is-visible {
-		display: grid;
+		display: flex;
+
+		@include for-desktop {
+			display: grid;
+		}
 	}
 
 	@include for-tablet-portrait-up {
-		height: calc(100vh - 28rem);
+		height: calc(100vh - 10rem);
 	}
 
 	@include for-desktop {
-		height: calc(100vh - 20rem);
-		grid-template-columns: 1fr 1fr;
-		grid-template-rows: 42.9rem 7.6rem;
-		margin: auto;
-		gap: 0 8rem;
+		grid-template-columns: 37.5rem 31.8rem;
+		grid-template-rows: 42.7rem min-content;
+		padding: 0 0 10rem 0;
 		align-content: center;
+		gap: 0 10rem;
+	}
+
+	&::before {
+		position: absolute;
+		content: '';
+		width: 100%;
+		height: 10rem;
+		background-color: var(--top-bottom-bar-color);
+		bottom: 0;
 	}
 }
 
@@ -29,26 +41,27 @@
 	grid-template-columns: repeat(3, minmax(4.5rem, 1fr));
 	grid-template-rows: repeat(4, minmax(4.5rem, 1fr));
 	padding: 0;
-	// margin: 0 0 4.6vh 0;
-	margin: 0;
+	margin: 0 auto;
 	list-style-type: none;
 	gap: 0.5rem;
 	height: 100%;
 	min-width: 17.5rem;
 	align-self: start;
+	width: 70%;
 
 	@include for-tablet-portrait-up {
 		gap: 1rem;
-		margin: 0;
-		height: calc(100vh - 50rem);
+		margin: 0 auto;
 		min-width: 25.9rem;
+		width: 60%;
 	}
 
 	@include for-desktop {
-		margin: 0;
 		grid-row: 1 / 3;
 		gap: 1.5rem;
 		height: 100%;
+		margin: 0;
+		width: 100%;
 	}
 
 	&__tile {
@@ -62,6 +75,8 @@
 				var(--red-light),
 				var(--red-dark)
 			);
+			animation: fade-in 1s forwards ease-in-out;
+			transform: translateX(-1000px);
 		}
 
 		&:nth-child(3),
@@ -71,6 +86,8 @@
 				var(--blue-light),
 				var(--blue-dark)
 			);
+			animation: fade-in 1s forwards ease-in-out 0.07s;
+			transform: translateX(-1000px);
 		}
 
 		&:nth-child(5),
@@ -80,6 +97,8 @@
 				var(--green-light),
 				var(--green-dark)
 			);
+			animation: fade-in 1s forwards ease-in-out 0.14s;
+			transform: translateX(-1000px);
 		}
 
 		&:nth-child(7),
@@ -89,6 +108,8 @@
 				var(--yellow-light),
 				var(--yellow-dark)
 			);
+			animation: fade-in 1s forwards ease-in-out 0.21s;
+			transform: translateX(-1000px);
 		}
 
 		&:nth-child(9),
@@ -98,6 +119,8 @@
 				var(--pink-light),
 				var(--pink-dark)
 			);
+			animation: fade-in 1s forwards ease-in-out 0.28s;
+			transform: translateX(-1000px);
 		}
 
 		&:nth-child(11),
@@ -107,6 +130,8 @@
 				var(--brown-light),
 				var(--brown-dark)
 			);
+			animation: fade-in 1s forwards ease-in-out 0.35s;
+			transform: translateX(-1000px);
 		}
 
 		&:nth-child(13),
@@ -116,6 +141,8 @@
 				var(--black-light),
 				var(--black-dark)
 			);
+			animation: fade-in 1s forwards ease-in-out 0.42s;
+			transform: translateX(-1000px);
 		}
 
 		&:nth-child(15),
@@ -125,6 +152,8 @@
 				var(--purple-light),
 				var(--purple-dark)
 			);
+			animation: fade-in 1s forwards ease-in-out 0.49s;
+			transform: translateX(-1000px);
 		}
 
 		&:nth-child(17),
@@ -134,6 +163,8 @@
 				var(--light-blue-light),
 				var(--light-blue-dark)
 			);
+			animation: fade-in 1s forwards ease-in-out 0.56s;
+			transform: translateX(-1000px);
 		}
 
 		&:nth-child(19),
@@ -143,6 +174,8 @@
 				var(--orange-light),
 				var(--orange-dark)
 			);
+			animation: fade-in 1s forwards ease-in-out 0.63s;
+			transform: translateX(-1000px);
 		}
 	}
 }
@@ -165,8 +198,7 @@
 	text-decoration: none;
 	text-transform: uppercase;
 	outline: none;
-	align-self: end;
-	justify-self: center;
+	margin: 4rem 0;
 
 	@include for-tablet-portrait-up {
 		box-shadow: var(--shadow-outer-min600px);
@@ -177,8 +209,10 @@
 	}
 
 	@include for-desktop {
+		width: 31.8rem;
 		grid-row: 2 / 3;
-		width: 100%;
+		margin: 0;
+		align-self: end;
 	}
 
 	&:active {
@@ -186,6 +220,41 @@
 
 		@include for-tablet-portrait-up {
 			box-shadow: var(--shadow-inner-min600px);
+		}
+	}
+}
+
+.wrapper {
+	display: flex;
+	background-color: rgba(0, 0, 0, 0.8);
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	height: 100vh;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	z-index: 10;
+
+	&__score-text {
+		color: white;
+		font-size: 2rem;
+		text-align: center;
+
+		@include for-tablet-portrait-up {
+			font-size: 3.5rem;
+		}
+
+		@include for-desktop {
+			font-size: 5rem;
+		}
+
+		.time {
+			display: inline-block;
+			animation: puls-text 2s forwards ease-in-out;
+			transform: scale(1.25);
+			color: red;
+			font-weight: bold;
 		}
 	}
 }
