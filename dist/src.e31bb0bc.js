@@ -295,18 +295,15 @@ var generateRandomTilesColors = function generateRandomTilesColors(numberOfTiles
 };
 
 exports.generateRandomTilesColors = generateRandomTilesColors;
-},{"./create-array-of-double-colors":"create-array-of-double-colors.js","./generate-random-index-numbers":"generate-random-index-numbers.js"}],"index.js":[function(require,module,exports) {
+},{"./create-array-of-double-colors":"create-array-of-double-colors.js","./generate-random-index-numbers":"generate-random-index-numbers.js"}],"click-tile.js":[function(require,module,exports) {
 "use strict";
 
-var _changeThemeColorMode = _interopRequireDefault(require("./change-theme-color-mode"));
-
-var _generateTiles = _interopRequireDefault(require("./generate-tiles"));
-
-var _changeBoardDimension = _interopRequireDefault(require("./change-board-dimension"));
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
 
 var _generateRandomTilesColors = require("./generate-random-tiles-colors");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
 
@@ -319,12 +316,10 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 var topBar = document.querySelector('.top-bar');
 var tilesContainer = document.querySelector('.tiles-container');
 var mainContainer = document.querySelector('.container');
-var tilesGrid = document.querySelector('.tiles-grid');
-var startButton = document.querySelector('.start-button');
+var startTime;
 var activeTile = '';
 var pairsActiveTiles = [];
 var correctAnswers = 0;
-var startTime;
 var gameScore;
 
 var clickTile = function clickTile(tiles) {
@@ -399,6 +394,29 @@ var clickTileHandler = function clickTileHandler(e) {
   }
 };
 
+var _default = clickTile;
+exports.default = _default;
+},{"./generate-random-tiles-colors":"generate-random-tiles-colors.js"}],"index.js":[function(require,module,exports) {
+"use strict";
+
+var _changeThemeColorMode = _interopRequireDefault(require("./change-theme-color-mode"));
+
+var _generateTiles = _interopRequireDefault(require("./generate-tiles"));
+
+var _changeBoardDimension = _interopRequireDefault(require("./change-board-dimension"));
+
+var _generateRandomTilesColors = require("./generate-random-tiles-colors");
+
+var _clickTile = _interopRequireDefault(require("./click-tile"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var topBar = document.querySelector('.top-bar');
+var tilesContainer = document.querySelector('.tiles-container');
+var mainContainer = document.querySelector('.container');
+var tilesGrid = document.querySelector('.tiles-grid');
+var startButton = document.querySelector('.start-button');
+
 var startGame = function startGame() {
   startButton.addEventListener('click', function () {
     var rows = +tilesGrid.getAttribute('data-grid-rows');
@@ -409,7 +427,7 @@ var startGame = function startGame() {
     tilesContainer.classList.add('is-visible');
     (0, _generateTiles.default)(rows, columns, tilesContainer, 'tiles-container__tile');
     tiles = (0, _generateRandomTilesColors.generateRandomTilesColors)(rows * columns);
-    clickTile(tiles);
+    (0, _clickTile.default)(tiles);
   });
 };
 
@@ -417,7 +435,7 @@ var startGame = function startGame() {
 (0, _generateTiles.default)(4, 3, tilesGrid, 'tiles-grid__tile');
 (0, _changeBoardDimension.default)();
 startGame();
-},{"./change-theme-color-mode":"change-theme-color-mode.js","./generate-tiles":"generate-tiles.js","./change-board-dimension":"change-board-dimension.js","./generate-random-tiles-colors":"generate-random-tiles-colors.js"}],"C:/Users/Krzysiek/AppData/Roaming/nvm/v10.16.0/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./change-theme-color-mode":"change-theme-color-mode.js","./generate-tiles":"generate-tiles.js","./change-board-dimension":"change-board-dimension.js","./generate-random-tiles-colors":"generate-random-tiles-colors.js","./click-tile":"click-tile.js"}],"C:/Users/Krzysiek/AppData/Roaming/nvm/v10.16.0/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
