@@ -1,25 +1,14 @@
 import changeThemeColorMode from './change-theme-color-mode';
+import generateTiles from './generate-tiles';
+import changeBoardDimension from './change-board-dimension';
+import generateRandomIndexNumbers from './generate-random-index-numbers';
+import createArrayOfDoubleColors from './create-array-of-double-colors';
 
 const topBar = document.querySelector('.top-bar');
 const tilesContainer = document.querySelector('.tiles-container');
 const mainContainer = document.querySelector('.container');
 const tilesGrid = document.querySelector('.tiles-grid');
-const radioButtonInputs = document.querySelectorAll(
-	'.radios-container__radio-input',
-);
 const startButton = document.querySelector('.start-button');
-const tilesColors = [
-	'black',
-	'purple',
-	'light-blue',
-	'orange',
-	'red',
-	'blue',
-	'green',
-	'yellow',
-	'pink',
-	'brown',
-];
 
 let activeTile = '';
 let pairsActiveTiles = [];
@@ -28,61 +17,6 @@ let randomIndexNumbers = [];
 let correctAnswers = 0;
 let startTime;
 let gameScore;
-
-const generateTiles = (rows, columns, container, tileClassName) => {
-	for (let i = 0; i < rows * columns; i++) {
-		const tile = document.createElement('li');
-		tile.classList.add(tileClassName);
-		container.appendChild(tile);
-	}
-};
-
-const clickRadioButtons = () => {
-	radioButtonInputs.forEach((radioButtonInput) => {
-		radioButtonInput.addEventListener('change', () => {
-			const [rows, columns] = event.target.nextElementSibling.textContent.split(
-				'x',
-			);
-
-			// Usuwanie wszystkich kafelków i ustawienie odpowiedniego grida dla kontenera
-			// (zarówno na stronie początkowej jak i w grze)
-			tilesGrid.innerHTML = '';
-			tilesGrid.dataset.gridRows = rows;
-			tilesGrid.dataset.gridColumns = columns;
-
-			tilesContainer.dataset.gridRows = rows;
-			tilesContainer.dataset.gridColumns = columns;
-
-			generateTiles(+rows, +columns, tilesGrid, 'tiles-grid__tile');
-		});
-	});
-};
-
-const generateRandomIndexNumbers = (numberOfTiles) => {
-	const randomIndexNumbers = new Set();
-	if (numberOfTiles) {
-		while (randomIndexNumbers.size !== numberOfTiles) {
-			randomIndexNumbers.add(Math.floor(Math.random() * numberOfTiles));
-		}
-	}
-	return randomIndexNumbers;
-};
-
-const createArrayOfDoubleColors = (numberOfTiles) => {
-	const colorsOfTiles = [];
-	const availableTileColors = numberOfTiles / 2;
-	let j = 0;
-
-	for (let i = 0; i < numberOfTiles; i++) {
-		colorsOfTiles[i] = tilesColors[j];
-		j++;
-		if (j > availableTileColors - 1) {
-			j = 0;
-		}
-	}
-
-	return colorsOfTiles;
-};
 
 const generateRandomTilesColors = (numberOfTiles) => {
 	const colorsOfTiles = createArrayOfDoubleColors(numberOfTiles);
@@ -204,5 +138,5 @@ const startGame = () => {
 
 changeThemeColorMode();
 generateTiles(4, 3, tilesGrid, 'tiles-grid__tile');
-clickRadioButtons();
+changeBoardDimension();
 startGame();

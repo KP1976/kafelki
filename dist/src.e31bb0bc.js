@@ -139,43 +139,13 @@ var changeThemeColorMode = function changeThemeColorMode() {
 
 var _default = changeThemeColorMode;
 exports.default = _default;
-},{}],"index.js":[function(require,module,exports) {
+},{}],"generate-tiles.js":[function(require,module,exports) {
 "use strict";
 
-var _changeThemeColorMode = _interopRequireDefault(require("./change-theme-color-mode"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
-
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
-
-function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
-
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
-
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
-
-function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-var topBar = document.querySelector('.top-bar');
-var tilesContainer = document.querySelector('.tiles-container');
-var mainContainer = document.querySelector('.container');
-var tilesGrid = document.querySelector('.tiles-grid');
-var radioButtonInputs = document.querySelectorAll('.radios-container__radio-input');
-var startButton = document.querySelector('.start-button');
-var tilesColors = ['black', 'purple', 'light-blue', 'orange', 'red', 'blue', 'green', 'yellow', 'pink', 'brown'];
-var activeTile = '';
-var pairsActiveTiles = [];
-var shuffleTilesColors = [];
-var randomIndexNumbers = [];
-var correctAnswers = 0;
-var startTime;
-var gameScore;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
 
 var generateTiles = function generateTiles(rows, columns, container, tileClassName) {
   for (var i = 0; i < rows * columns; i++) {
@@ -185,7 +155,33 @@ var generateTiles = function generateTiles(rows, columns, container, tileClassNa
   }
 };
 
-var clickRadioButtons = function clickRadioButtons() {
+var _default = generateTiles;
+exports.default = _default;
+},{}],"change-board-dimension.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _generateTiles = _interopRequireDefault(require("./generate-tiles"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+var radioButtonInputs = document.querySelectorAll('.radios-container__radio-input');
+var tilesContainer = document.querySelector('.tiles-container');
+var tilesGrid = document.querySelector('.tiles-grid');
+
+var changeBoardDimension = function changeBoardDimension() {
   radioButtonInputs.forEach(function (radioButtonInput) {
     radioButtonInput.addEventListener('change', function () {
       var _event$target$nextEle = event.target.nextElementSibling.textContent.split('x'),
@@ -200,10 +196,20 @@ var clickRadioButtons = function clickRadioButtons() {
       tilesGrid.dataset.gridColumns = columns;
       tilesContainer.dataset.gridRows = rows;
       tilesContainer.dataset.gridColumns = columns;
-      generateTiles(+rows, +columns, tilesGrid, 'tiles-grid__tile');
+      (0, _generateTiles.default)(+rows, +columns, tilesGrid, 'tiles-grid__tile');
     });
   });
 };
+
+var _default = changeBoardDimension;
+exports.default = _default;
+},{"./generate-tiles":"generate-tiles.js"}],"generate-random-index-numbers.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
 
 var generateRandomIndexNumbers = function generateRandomIndexNumbers(numberOfTiles) {
   var randomIndexNumbers = new Set();
@@ -216,6 +222,17 @@ var generateRandomIndexNumbers = function generateRandomIndexNumbers(numberOfTil
 
   return randomIndexNumbers;
 };
+
+var _default = generateRandomIndexNumbers;
+exports.default = _default;
+},{}],"create-array-of-double-colors.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var tilesColors = ['black', 'purple', 'light-blue', 'orange', 'red', 'blue', 'green', 'yellow', 'pink', 'brown'];
 
 var createArrayOfDoubleColors = function createArrayOfDoubleColors(numberOfTiles) {
   var colorsOfTiles = [];
@@ -234,10 +251,48 @@ var createArrayOfDoubleColors = function createArrayOfDoubleColors(numberOfTiles
   return colorsOfTiles;
 };
 
+var _default = createArrayOfDoubleColors;
+exports.default = _default;
+},{}],"index.js":[function(require,module,exports) {
+"use strict";
+
+var _changeThemeColorMode = _interopRequireDefault(require("./change-theme-color-mode"));
+
+var _generateTiles = _interopRequireDefault(require("./generate-tiles"));
+
+var _changeBoardDimension = _interopRequireDefault(require("./change-board-dimension"));
+
+var _generateRandomIndexNumbers = _interopRequireDefault(require("./generate-random-index-numbers"));
+
+var _createArrayOfDoubleColors = _interopRequireDefault(require("./create-array-of-double-colors"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
+var topBar = document.querySelector('.top-bar');
+var tilesContainer = document.querySelector('.tiles-container');
+var mainContainer = document.querySelector('.container');
+var tilesGrid = document.querySelector('.tiles-grid');
+var startButton = document.querySelector('.start-button');
+var activeTile = '';
+var pairsActiveTiles = [];
+var shuffleTilesColors = [];
+var randomIndexNumbers = [];
+var correctAnswers = 0;
+var startTime;
+var gameScore;
+
 var generateRandomTilesColors = function generateRandomTilesColors(numberOfTiles) {
-  var colorsOfTiles = createArrayOfDoubleColors(numberOfTiles);
+  var colorsOfTiles = (0, _createArrayOfDoubleColors.default)(numberOfTiles);
   var tiles = document.querySelectorAll('.tiles-container__tile');
-  randomIndexNumbers = _toConsumableArray(generateRandomIndexNumbers(numberOfTiles));
+  randomIndexNumbers = _toConsumableArray((0, _generateRandomIndexNumbers.default)(numberOfTiles));
 
   for (var i = 0; i < numberOfTiles; i++) {
     shuffleTilesColors[i] = colorsOfTiles[randomIndexNumbers[i]];
@@ -329,17 +384,17 @@ var startGame = function startGame() {
     topBar.classList.remove('is-visible');
     mainContainer.classList.remove('is-visible');
     tilesContainer.classList.add('is-visible');
-    generateTiles(rows, columns, tilesContainer, 'tiles-container__tile');
+    (0, _generateTiles.default)(rows, columns, tilesContainer, 'tiles-container__tile');
     tiles = generateRandomTilesColors(rows * columns);
     clickTile(tiles);
   });
 };
 
 (0, _changeThemeColorMode.default)();
-generateTiles(4, 3, tilesGrid, 'tiles-grid__tile');
-clickRadioButtons();
+(0, _generateTiles.default)(4, 3, tilesGrid, 'tiles-grid__tile');
+(0, _changeBoardDimension.default)();
 startGame();
-},{"./change-theme-color-mode":"change-theme-color-mode.js"}],"C:/Users/Krzysiek/AppData/Roaming/nvm/v10.16.0/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./change-theme-color-mode":"change-theme-color-mode.js","./generate-tiles":"generate-tiles.js","./change-board-dimension":"change-board-dimension.js","./generate-random-index-numbers":"generate-random-index-numbers.js","./create-array-of-double-colors":"create-array-of-double-colors.js"}],"C:/Users/Krzysiek/AppData/Roaming/nvm/v10.16.0/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;

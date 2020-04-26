@@ -369,47 +369,47 @@ body {
 }
 .tiles-grid__tile:nth-child(3), .tiles-grid__tile:nth-child(4) {
   background: linear-gradient(to bottom right, var(--blue-light), var(--blue-dark));
-  animation: fade-in 1s forwards ease-in-out 0.07s;
+  animation: fade-in 0.7s forwards ease-in-out 0.07s;
   transform: translateX(-1000px);
 }
 .tiles-grid__tile:nth-child(5), .tiles-grid__tile:nth-child(6) {
   background: linear-gradient(to bottom right, var(--green-light), var(--green-dark));
-  animation: fade-in 1s forwards ease-in-out 0.14s;
+  animation: fade-in 0.7s forwards ease-in-out 0.14s;
   transform: translateX(-1000px);
 }
 .tiles-grid__tile:nth-child(7), .tiles-grid__tile:nth-child(8) {
   background: linear-gradient(to bottom right, var(--yellow-light), var(--yellow-dark));
-  animation: fade-in 1s forwards ease-in-out 0.21s;
+  animation: fade-in 0.7s forwards ease-in-out 0.21s;
   transform: translateX(-1000px);
 }
 .tiles-grid__tile:nth-child(9), .tiles-grid__tile:nth-child(10) {
   background: linear-gradient(to bottom right, var(--pink-light), var(--pink-dark));
-  animation: fade-in 1s forwards ease-in-out 0.28s;
+  animation: fade-in 0.7s forwards ease-in-out 0.28s;
   transform: translateX(-1000px);
 }
 .tiles-grid__tile:nth-child(11), .tiles-grid__tile:nth-child(12) {
   background: linear-gradient(to bottom right, var(--brown-light), var(--brown-dark));
-  animation: fade-in 1s forwards ease-in-out 0.35s;
+  animation: fade-in 0.7s forwards ease-in-out 0.35s;
   transform: translateX(-1000px);
 }
 .tiles-grid__tile:nth-child(13), .tiles-grid__tile:nth-child(14) {
   background: linear-gradient(to bottom right, var(--black-light), var(--black-dark));
-  animation: fade-in 1s forwards ease-in-out 0.42s;
+  animation: fade-in 0.7s forwards ease-in-out 0.42s;
   transform: translateX(-1000px);
 }
 .tiles-grid__tile:nth-child(15), .tiles-grid__tile:nth-child(16) {
   background: linear-gradient(to bottom right, var(--purple-light), var(--purple-dark));
-  animation: fade-in 1s forwards ease-in-out 0.49s;
+  animation: fade-in 0.7s forwards ease-in-out 0.49s;
   transform: translateX(-1000px);
 }
 .tiles-grid__tile:nth-child(17), .tiles-grid__tile:nth-child(18) {
   background: linear-gradient(to bottom right, var(--light-blue-light), var(--light-blue-dark));
-  animation: fade-in 1s forwards ease-in-out 0.56s;
+  animation: fade-in 0.7s forwards ease-in-out 0.56s;
   transform: translateX(-1000px);
 }
 .tiles-grid__tile:nth-child(19), .tiles-grid__tile:nth-child(20) {
   background: linear-gradient(to bottom right, var(--orange-light), var(--orange-dark));
-  animation: fade-in 1s forwards ease-in-out 0.63s;
+  animation: fade-in 0.7s forwards ease-in-out 0.63s;
   transform: translateX(-1000px);
 }
 
