@@ -203,29 +203,7 @@ var changeBoardDimension = function changeBoardDimension() {
 
 var _default = changeBoardDimension;
 exports.default = _default;
-},{"./generate-tiles":"generate-tiles.js"}],"generate-random-index-numbers.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var generateRandomIndexNumbers = function generateRandomIndexNumbers(numberOfTiles) {
-  var randomIndexNumbers = new Set();
-
-  if (numberOfTiles) {
-    while (randomIndexNumbers.size !== numberOfTiles) {
-      randomIndexNumbers.add(Math.floor(Math.random() * numberOfTiles));
-    }
-  }
-
-  return randomIndexNumbers;
-};
-
-var _default = generateRandomIndexNumbers;
-exports.default = _default;
-},{}],"create-array-of-double-colors.js":[function(require,module,exports) {
+},{"./generate-tiles":"generate-tiles.js"}],"create-array-of-double-colors.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -253,7 +231,71 @@ var createArrayOfDoubleColors = function createArrayOfDoubleColors(numberOfTiles
 
 var _default = createArrayOfDoubleColors;
 exports.default = _default;
-},{}],"index.js":[function(require,module,exports) {
+},{}],"generate-random-index-numbers.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var generateRandomIndexNumbers = function generateRandomIndexNumbers(numberOfTiles) {
+  var randomIndexNumbers = new Set();
+
+  if (numberOfTiles) {
+    while (randomIndexNumbers.size !== numberOfTiles) {
+      randomIndexNumbers.add(Math.floor(Math.random() * numberOfTiles));
+    }
+  }
+
+  return randomIndexNumbers;
+};
+
+var _default = generateRandomIndexNumbers;
+exports.default = _default;
+},{}],"generate-random-tiles-colors.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.shuffleTilesColors = exports.generateRandomTilesColors = void 0;
+
+var _createArrayOfDoubleColors = _interopRequireDefault(require("./create-array-of-double-colors"));
+
+var _generateRandomIndexNumbers = _interopRequireDefault(require("./generate-random-index-numbers"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
+var randomIndexNumbers = [];
+var shuffleTilesColors = [];
+exports.shuffleTilesColors = shuffleTilesColors;
+
+var generateRandomTilesColors = function generateRandomTilesColors(numberOfTiles) {
+  var colorsOfTiles = (0, _createArrayOfDoubleColors.default)(numberOfTiles);
+  var tiles = document.querySelectorAll('.tiles-container__tile');
+  randomIndexNumbers = _toConsumableArray((0, _generateRandomIndexNumbers.default)(numberOfTiles));
+
+  for (var i = 0; i < numberOfTiles; i++) {
+    shuffleTilesColors[i] = colorsOfTiles[randomIndexNumbers[i]];
+  }
+
+  tiles.forEach(function (tile, index) {
+    return tile.classList.add("".concat(shuffleTilesColors[index]));
+  });
+  return tiles;
+};
+
+exports.generateRandomTilesColors = generateRandomTilesColors;
+},{"./create-array-of-double-colors":"create-array-of-double-colors.js","./generate-random-index-numbers":"generate-random-index-numbers.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _changeThemeColorMode = _interopRequireDefault(require("./change-theme-color-mode"));
@@ -262,9 +304,7 @@ var _generateTiles = _interopRequireDefault(require("./generate-tiles"));
 
 var _changeBoardDimension = _interopRequireDefault(require("./change-board-dimension"));
 
-var _generateRandomIndexNumbers = _interopRequireDefault(require("./generate-random-index-numbers"));
-
-var _createArrayOfDoubleColors = _interopRequireDefault(require("./create-array-of-double-colors"));
+var _generateRandomTilesColors = require("./generate-random-tiles-colors");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -283,26 +323,9 @@ var tilesGrid = document.querySelector('.tiles-grid');
 var startButton = document.querySelector('.start-button');
 var activeTile = '';
 var pairsActiveTiles = [];
-var shuffleTilesColors = [];
-var randomIndexNumbers = [];
 var correctAnswers = 0;
 var startTime;
 var gameScore;
-
-var generateRandomTilesColors = function generateRandomTilesColors(numberOfTiles) {
-  var colorsOfTiles = (0, _createArrayOfDoubleColors.default)(numberOfTiles);
-  var tiles = document.querySelectorAll('.tiles-container__tile');
-  randomIndexNumbers = _toConsumableArray((0, _generateRandomIndexNumbers.default)(numberOfTiles));
-
-  for (var i = 0; i < numberOfTiles; i++) {
-    shuffleTilesColors[i] = colorsOfTiles[randomIndexNumbers[i]];
-  }
-
-  tiles.forEach(function (tile, index) {
-    return tile.classList.add("".concat(shuffleTilesColors[index]));
-  });
-  return tiles;
-};
 
 var clickTile = function clickTile(tiles) {
   // Usuwa po 2,5 sekundach kolory z kafelków i ustawia event listenery na każdy kafelek
@@ -326,14 +349,14 @@ var clickTileHandler = function clickTileHandler(e) {
 
   if (pairsActiveTiles.length === 0) {
     pairsActiveTiles[0] = activeTile;
-    activeTile.classList.add("".concat(shuffleTilesColors[index]));
+    activeTile.classList.add("".concat(_generateRandomTilesColors.shuffleTilesColors[index]));
     return;
   } else {
     tiles.forEach(function (tile) {
       return tile.removeEventListener('click', clickTileHandler);
     });
     pairsActiveTiles[1] = activeTile;
-    activeTile.classList.add("".concat(shuffleTilesColors[index]));
+    activeTile.classList.add("".concat(_generateRandomTilesColors.shuffleTilesColors[index]));
     setTimeout(function () {
       if (pairsActiveTiles[0].attributes[0].value === pairsActiveTiles[1].attributes[0].value) {
         pairsActiveTiles.forEach(function (singleActiveTile) {
@@ -385,7 +408,7 @@ var startGame = function startGame() {
     mainContainer.classList.remove('is-visible');
     tilesContainer.classList.add('is-visible');
     (0, _generateTiles.default)(rows, columns, tilesContainer, 'tiles-container__tile');
-    tiles = generateRandomTilesColors(rows * columns);
+    tiles = (0, _generateRandomTilesColors.generateRandomTilesColors)(rows * columns);
     clickTile(tiles);
   });
 };
@@ -394,7 +417,7 @@ var startGame = function startGame() {
 (0, _generateTiles.default)(4, 3, tilesGrid, 'tiles-grid__tile');
 (0, _changeBoardDimension.default)();
 startGame();
-},{"./change-theme-color-mode":"change-theme-color-mode.js","./generate-tiles":"generate-tiles.js","./change-board-dimension":"change-board-dimension.js","./generate-random-index-numbers":"generate-random-index-numbers.js","./create-array-of-double-colors":"create-array-of-double-colors.js"}],"C:/Users/Krzysiek/AppData/Roaming/nvm/v10.16.0/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./change-theme-color-mode":"change-theme-color-mode.js","./generate-tiles":"generate-tiles.js","./change-board-dimension":"change-board-dimension.js","./generate-random-tiles-colors":"generate-random-tiles-colors.js"}],"C:/Users/Krzysiek/AppData/Roaming/nvm/v10.16.0/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;

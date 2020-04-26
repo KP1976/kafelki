@@ -1,8 +1,10 @@
 import changeThemeColorMode from './change-theme-color-mode';
 import generateTiles from './generate-tiles';
 import changeBoardDimension from './change-board-dimension';
-import generateRandomIndexNumbers from './generate-random-index-numbers';
-import createArrayOfDoubleColors from './create-array-of-double-colors';
+import {
+	generateRandomTilesColors,
+	shuffleTilesColors,
+} from './generate-random-tiles-colors';
 
 const topBar = document.querySelector('.top-bar');
 const tilesContainer = document.querySelector('.tiles-container');
@@ -12,28 +14,9 @@ const startButton = document.querySelector('.start-button');
 
 let activeTile = '';
 let pairsActiveTiles = [];
-const shuffleTilesColors = [];
-let randomIndexNumbers = [];
 let correctAnswers = 0;
 let startTime;
 let gameScore;
-
-const generateRandomTilesColors = (numberOfTiles) => {
-	const colorsOfTiles = createArrayOfDoubleColors(numberOfTiles);
-	const tiles = document.querySelectorAll('.tiles-container__tile');
-
-	randomIndexNumbers = [...generateRandomIndexNumbers(numberOfTiles)];
-
-	for (let i = 0; i < numberOfTiles; i++) {
-		shuffleTilesColors[i] = colorsOfTiles[randomIndexNumbers[i]];
-	}
-
-	tiles.forEach((tile, index) =>
-		tile.classList.add(`${shuffleTilesColors[index]}`),
-	);
-
-	return tiles;
-};
 
 const clickTile = (tiles) => {
 	// Usuwa po 2,5 sekundach kolory z kafelków i ustawia event listenery na każdy kafelek
