@@ -396,14 +396,15 @@ var clickTileHandler = function clickTileHandler(e) {
 
 var _default = clickTile;
 exports.default = _default;
-},{"./generate-random-tiles-colors":"generate-random-tiles-colors.js"}],"index.js":[function(require,module,exports) {
+},{"./generate-random-tiles-colors":"generate-random-tiles-colors.js"}],"start-game.js":[function(require,module,exports) {
 "use strict";
 
-var _changeThemeColorMode = _interopRequireDefault(require("./change-theme-color-mode"));
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
 
 var _generateTiles = _interopRequireDefault(require("./generate-tiles"));
-
-var _changeBoardDimension = _interopRequireDefault(require("./change-board-dimension"));
 
 var _generateRandomTilesColors = require("./generate-random-tiles-colors");
 
@@ -431,11 +432,27 @@ var startGame = function startGame() {
   });
 };
 
+var _default = startGame;
+exports.default = _default;
+},{"./generate-tiles":"generate-tiles.js","./generate-random-tiles-colors":"generate-random-tiles-colors.js","./click-tile":"click-tile.js"}],"index.js":[function(require,module,exports) {
+"use strict";
+
+var _changeThemeColorMode = _interopRequireDefault(require("./change-theme-color-mode"));
+
+var _generateTiles = _interopRequireDefault(require("./generate-tiles"));
+
+var _changeBoardDimension = _interopRequireDefault(require("./change-board-dimension"));
+
+var _startGame = _interopRequireDefault(require("./start-game"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var tilesGrid = document.querySelector('.tiles-grid');
 (0, _changeThemeColorMode.default)();
 (0, _generateTiles.default)(4, 3, tilesGrid, 'tiles-grid__tile');
 (0, _changeBoardDimension.default)();
-startGame();
-},{"./change-theme-color-mode":"change-theme-color-mode.js","./generate-tiles":"generate-tiles.js","./change-board-dimension":"change-board-dimension.js","./generate-random-tiles-colors":"generate-random-tiles-colors.js","./click-tile":"click-tile.js"}],"C:/Users/Krzysiek/AppData/Roaming/nvm/v10.16.0/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+(0, _startGame.default)();
+},{"./change-theme-color-mode":"change-theme-color-mode.js","./generate-tiles":"generate-tiles.js","./change-board-dimension":"change-board-dimension.js","./start-game":"start-game.js"}],"C:/Users/Krzysiek/AppData/Roaming/nvm/v10.16.0/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
