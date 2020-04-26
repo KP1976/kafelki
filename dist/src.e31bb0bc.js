@@ -117,267 +117,32 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"change-mode.js":[function(require,module,exports) {
+})({"change-theme-color-mode.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var htmlDOM = document.documentElement;
-var switcher = document.querySelector('.switch-mode-container__switch');
-var moon = document.querySelector('.fa-moon');
-var sun = document.querySelector('.fa-sun');
+var HTMLTag = document.documentElement;
+var switchButton = document.querySelector('.switch-mode-container__switch');
 
 var changeThemeColorMode = function changeThemeColorMode() {
-  switcher.addEventListener('click', function (e) {
+  switchButton.addEventListener('change', function (e) {
     if (e.target.checked) {
-      htmlDOM.setAttribute('data-colormode', 'light');
-      moon.classList.remove('isVisible');
-      sun.classList.add('isVisible');
+      HTMLTag.dataset.colormode = 'light';
     } else {
-      htmlDOM.setAttribute('data-colormode', 'dark');
-      moon.classList.add('isVisible');
-      sun.classList.remove('isVisible');
+      HTMLTag.dataset.colormode = 'dark';
     }
   });
 };
 
 var _default = changeThemeColorMode;
 exports.default = _default;
-},{}],"tiles-grid.js":[function(require,module,exports) {
+},{}],"index.js":[function(require,module,exports) {
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var mainContainer = document.querySelector('.container');
-var tilesContainer = document.querySelector('.tiles-grid');
-var gameTilesContainer = document.querySelector('.tiles-container');
-var width;
-
-var generateTilesGrid = function generateTilesGrid(rows, columns) {
-  tilesContainer.innerHTML = '';
-
-  for (var i = 0; i < columns; i++) {
-    for (var j = 0; j < rows; j++) {
-      var tile = document.createElement('li');
-
-      if (rows === 4) {
-        tile.classList.add('tiles-grid__tile');
-
-        if (window.innerWidth > 1200) {
-          if (columns === 3) {
-            width = '';
-          } else {
-            width = '930';
-          }
-        } else {
-          width = '';
-        }
-      }
-
-      if (rows === 5) {
-        tile.classList.add('tiles-grid__tile');
-
-        if (window.innerWidth > 1200) {
-          if (columns === 4) {
-            width = '930';
-          }
-        }
-      }
-
-      if (rows === 6) {
-        tile.classList.add('tiles-grid__tile');
-
-        if (window.innerWidth > 1200) {
-          width = '800';
-        }
-      }
-
-      tilesContainer.appendChild(tile);
-    }
-  }
-
-  tilesContainer.dataset.gridColumns = columns;
-  tilesContainer.dataset.gridRows = rows;
-  gameTilesContainer.dataset.rows = rows;
-  mainContainer.dataset.width = width;
-};
-
-var _default = generateTilesGrid;
-exports.default = _default;
-},{}],"get-rows-and-columns.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _tilesGrid = _interopRequireDefault(require("./tiles-grid.js"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var radioInputs = document.querySelectorAll('.radios-container__radio-input');
-var boardRows = 4;
-var boardColumns = 3;
-(0, _tilesGrid.default)(boardRows, boardColumns);
-
-var getTilesBoardDimension = function getTilesBoardDimension() {
-  for (var i = 0; i < radioInputs.length; i++) {
-    radioInputs[i].addEventListener('change', function (e) {
-      var diemensionString = e.target.nextElementSibling.textContent;
-      boardRows = parseInt(diemensionString.charAt(0));
-      boardColumns = parseInt(diemensionString.charAt(diemensionString.length - 1));
-
-      if (e.target.checked) {
-        (0, _tilesGrid.default)(boardRows, boardColumns);
-      }
-    });
-  }
-};
-
-var _default = getTilesBoardDimension;
-exports.default = _default;
-},{"./tiles-grid.js":"tiles-grid.js"}],"create_tiles.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.DOMTilesContainer = exports.generateTiles = void 0;
-var DOMTilesContainer = document.querySelector('.tiles-container');
-exports.DOMTilesContainer = DOMTilesContainer;
-
-var generateTiles = function generateTiles(numberOfTiles) {
-  for (var i = 0; i < numberOfTiles; i++) {
-    var tile = document.createElement('li');
-    tile.classList.add('tiles-container__tile');
-    DOMTilesContainer.appendChild(tile);
-  }
-};
-
-exports.generateTiles = generateTiles;
-},{}],"random-numbers.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var randomNumbers = new Set();
-
-var generateRandomNumber = function generateRandomNumber(numbersOfTiles) {
-  if (numbersOfTiles) {
-    while (randomNumbers.size !== numbersOfTiles) {
-      randomNumbers.add(Math.floor(Math.random() * numbersOfTiles));
-    }
-
-    return randomNumbers;
-  }
-};
-
-var _default = generateRandomNumber;
-exports.default = _default;
-},{}],"click-tile.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.clickTile = clickTile;
-var howManyClicks = 0;
-var pairClicks = [];
-var correctAnswers = 0;
-var gameTiles = document.querySelector('.tiles-container');
-var topBar = document.querySelector('.top-bar');
-var mainContainer = document.querySelector('.container');
-var bottomBar = document.querySelector('.bottom-bar.is-visible');
-
-function clickTile(index, startTime, tiles, randomArrayOfPairColors, event) {
-  howManyClicks += 1;
-  pairClicks.push(index);
-  event.target.classList.add(randomArrayOfPairColors[index]);
-  event.target.classList.add('off-clicked');
-
-  if (howManyClicks === 2) {
-    var firstClickedTile = tiles[pairClicks[0]];
-    var secondClickedTile = tiles[pairClicks[1]];
-    howManyClicks = 0;
-
-    if (firstClickedTile.classList[1] === secondClickedTile.classList[1]) {
-      console.log(correctAnswers);
-      var correctSign1 = document.createElement('i');
-      var correctSign2 = document.createElement('i');
-      correctSign1.className = 'fas fa-check';
-      correctSign2.className = 'fas fa-check';
-      firstClickedTile.className = 'tiles-container__tile guessed';
-      secondClickedTile.className = 'tiles-container__tile guessed';
-      firstClickedTile.insertAdjacentElement('afterbegin', correctSign1);
-      secondClickedTile.insertAdjacentElement('afterbegin', correctSign2);
-      correctAnswers++;
-
-      if (correctAnswers === tiles.length / 2) {
-        var finalText = document.createElement('h1');
-        var endTime = new Date().getTime();
-        gameTiles.classList.remove('is-visible');
-        gameTiles.insertAdjacentElement('afterend', finalText);
-        finalText.className = 'final-text';
-        finalText.textContent = "Wygra\u0142e\u015B z czasem: ".concat((endTime - startTime) / 1000, "s");
-        console.log((endTime - startTime) / 1000);
-
-        if (document.querySelector('html').getAttribute('data-colormode') === 'dark') {
-          finalText.classList.add('text-white');
-        } else {
-          finalText.classList.add('text-black');
-        }
-
-        while (gameTiles.firstChild) {
-          gameTiles.firstChild.remove();
-        }
-
-        setTimeout(function () {
-          topBar.classList.add('is-visible');
-          mainContainer.classList.add('is-visible');
-          bottomBar.classList.add('is-visible');
-          finalText.remove();
-          correctAnswers = 0;
-        }, 3000);
-      }
-    } else {
-      tiles.forEach(function (tile) {
-        tile.classList.add('off-clicked');
-      });
-      setTimeout(function () {
-        event.target.classList.add('clicked');
-        firstClickedTile.className = 'tiles-container__tile';
-        secondClickedTile.className = 'tiles-container__tile';
-        tiles.forEach(function (tile) {
-          tile.classList.remove('off-clicked');
-        });
-      }, 1000);
-    }
-
-    pairClicks = [];
-  }
-}
-},{}],"game.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.startGame = void 0;
-
-var _create_tiles = require("./create_tiles.js");
-
-var _randomNumbers = _interopRequireDefault(require("./random-numbers.js"));
-
-var _clickTile = require("./click-tile.js");
-
-var _this = void 0;
+var _changeThemeColorMode = _interopRequireDefault(require("./change-theme-color-mode"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -389,84 +154,192 @@ function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.
 
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
 
-// import allTiles from './get-colors-for-tiles';
-var startGame = function startGame() {
-  var gameTiles = document.querySelector('.tiles-container');
-  var topBar = document.querySelector('.top-bar');
-  var mainContainer = document.querySelector('.container');
-  var bottomBar = document.querySelector('.bottom-bar.is-visible');
-  var tilesContainer = document.querySelector('.tiles-grid');
-  console.log(gameTiles, mainContainer, topBar, bottomBar);
-  gameTiles.classList.add('is-visible');
-  topBar.classList.remove('is-visible');
-  mainContainer.classList.remove('is-visible');
-  bottomBar.classList.remove('is-visible');
-  var allColors = ['black', 'purple', 'light-blue', 'orange', 'red', 'blue', 'green', 'yellow', 'pink', 'brown'];
-  var randomNumbers;
-  var numbersOfTiles = tilesContainer.dataset.gridRows * tilesContainer.dataset.gridColumns;
-  var pairColors = numbersOfTiles / 2;
-  var arrayOfPairColors = [];
-  var randomArrayOfPairColors = [];
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+var topBar = document.querySelector('.top-bar');
+var tilesContainer = document.querySelector('.tiles-container');
+var mainContainer = document.querySelector('.container');
+var tilesGrid = document.querySelector('.tiles-grid');
+var radioButtonInputs = document.querySelectorAll('.radios-container__radio-input');
+var startButton = document.querySelector('.start-button');
+var tilesColors = ['black', 'purple', 'light-blue', 'orange', 'red', 'blue', 'green', 'yellow', 'pink', 'brown'];
+var activeTile = '';
+var pairsActiveTiles = [];
+var shuffleTilesColors = [];
+var randomIndexNumbers = [];
+var correctAnswers = 0;
+var startTime;
+var gameScore;
+
+var generateTiles = function generateTiles(rows, columns, container, tileClassName) {
+  for (var i = 0; i < rows * columns; i++) {
+    var tile = document.createElement('li');
+    tile.classList.add(tileClassName);
+    container.appendChild(tile);
+  }
+};
+
+var clickRadioButtons = function clickRadioButtons() {
+  radioButtonInputs.forEach(function (radioButtonInput) {
+    radioButtonInput.addEventListener('change', function () {
+      var _event$target$nextEle = event.target.nextElementSibling.textContent.split('x'),
+          _event$target$nextEle2 = _slicedToArray(_event$target$nextEle, 2),
+          rows = _event$target$nextEle2[0],
+          columns = _event$target$nextEle2[1]; // Usuwanie wszystkich kafelków i ustawienie odpowiedniego grida dla kontenera
+      // (zarówno na stronie początkowej jak i w grze)
+
+
+      tilesGrid.innerHTML = '';
+      tilesGrid.dataset.gridRows = rows;
+      tilesGrid.dataset.gridColumns = columns;
+      tilesContainer.dataset.gridRows = rows;
+      tilesContainer.dataset.gridColumns = columns;
+      generateTiles(+rows, +columns, tilesGrid, 'tiles-grid__tile');
+    });
+  });
+};
+
+var generateRandomIndexNumbers = function generateRandomIndexNumbers(numberOfTiles) {
+  var randomIndexNumbers = new Set();
+
+  if (numberOfTiles) {
+    while (randomIndexNumbers.size !== numberOfTiles) {
+      randomIndexNumbers.add(Math.floor(Math.random() * numberOfTiles));
+    }
+  }
+
+  return randomIndexNumbers;
+};
+
+var createArrayOfDoubleColors = function createArrayOfDoubleColors(numberOfTiles) {
+  var colorsOfTiles = [];
+  var availableTileColors = numberOfTiles / 2;
   var j = 0;
 
-  if (numbersOfTiles === 12 || numbersOfTiles === 18) {
-    console.log('DLACZEGO SIE ZAWIESZASZ???');
-    (0, _create_tiles.generateTiles)(numbersOfTiles);
-  }
-
-  if (numbersOfTiles === 16 || numbersOfTiles === 20) {
-    _create_tiles.DOMTilesContainer.classList.add('four-columns');
-
-    (0, _create_tiles.generateTiles)(numbersOfTiles);
-  }
-
-  var tiles = document.querySelectorAll('.tiles-container__tile');
-  randomNumbers = _toConsumableArray((0, _randomNumbers.default)(numbersOfTiles));
-
-  for (var i = 0; i < numbersOfTiles; i++) {
-    arrayOfPairColors[i] = allColors[j];
-
-    if (j > pairColors - 2) {
-      j = -1;
-    }
-
+  for (var i = 0; i < numberOfTiles; i++) {
+    colorsOfTiles[i] = tilesColors[j];
     j++;
+
+    if (j > availableTileColors - 1) {
+      j = 0;
+    }
   }
 
-  for (var _i = 0; _i < numbersOfTiles; _i++) {
-    randomArrayOfPairColors[_i] = arrayOfPairColors[randomNumbers[_i]];
+  return colorsOfTiles;
+};
+
+var generateRandomTilesColors = function generateRandomTilesColors(numberOfTiles) {
+  var colorsOfTiles = createArrayOfDoubleColors(numberOfTiles);
+  var tiles = document.querySelectorAll('.tiles-container__tile');
+  randomIndexNumbers = _toConsumableArray(generateRandomIndexNumbers(numberOfTiles));
+
+  for (var i = 0; i < numberOfTiles; i++) {
+    shuffleTilesColors[i] = colorsOfTiles[randomIndexNumbers[i]];
   }
 
   tiles.forEach(function (tile, index) {
-    tile.classList.add(randomArrayOfPairColors[index]);
+    return tile.classList.add("".concat(shuffleTilesColors[index]));
   });
-  setTimeout(function () {
-    var startTime = new Date().getTime();
-    tiles.forEach(function (tile, index) {
-      tile.className = 'tiles-container__tile';
-      tile.addEventListener('click', _clickTile.clickTile.bind(_this, index, startTime, tiles, randomArrayOfPairColors));
-    });
-  }, 3000);
+  return tiles;
 };
 
-exports.startGame = startGame;
-},{"./create_tiles.js":"create_tiles.js","./random-numbers.js":"random-numbers.js","./click-tile.js":"click-tile.js"}],"index.js":[function(require,module,exports) {
-"use strict";
+var clickTile = function clickTile(tiles) {
+  // Usuwa po 2,5 sekundach kolory z kafelków i ustawia event listenery na każdy kafelek
+  setTimeout(function () {
+    tiles.forEach(function (tile) {
+      tile.className = 'tiles-container__tile';
+      tile.addEventListener('click', clickTileHandler);
+    });
+    startTime = new Date().getTime();
+  }, 2500);
+};
 
-var _changeMode = _interopRequireDefault(require("./change-mode.js"));
+var clickTileHandler = function clickTileHandler(e) {
+  var tiles = document.querySelectorAll('.tiles-container__tile');
 
-var _getRowsAndColumns = _interopRequireDefault(require("./get-rows-and-columns.js"));
+  var index = _toConsumableArray(tiles).indexOf(e.target);
 
-var _game = require("./game.js");
+  activeTile = e.target; // Jeżeli klikniemy w ten sam kafelek
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+  if (activeTile === pairsActiveTiles[0]) return;
 
-var startButton = document.querySelector('.start-button');
-document.querySelector('.radios-container__radio').checked = true;
-(0, _getRowsAndColumns.default)();
-(0, _changeMode.default)();
-startButton.addEventListener('click', _game.startGame);
-},{"./change-mode.js":"change-mode.js","./get-rows-and-columns.js":"get-rows-and-columns.js","./game.js":"game.js"}],"C:/Users/Krzysiek/AppData/Roaming/nvm/v10.16.0/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+  if (pairsActiveTiles.length === 0) {
+    pairsActiveTiles[0] = activeTile;
+    activeTile.classList.add("".concat(shuffleTilesColors[index]));
+    return;
+  } else {
+    tiles.forEach(function (tile) {
+      return tile.removeEventListener('click', clickTileHandler);
+    });
+    pairsActiveTiles[1] = activeTile;
+    activeTile.classList.add("".concat(shuffleTilesColors[index]));
+    setTimeout(function () {
+      if (pairsActiveTiles[0].attributes[0].value === pairsActiveTiles[1].attributes[0].value) {
+        pairsActiveTiles.forEach(function (singleActiveTile) {
+          var correctAnswerSign = document.createElement('i');
+          singleActiveTile.className = 'tiles-container__tile guessed';
+          correctAnswerSign.className = 'fa fa-check';
+          singleActiveTile.appendChild(correctAnswerSign);
+        });
+        correctAnswers++;
+
+        if (correctAnswers === tiles.length / 2) {
+          var endTime = new Date().getTime();
+          gameScore = endTime - startTime;
+          tiles.forEach(function (tile) {
+            return tile.remove();
+          });
+          document.querySelector('body').insertAdjacentHTML('afterBegin', "\n\t\t\t\t\t\t\t<div class=\"wrapper\">\n\t\t\t\t\t\t\t\t<h1 class=\"wrapper__score-text\">Tw\xF3j wynik to <span class=\"time\">".concat((gameScore / 1000).toFixed(1), "</span> s.</h1>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t"));
+          setTimeout(function () {
+            document.querySelector('.wrapper').remove();
+            topBar.classList.add('is-visible');
+            mainContainer.classList.add('is-visible');
+            tilesContainer.classList.remove('is-visible');
+            correctAnswers = 0;
+          }, 3000);
+        }
+      } else {
+        pairsActiveTiles.forEach(function (tile) {
+          return tile.className = 'tiles-container__tile';
+        });
+      } // Resetowanie
+
+
+      activeTile = '';
+      pairsActiveTiles = []; // Ponowne ustawienie click eventa dla każdego kafelka
+
+      tiles.forEach(function (tile) {
+        return tile.addEventListener('click', clickTileHandler);
+      });
+    }, 500);
+  }
+};
+
+var startGame = function startGame() {
+  startButton.addEventListener('click', function () {
+    var rows = +tilesGrid.getAttribute('data-grid-rows');
+    var columns = +tilesGrid.getAttribute('data-grid-columns');
+    var tiles;
+    topBar.classList.remove('is-visible');
+    mainContainer.classList.remove('is-visible');
+    tilesContainer.classList.add('is-visible');
+    generateTiles(rows, columns, tilesContainer, 'tiles-container__tile');
+    tiles = generateRandomTilesColors(rows * columns);
+    clickTile(tiles);
+  });
+};
+
+(0, _changeThemeColorMode.default)();
+generateTiles(4, 3, tilesGrid, 'tiles-grid__tile');
+clickRadioButtons();
+startGame();
+},{"./change-theme-color-mode":"change-theme-color-mode.js"}],"C:/Users/Krzysiek/AppData/Roaming/nvm/v10.16.0/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -494,7 +367,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52144" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50346" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

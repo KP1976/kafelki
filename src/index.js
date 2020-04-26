@@ -1,3 +1,5 @@
+import changeThemeColorMode from './change-theme-color-mode';
+
 const topBar = document.querySelector('.top-bar');
 const tilesContainer = document.querySelector('.tiles-container');
 const mainContainer = document.querySelector('.container');
@@ -5,8 +7,6 @@ const tilesGrid = document.querySelector('.tiles-grid');
 const radioButtonInputs = document.querySelectorAll(
 	'.radios-container__radio-input',
 );
-const switchButton = document.querySelector('.switch-mode-container__switch');
-const HTMLTag = document.documentElement;
 const startButton = document.querySelector('.start-button');
 const tilesColors = [
 	'black',
@@ -27,18 +27,7 @@ const shuffleTilesColors = [];
 let randomIndexNumbers = [];
 let correctAnswers = 0;
 let startTime;
-let endTime;
 let gameScore;
-
-const changeThemeColorMode = () => {
-	switchButton.addEventListener('change', (e) => {
-		if (e.target.checked) {
-			HTMLTag.dataset.colormode = 'light';
-		} else {
-			HTMLTag.dataset.colormode = 'dark';
-		}
-	});
-};
 
 const generateTiles = (rows, columns, container, tileClassName) => {
 	for (let i = 0; i < rows * columns; i++) {
